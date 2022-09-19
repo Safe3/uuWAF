@@ -1,0 +1,13 @@
+- <span class="iconfont icon-atom"></span> 指南
+  - [<span class="iconfont icon-fly"></span> 产品介绍](guide/)
+     - [<span class="iconfont icon-page"></span> 技术优势](guide/#技术优势)
+     - [<span class="iconfont icon-mix"></span> 界面预览](guide/#界面预览)
+  - [<span class="iconfont icon-install"></span> 快速安装](guide/install.md)
+     - [<span class="iconfont icon-component"></span> 配置要求](guide/install#配置要求)
+     - [<span class="iconfont icon-wxapp"></span> 一键安装](guide/install#一键安装)
+  - [<span class="iconfont icon-router"></span> 开始使用](guide/begin.md)
+     - [<span class="iconfont icon-crown"></span> 事前准备](guide/begin#事前准备)
+     - [<span class="iconfont icon-matrix"></span> 登录后台](guide/begin#登录后台)
+  - [<span class="iconfont icon-alert"></span> 贡献规则](guide/contribute.md)
+  - [<span class="iconfont icon-discord"></span> 加入讨论](guide/discuss.md)
+
