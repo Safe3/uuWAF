@@ -1,4 +1,3 @@
-- [官网](https://www.uusec.com/)
 - [首页](/)
 - [指南](/#main)
 - [API](/api/README.md)
