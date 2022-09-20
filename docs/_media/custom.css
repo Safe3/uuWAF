@@ -4,6 +4,10 @@ article img.sd {
   margin-top: 20px;
 }
 
+article h2 img.emoji {
+   height: 1.75rem;
+}
+
 section.cover.has-mask .mask {
   opacity: 0;
   height: 100vh;
