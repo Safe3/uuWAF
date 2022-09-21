@@ -20,7 +20,7 @@ if not c then
     sh:set("cc" .. waf.ip, 0, 60, 1)
 else
     if f == 2 then
-        return ngx.exit(403)
+        return ngx.exit(444)
     elseif c >= 360 then
         sh:set("cc" .. waf.ip, c, 300, 2)
     end
