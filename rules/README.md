@@ -3,8 +3,8 @@
 规则模板见：https://github.com/Safe3/uuWAF/blob/main/rules/anti-cc.lua
 
 
-## :gift_heart: 参与方法 <!-- {docsify-ignore} -->
-?> 贡献者以 PR 的方式向 github 南墙社区仓库内提交。
+## :gift_heart: 参与方法
+> 贡献者以 PR 的方式向 github 南墙社区仓库内提交。
 - 规则提交位置: https://github.com/Safe3/uuWAF/tree/master/rules
 - 插件提交位置: https://github.com/Safe3/uuWAF/tree/master/plugins
 - PR 中根据 Pull Request 的模板填写规则或插件信息
@@ -13,8 +13,8 @@
 
 
 
-## :gem: 奖励措施 <!-- {docsify-ignore} -->
-?> 参与贡献即可获得与 uuWAF 社区版内部大佬技术切磋交流的机会。提交 PR 过程中会有内部大佬审核，帮助改进规则和插件，共同进步。
+## :gem: 奖励措施
+> 参与贡献即可获得与 uuWAF 社区版内部大佬技术切磋交流的机会。提交 PR 过程中会有内部大佬审核，帮助改进规则和插件，共同进步。
 
 - 提交一个规则或插件即可进入 uuWAF 核心贡献者群，参与讨论热点安全技术，且有机会与大佬们面对面交流。
 - 对于 uuWAF 商业版年费用户，在当年的商业版授权有效期内，只需在提交5个插件或规则，即可再免费续一年商业升级。
