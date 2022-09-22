@@ -10,4 +10,5 @@
      - [<span class="iconfont icon-matrix"></span> 登录后台](guide/begin#登录后台)
   - [<span class="iconfont icon-alert"></span> 贡献分享](guide/contribute.md)
   - [<span class="iconfont icon-discord"></span> 加入讨论](guide/discuss.md)
+  - [<span class="iconfont icon-nut"></span> 更新日志](CHANGELOG.md)
 
