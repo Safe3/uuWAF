@@ -9,20 +9,22 @@
 --]]
 
 
-local sh = ngx.shared.ipCache
-local c, f = sh:get("cc" .. waf.ip)
-
 if not waf.startWith(waf.toLower(waf.uri), "/api/") then
     return false
 end
 
+local sh = ngx.shared.ipCache
+local c, f = sh:get(waf.ip)
 if not c then
     sh:set("cc" .. waf.ip, 0, 60, 1)
 else
     if f == 2 then
-        return ngx.exit(444)
-    elseif c >= 360 then
+        return ngx.exit(403)
+    end
+    sh:incr('cc-' .. waf.ip, 1)
+    if c >= 360 then
         sh:set("cc" .. waf.ip, c, 300, 2)
     end
 end
+
 return false
