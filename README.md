@@ -40,7 +40,7 @@
 
 
 
-## :gift_heart: 贡献 Rule
+## :gift_heart: 贡献分享
 
 参照: https://waf.uusec.com/#/guide/contribute
 
