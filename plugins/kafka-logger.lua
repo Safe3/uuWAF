@@ -55,3 +55,5 @@ function _M.log(waf)
         log.broker(kafkaLog, brokerList, info)
     end
 end
+
+return _M
