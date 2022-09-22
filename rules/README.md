@@ -1,4 +1,4 @@
-# 贡献规则
+# 贡献分享
 南墙 的发展离不开社区的每一位贡献者，希望大家踊跃为 南墙 贡献功能插件和安全规则。规则模板见：https://github.com/Safe3/uuWAF/blob/main/rules/anti-cc.lua ,规则API见：https://waf.uusec.com/#/api/README 。
 
 
