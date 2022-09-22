@@ -1,4 +1,4 @@
-## 全局配置
+## :strawberry: 全局配置
 ### init_by_lua_block
 - 类型: ``table``
 
@@ -15,9 +15,9 @@
   
 
 
-## 规则
+## :grapes: 规则
 
-这里对规则所用到的一些变量和相关函数进行说明，更多规则编写方法请大家参照WAF管理后台中的规则管理当中的众多实际例子。
+?>这里对规则所用到的一些变量和相关函数进行说明，更多规则编写方法请大家参照WAF管理后台中的规则管理当中的众多实际例子。规则模板见：https://github.com/Safe3/uuWAF/blob/main/rules/anti-cc.lua ，一条防cc攻击的安全规则。欢迎各位贡献安全规则，详情见：https://waf.uusec.com/#/guide/contribute 。
 
 ### 规则变量
 
@@ -307,3 +307,125 @@
 - 参数: ``sstr 为原字符串``
 - 功能: 将字符串 sstr 进行 hex 解码
 - 返回值: ``解码后的字符串``
+
+
+
+## :melon: 插件
+
+?>南墙支持强大的插件扩展功能，方便用户自行实现一些特有功能。插件模板见：https://github.com/Safe3/uuWAF/blob/main/plugins/kafka-logger.lua ，一个kafka日志记录插件。欢迎各位贡献安全插件，详情见：https://waf.uusec.com/#/guide/contribute 。
+
+### 插件编写
+
+一个标准的插件包含以下几个部分，每个部分若无功能实现可省略。
+
+```lua
+local _M = {
+    version = 0.1,          --  插件版本
+    name = "kafka-logger"   --  插件名称
+}
+
+-- 请求阶段过滤函数
+function _M.req_filter(waf)
+
+end
+
+-- 返回header阶段过滤函数
+function _M.resp_header_filter(waf)
+
+end
+
+-- 返回body阶段过滤函数
+function _M.resp_body_filter(waf)
+
+end
+
+-- 日志记录阶段执行函数
+function _M.log(waf)
+
+end
+
+return _M
+```
+
+
+
+- #### 请求阶段过滤函数
+
+- 该阶段用于过滤客户端发送的请求数据，waf变量同规则变量一致，可自行实现该函数功能。
+
+- #### 返回header阶段过滤函数
+
+- 该阶段用于过滤服务器返回的header头数据，waf变量同规则变量一致，可自行实现该函数功能。
+
+- #### 返回body阶段过滤函数
+
+- 该阶段用于过滤服务器返回的body内容数据，waf变量同规则变量一致，可自行实现该函数功能。
+
+- #### 日志记录阶段执行函数
+
+- 该阶段用于日志记录阶段做一些日志处理与推送，waf变量同规则变量一致，可自行实现该函数功能。
+
+
+
+### 插件使用
+
+1. 将插件文件如kafka-logger.lua 放于/uuwaf/waf/plugins/目录，并修改文件扩展名为kafka-logger.w。
+
+2. 修改/uuwaf/conf/uuwaf.conf文件，在init_by_lua_block段中waf = require("waf")下新增一行waf:use("扩展文件名")，如启用kafka-logger.lua插件的示例如下：
+
+   ```lua
+   waf = require("waf")
+   waf:use("kafka-logger")
+   ```
+   
+3. 执行/uuwaf/waf-service -s restart使插件生效，如果插件代码运行有问题，可以在/uuwaf/logs/error.log中查看详细错误信息。
+
+
+
+### 常用功能函数
+
+#### 各阶段数据共享
+
+##### waf.ctx
+
+有时为了在各个执行函数间共享同一个数据，可以通过给waf.ctx赋值来实现，如：
+
+```lua
+function _M.resp_body_filter(waf)
+	waf.ctx = "share"
+end
+
+function _M.log(waf)
+	log.errLog(waf.ctx)
+end
+```
+
+
+
+#### 记录错误日志
+
+```lua
+local log = require("waf.log")
+```
+
+
+
+##### log.errLog(...)
+
+- 参数: ``可变参数，类型为字符串``
+- 功能: 将信息写入错误日志/uuwaf/logs/error.log
+- 返回值: ``无``
+
+##### log.encodeJson(obj)
+
+- 参数: ``lua table对象``
+- 功能: 将lua table对象转化json字符串
+- 返回值: ``json字符串``
+
+##### log.broker(func，...)
+
+- 参数: ``func为函数，可变参数为传给函数func的参数``
+- 功能: 代理执行函数func，并传参。
+- 返回值: ``无``
+
+:smile: 其它隐藏功能彩蛋，由用户自行去发掘。

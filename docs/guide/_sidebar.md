@@ -8,6 +8,6 @@
   - [<span class="iconfont icon-router"></span> 开始使用](guide/begin.md)
      - [<span class="iconfont icon-crown"></span> 事前准备](guide/begin#事前准备)
      - [<span class="iconfont icon-matrix"></span> 登录后台](guide/begin#登录后台)
-  - [<span class="iconfont icon-alert"></span> 贡献规则](guide/contribute.md)
+  - [<span class="iconfont icon-alert"></span> 贡献分享](guide/contribute.md)
   - [<span class="iconfont icon-discord"></span> 加入讨论](guide/discuss.md)
 
