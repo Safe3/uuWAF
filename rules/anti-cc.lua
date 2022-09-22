@@ -20,7 +20,7 @@ if not c then
     sh:set(ccIp, 0, 60, 1)  -- 设置1分钟也就是60秒访问计数时间
 else
     if f == 2 then
-        return ngx.exit(403)
+        return waf.block(true)
     end
     sh:incr(ccIp, 1)
     if c >= 360 then
