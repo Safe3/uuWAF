@@ -16,14 +16,14 @@ end
 local sh = ngx.shared.ipCache
 local c, f = sh:get(waf.ip)
 if not c then
-    sh:set("cc" .. waf.ip, 0, 60, 1)
+    sh:set("cc" .. waf.ip, 0, 60, 1)  -- 设置1分钟也就是60秒访问计数时间
 else
-    if f == 2 then
+    if f == 2 then                         
         return ngx.exit(403)
     end
     sh:incr('cc-' .. waf.ip, 1)
     if c >= 360 then
-        sh:set("cc" .. waf.ip, c, 300, 2)
+        sh:set("cc" .. waf.ip, c, 300, 2)  -- 设置5分钟也就是300秒拦截时间
     end
 end
 
