@@ -14,16 +14,17 @@ if not waf.startWith(waf.toLower(waf.uri), "/api/") then
 end
 
 local sh = ngx.shared.ipCache
-local c, f = sh:get(waf.ip)
+local ccIp = 'cc-' .. waf.ip
+local c, f = sh:get(ccIp)
 if not c then
-    sh:set("cc" .. waf.ip, 0, 60, 1)  -- 设置1分钟也就是60秒访问计数时间
+    sh:set(ccIp, 0, 60, 1)  -- 设置1分钟也就是60秒访问计数时间
 else
-    if f == 2 then                         
+    if f == 2 then
         return ngx.exit(403)
     end
-    sh:incr('cc-' .. waf.ip, 1)
+    sh:incr(ccIp, 1)
     if c >= 360 then
-        sh:set("cc" .. waf.ip, c, 300, 2)  -- 设置5分钟也就是300秒拦截时间
+        sh:set(ccIp, c, 300, 2)  -- 设置5分钟也就是300秒拦截时间
     end
 end
 
