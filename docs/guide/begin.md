@@ -4,7 +4,7 @@
 
 
 
-##  :beginner:事前准备 <!-- {docsify-ignore} -->
+##  :beginner: 事前准备 <!-- {docsify-ignore} -->
 ?> 如果你还不熟悉南墙，建议先阅读 [南墙WAF使用手册](https://waf.uusec.com/_media/南墙WAF使用手册.pdf)。
 
 
