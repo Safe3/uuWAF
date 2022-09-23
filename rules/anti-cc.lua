@@ -24,7 +24,7 @@ else
     end
     sh:incr(ccIp, 1)
     if c + 1 >= 360 then
-        sh:set(ccIp, c, 300, 2)  -- 设置5分钟也就是300秒拦截时间
+        sh:set(ccIp, c + 1, 300, 2)  -- 设置5分钟也就是300秒拦截时间
     end
 end
 
