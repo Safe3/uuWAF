@@ -20,11 +20,12 @@ if not c then
     sh:set(ccIp, 1, 60, 1)  -- 设置1分钟也就是60秒访问计数时间
 else
     if f == 2 then
-        return waf.block(true)
+        return waf.block(true)     -- 重置TCP连接，不记录日志
     end
     sh:incr(ccIp, 1)
     if c + 1 >= 360 then
         sh:set(ccIp, c + 1, 300, 2)  -- 设置5分钟也就是300秒拦截时间
+        return true, ccIp, true
     end
 end
 
