@@ -1,4 +1,4 @@
-## [1.9.3](https://github.com/Safe3/uuWAF/compare/v1.9.3...v1.9.0) (2022-09-22)
+## [1.9.3](https://github.com/Safe3/uuWAF/compare/v1.9.3...v1.9.0) (2022-10-10)
 
 
 ### Bug 修复
