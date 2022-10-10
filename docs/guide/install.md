@@ -25,7 +25,7 @@
 bash环境下执行如下命令
 
 ```bash
-wget https://waf.uusec.com/waf-install --no-check-certificate && chmod +x waf-install && ./waf-install
+sudo wget https://waf.uusec.com/waf-install --no-check-certificate && chmod +x waf-install && ./waf-install
 ```
 
 ?> 安装成功后会显示 “ 恭喜您，安装完成！”
