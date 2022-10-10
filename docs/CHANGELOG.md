@@ -10,6 +10,7 @@
 ### 新增功能
 
 * 支持更多RedHat系操作系统，如CentOS、AlmaLinux、Anolis、Rocky Linux等
+* 增强安装稳定性和性能，数据库升级到8.x版本
 
 
 
