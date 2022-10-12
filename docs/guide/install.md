@@ -8,12 +8,10 @@
 
   ```
   - 处理器：64位 1千兆赫(GHz)或更快。
-  - 内存：大于1G
-  - 磁盘空间：大于16G
-  - 系统：RedHat 7及以上相关兼容Linux x86_64系统，如CentOS、AlmaLinux、Anolis、Rocky Linux等
+  - 内存：不小于1G
+  - 磁盘空间：不小于16G
+  - 系统：RHEL 7及以上相关兼容Linux x86_64系统，如CentOS、AlmaLinux、Anolis、Rocky Linux等
   ```
-
-!> 注意：CentOS系统的时区请选择中国时区GMT+8，否则WAF管理后台会出现时间显示问题。
 
 
 
@@ -25,10 +23,11 @@
 bash环境下执行如下命令
 
 ```bash
-sudo wget https://waf.uusec.com/waf-install --no-check-certificate && chmod +x waf-install && ./waf-install
+sudo yum install -y ca-certificates
+sudo wget https://waf.uusec.com/waf-install && chmod +x waf-install && ./waf-install
 ```
 
-?> 安装成功后会显示 “ 恭喜您，安装完成！”
+?> 安装成功后会显示 “ 恭喜您，安装成功！”
 
 !> 注意：安装完成后请第一时间修改/uuwaf/web/conf/conf.yaml文件中的jwtKey登录认证加密密钥，然后执行如下命令使配置生效。
 
