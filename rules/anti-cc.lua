@@ -25,7 +25,7 @@ else
     sh:incr(ccIp, 1)
     if c + 1 >= 360 then             -- 频率超过360次
         sh:set(ccIp, c + 1, 300, 2)  -- 设置5分钟也就是300秒拦截时间
-        return true, ccIp, true      -- 返回参数，第一个true为是否检测到，第二个参数ccIp为日志记录内容，第三个参数true表示拦截，false表示只记录不拦截
+        return true, ccIp, true      -- 返回参数，第一个true为是否检测到；第二个参数ccIp为日志记录内容；第三个参数true表示拦截，false表示只记录不拦截
     end
 end
 
