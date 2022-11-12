@@ -10,7 +10,7 @@
   - 处理器：64位 1千兆赫(GHz)或更快。
   - 内存：不小于1G
   - 磁盘空间：不小于16G
-  - 系统：RHEL 7及以上相关兼容Linux x86_64系统，如CentOS、AlmaLinux、Anolis、Rocky Linux等
+  - 系统：RedHat 7及以上相关兼容Linux x86_64系统，如CentOS、AlmaLinux、Anolis、Rocky Linux等
   ```
 
 
@@ -28,9 +28,3 @@ sudo wget https://waf.uusec.com/waf-install && chmod +x waf-install && ./waf-ins
 ```
 
 ?> 安装成功后会显示 “ 恭喜您，安装成功！”
-
-!> 注意：安装完成后请第一时间修改/uuwaf/web/conf/conf.yaml文件中的jwtKey登录认证加密密钥，然后执行如下命令使配置生效。
-
-```bash
-/uuwaf/waf-service -s restart
-```
