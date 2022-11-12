@@ -24,7 +24,7 @@ bash环境下执行如下命令
 
 ```bash
 sudo yum install -y ca-certificates
-sudo wget https://waf.uusec.com/waf-install && chmod +x waf-install && ./waf-install
+sudo wget https://waf.uusec.com/waf-install && chmod +x waf-install && ./waf-install && rm ./waf-install
 ```
 
 ?> 安装成功后会显示 “ 恭喜您，安装成功！”
