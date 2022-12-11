@@ -1,33 +1,39 @@
 article img.sd {
-  display: block;
-  box-shadow: 0 3px 15px 3px rgba(40, 40, 40, 0.5);
-  margin-top: 20px;
-  border-radius: 3%;
+	display: block;
+	box-shadow: 0 3px 15px 3px rgba(40, 40, 40, 0.5);
+	margin-top: 20px;
+	border-radius: 3%;
 }
 
 article h2 img.emoji {
-   height: 1.75rem;
+	height: 1.75rem;
 }
 
 section.cover.has-mask .mask {
-  opacity: 0;
-  height: 100vh;
-  width: 100vw;
+	opacity: 0;
+	height: 100vh;
+	width: 100vw;
 }
 
 section.cover p {
-    color: var(--theme-color);
+	color: var(--theme-color);
 }
 
-section.cover h1 .anchor span{
-  font-family: 'Lobster', cursive;
-  color: var(--theme-color);
+section.cover h1 .anchor span {
+	font-family: 'Lobster', cursive;
+	color: var(--theme-color);
 }
 
 section.cover .cover-main>p:last-child a .iconfont {
-  font-size: 1em;
+	font-size: 1em;
 }
 
 .sidebar>h1 a {
-  font-family: 'Lobster', cursive;
+	font-family: 'Lobster', cursive;
+}
+
+p img.pic {
+	display: block;
+	margin: 0 auto;
+	width: 500px;
 }
