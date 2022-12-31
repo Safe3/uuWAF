@@ -1,5 +1,5 @@
 # 快速安装
-南墙支持一键全自动安装，全程无需人工干预，给你带来极致体验 。
+南墙支持一键全自动安装（Ubuntu或Debian系统请加官方群获取Docker版），全程无需人工干预，给你带来极致体验 。
 
 
 
@@ -10,7 +10,7 @@
   - 处理器：64位 1千兆赫(GHz)或更快。
   - 内存：不小于1G
   - 磁盘空间：不小于16G
-  - 系统：RedHat 7及以上相关兼容Linux x86_64系统，如CentOS、AlmaLinux、Anolis、Rocky Linux等
+  - 系统：RedHat 7及以上相关兼容Linux x86_64系统，如CentOS、AlmaLinux、Anolis、Rocky Linux等，其它系统请加官方群获取Docker版。
   ```
 
 
