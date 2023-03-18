@@ -1,3 +1,4 @@
+![Logo](docs/_media/waf.png)
 # 南墙简介
 
 [![GitHub stars](https://img.shields.io/github/stars/Safe3/uuWAF.svg?label=关注&nbsp;南墙&style=for-the-badge)](https://github.com/Safe3/uuWAF)
