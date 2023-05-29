@@ -28,9 +28,9 @@ if form and (has(uri, "login") or has(uri, "logon") or has(uri, "signin")) then
         end
     end
 
-    local lj = cjson.decode(raw)
-    if lj and has(toLower(rct), "application/json") then
-         for k, v in pairs(lj) do
+    if  rct and has(toLower(rct), "application/json") then
+        local jd = cjson.decode(raw)
+        for k, v in pairs(jd) do
             k = toLower(k)
             if (k == "pass" or has(k, "pwd") or has(k, "passwd") or has(k, "password")) and check(v) then
                 return true, "RAW: "..raw, false
