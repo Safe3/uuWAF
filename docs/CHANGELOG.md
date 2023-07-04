@@ -1,4 +1,4 @@
-## [2.5.1](https://github.com/Safe3/uuWAF/compare/v2.5.1...v2.4.1) (2023-05-30)
+## [2.5.1](https://github.com/Safe3/uuWAF/compare/v2.5.1...v2.4.1) (2023-07-04)
 
 
 ### 新增功能
