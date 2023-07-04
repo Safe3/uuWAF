@@ -29,4 +29,4 @@ sudo wget https://waf.uusec.com/waf-install && chmod +x waf-install && ./waf-ins
 
 ?> 安装成功后会显示 “ 恭喜您，安装成功！”
 
-Docker版下载地址：https://github.com/Safe3/uuWAF，使用说明见waf-docker-community.x.x.x.tgz中的"说明.txt"文件。
+Docker版下载地址：https://github.com/Safe3/uuWAF ，使用说明见安装包waf-docker-community.x.x.x.tgz中的"说明.txt"文件。
