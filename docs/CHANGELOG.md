@@ -1,9 +1,21 @@
+## [2.5.1](https://github.com/Safe3/uuWAF/compare/v2.5.1...v2.4.1) (2023-05-30)
+
+
+### 新增功能
+
+* 新增查看攻击日志请求报文功能
+* 优化tls传输兼容性，支持TLS v1
+* 优化sql注入和命令执行语义引擎
+* 优化系统备份功能
+
+
+
 ## [2.4.1](https://github.com/Safe3/uuWAF/compare/v2.4.1...v2.3.0) (2023-05-30)
 
 
 ### 新增功能
 
-* 新增系统配置备份功能。
+* 新增系统配置备份功能
 * 新增一键解封被封禁的ip功能
 * 新增南墙安全验证X-Waf-Token head头验证功能
 
@@ -13,6 +25,8 @@
 * 修复使用waf.block函数后产生系统报错日志的问题
 * 解决部分XSS检测误报的问题
 * 解决Docker版南墙在某些系统出现Unix syslog delivery error错误不能运行的问题
+
+  
 
 
 ## [2.3.0](https://github.com/Safe3/uuWAF/compare/v2.3.0...v2.2.0) (2023-04-28)
