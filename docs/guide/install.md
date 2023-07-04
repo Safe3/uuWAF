@@ -1,5 +1,5 @@
 # 快速安装
-南墙支持一键全自动安装（**Ubuntu或Debian系统请加官方群获取Docker版**），全程无需人工干预，给你带来极致体验 。
+南墙支持一键全自动安装（**Ubuntu或Debian系统请使用Docker版**），全程无需人工干预，给你带来极致体验 。
 
 
 
@@ -10,7 +10,7 @@
   - 处理器：64位 1千兆赫(GHz)或更快。
   - 内存：不小于1G
   - 磁盘空间：不小于16G
-  - 系统：RedHat 7及以上相关兼容x86_64系统，如CentOS 7、AlmaLinux、Anolis、Oracle、Rocky Linux等，其它请加官方群获取Docker版。
+  - 系统：RedHat 7及以上相关兼容x86_64系统，如CentOS 7、AlmaLinux、Anolis、Oracle、Rocky Linux等，其它请使用Docker版。
   ```
 
 
@@ -28,3 +28,5 @@ sudo wget https://waf.uusec.com/waf-install && chmod +x waf-install && ./waf-ins
 ```
 
 ?> 安装成功后会显示 “ 恭喜您，安装成功！”
+
+Docker版下载地址：https://github.com/Safe3/uuWAF，使用说明见waf-docker-community.x.x.x.tgz中的"说明.txt"文件。
