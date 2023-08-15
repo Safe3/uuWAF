@@ -20,7 +20,7 @@
 
 !> 注意：请尽量选择一台纯净Linux x86_64环境的服务器安装，因为安装过程会卸载旧的MySQL数据库并重新安装，如果没有备份，可造成旧的MySQL数据丢失，并且南墙采用云WAF反向代理模式，默认需要使用80、443端口。
 
-bash环境下执行如下命令
+主机版安装方式如下：
 
 ```bash
 sudo yum install -y ca-certificates
@@ -29,4 +29,7 @@ sudo wget https://waf.uusec.com/waf-install && chmod +x waf-install && ./waf-ins
 
 ?> 安装成功后会显示 “ 恭喜您，安装成功！”
 
-Docker版下载地址：https://github.com/Safe3/uuWAF ，使用说明见安装包waf-docker-community.x.x.x.tgz中的"说明.txt"文件。
+Docker版安装方式如下： 
+```bash
+sudo curl https://waf.uusec.com/docker-compose.yml -o docker-compose.yml && docker compose up -d
+```

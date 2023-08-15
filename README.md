@@ -3,7 +3,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/Safe3/uuWAF.svg?label=关注&nbsp;南墙&style=for-the-badge)](https://github.com/Safe3/uuWAF)
 [![Chat](https://img.shields.io/badge/Discuss-加入讨论组-7289da.svg?style=for-the-badge)](https://github.com/Safe3/uuWAF/discussions)
 
-> **南墙**WEB应用防火墙（简称：`uuWAF`）一款社区驱动的免费、高性能、高扩展顶级Web应用和API安全防护产品。
+> **南墙**WEB应用防火墙（简称：`uuWAF`）一款社区驱动的免费、高性能、高扩展顶级Web应用安全防护产品。
 
 ![](http://waf.uusec.com/_media/waf.png)
 
@@ -29,7 +29,7 @@
   
 
 
-## :rocket: 快速进阶
+## :rocket: 一键安装
 
 南墙为你提供了强大灵活的扩展和安全规则的编写API，在管理后台发布后所有规则无需重启立即生效，远超市面上大部分免费WAF产品如`ModSecurity`，规则展示如下：
 
@@ -37,10 +37,28 @@
 
 🏠请访问官网： https://waf.uusec.com/ 下载 南墙WAF使用说明书 了解规则API详情
 
+南墙安装及其简便，通常在几分钟内即可安装完毕，具体耗时视网络下载情况而定。
+
+注意：请尽量选择一台纯净Linux x86_64环境的服务器安装，因为安装过程会卸载旧的MySQL数据库并重新安装，如果没有备份，可造成旧的MySQL数据丢失，并且南墙采用云WAF反向代理模式，默认需要使用80、443端口。
+
+> 主机版安装方式如下：
+
+```bash
+sudo yum install -y ca-certificates
+sudo wget https://waf.uusec.com/waf-install && chmod +x waf-install && ./waf-install && rm -f ./waf-install
+```
+
+安装成功后会显示 “ 恭喜您，安装成功！”
+
+> Docker版安装方式如下： 
+
+```bash
+sudo curl https://waf.uusec.com/docker-compose.yml -o docker-compose.yml && docker compose up -d
+```
 
 
 
-## :gift_heart: 贡献分享
+## :gift_heart: 贡献 Rule
 
 参照: https://waf.uusec.com/#/guide/contribute
 
