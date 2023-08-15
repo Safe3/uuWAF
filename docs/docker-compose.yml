@@ -1,0 +1,56 @@
+﻿networks:
+  wafnet:
+    name: wafnet
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - gateway: 172.22.0.1
+        subnet: 172.22.0.0/24
+    driver_opts:
+      com.docker.network.bridge.name: wafnet
+
+services:
+  uuwaf:
+   image: uusec/nanqiang:latest
+   ulimits:
+     nproc: 65535
+     nofile:
+       soft: 102400
+       hard: 102400
+   container_name: uuwaf
+   networks:
+      wafnet:
+        ipv4_address: 172.22.0.3
+   ports:
+     - "80:80"
+     - "443:443"
+     - "4443:4443"
+   volumes:
+     - wafshared:/uuwaf
+   command: ["/run.sh"]
+   environment:
+     - TZ=Asia/Shanghai
+
+   links:
+   - wafdb
+   depends_on:
+      - wafdb
+
+  wafdb:
+   image: percona:8
+   container_name: wafdb
+   networks:
+      wafnet:
+        ipv4_address: 172.22.0.7
+   volumes:
+     - wafshared:/docker-entrypoint-initdb.d
+     - wafdata:/var/lib/mysql
+   environment:
+     - TZ=Asia/Shanghai
+     - INIT_ROCKSDB
+     - MYSQL_ROOT_PASSWORD=Safe3.WAF
+
+volumes:
+  wafshared:
+  wafdata:
