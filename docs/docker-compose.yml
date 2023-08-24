@@ -12,7 +12,7 @@
 
 services:
   uuwaf:
-   image: uusec/nanqiang:latest
+   image: uusec/nanqiang:v2.5.2
    ulimits:
      nproc: 65535
      nofile:
