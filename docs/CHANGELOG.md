@@ -1,3 +1,19 @@
+## [2.6.0](https://github.com/Safe3/uuWAF/compare/v2.6.0...v2.5.1) (2023-08-26)
+
+
+### 新增功能
+
+* 南墙安全验证X-Waf-Token 支持js读取
+* 增强南墙语义检测引擎
+
+
+### Bug 修复
+
+* 修复南墙语义检测引擎在某些情况下core dump的问题
+
+  
+
+
 ## [2.5.1](https://github.com/Safe3/uuWAF/compare/v2.5.1...v2.4.1) (2023-07-04)
 
 

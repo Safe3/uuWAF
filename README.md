@@ -53,8 +53,15 @@ sudo wget https://waf.uusec.com/waf-install && chmod +x waf-install && ./waf-ins
 > Docker版安装方式如下： 
 
 ```bash
-sudo curl https://waf.uusec.com/docker-compose.yml -o docker-compose.yml && docker compose up -d
+sudo rm -f ./waf.tgz && wget https://waf.uusec.com/waf.tgz && tar -zxf waf.tgz && sh ./waf/uuwaf.sh
 ```
+
+> 快速入门：
+> 1、登录后台，访问https://wafip:4443，wafip为安装南墙的服务器ip，用户名admin，密码wafadmin
+> 2、添加站点，进入站点管理菜单，点击添加站点按钮，按提示添加站点域名与网站服务器ip
+> 3、添加证书，进入证书管理菜单，点击添加证书按钮，上传第二步中域名的https证书和私钥文件
+> 4、将域名DNS的ip指向改为南墙服务器ip地址
+> 5、访问站点域名查看网站是否能够访问
 
 
 
