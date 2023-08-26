@@ -67,9 +67,10 @@ sudo rm -f ./waf.tgz && wget https://waf.uusec.com/waf.tgz && tar -zxf waf.tgz &
 
 
 
-## :gift_heart: 贡献 Rule
+## :gift_heart: 贡献名单
 
-参照: https://waf.uusec.com/#/guide/contribute
+如何贡献？参照: https://waf.uusec.com/#/guide/contribute
+感谢puhui222、Kingdom为南墙所做的贡献
 
 
 
