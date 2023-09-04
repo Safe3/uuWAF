@@ -56,6 +56,10 @@ rm -f ./waf-install && wget https://waf.uusec.com/waf-install && sudo bash ./waf
 rm -f ./waf.tgz && wget https://waf.uusec.com/waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
 ```
 
+> 1Panel安装方式如下：
+
+1Panel 是新一代的 Linux 服务器运维管理面板，下载 https://1panel.cn/ 后在应用商店中找到南墙安装。
+
 > 快速入门：
 
 1. 登录后台，访问https://wafip:4443 ，wafip为安装南墙的服务器ip，用户名admin，密码wafadmin
