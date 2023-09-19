@@ -45,7 +45,7 @@
 
 ```bash
 sudo yum install -y ca-certificates
-rm -f ./waf-install && wget https://waf.uusec.com/waf-install && sudo bash ./waf-install
+curl https://waf.uusec.com/waf-install -o waf-install && sudo bash ./waf-install && rm -f ./waf-install
 ```
 
 安装成功后会显示 “ 恭喜您，安装成功！”
@@ -53,7 +53,7 @@ rm -f ./waf-install && wget https://waf.uusec.com/waf-install && sudo bash ./waf
 > Docker版安装方式如下： 
 
 ```bash
-rm -f ./waf.tgz && wget https://waf.uusec.com/waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
+curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
 ```
 
 > 1Panel安装方式如下：
