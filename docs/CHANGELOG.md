@@ -1,3 +1,21 @@
+## [2.7.0](https://github.com/Safe3/uuWAF/compare/v2.7.0...v2.6.1) (2024-01-05)
+
+
+### 新增功能
+
+* 高级规则采用沙箱保护，阻止执行恶意规则
+* 新增多个api变量和函数
+* 升级多条高级规则
+* 升级多个组件版本，如：nginx版本v1.24、OpenSSL版本v1.1.1w
+
+
+### Bug 修复
+
+* 修复南墙api函数waf.pmMatch匹配失效的问题
+* 修复不同时区日期显示问题
+
+
+
 ## [2.6.1](https://github.com/Safe3/uuWAF/compare/v2.6.1...v2.6.0) (2023-09-04)
 
 

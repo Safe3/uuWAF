@@ -34,7 +34,7 @@ if not waf.startWith(waf.toLower(waf.uri), "/api/") then
     return false
 end
 
-local sh = ngx.shared.ipCache
+local sh = waf.ipCache
 local ccIp = 'cc-' .. waf.ip
 local c, f = sh:get(ccIp)
 if not c then
@@ -64,11 +64,35 @@ return false
 - 默认值: ``客户端访问ip``
 - 用法: 只读，用于获取客户端访问ip，可以在WAF后台站点管理中配置客户端ip来源，获取方式为Socket或X-Forwarded-For中的倒序第n个ip。
 
+##### waf.scheme
+
+- 类型: ``string``
+- 默认值: ``客户端访问http协议，值为字符串http或https``
+- 用法: 只读。
+
+##### waf.httpVersion
+
+- 类型: ``number``
+- 默认值: ``http协议版本，值为1.0、1.1、2.0、3.0``
+- 用法: 只读。
+
 ##### waf.host
 
 - 类型: ``string``
 - 默认值: ``客户端访问host头``
 - 用法: 只读。
+
+##### waf.ipBlock
+
+- 类型: ``table``
+- 默认值: ``键值存储库，用于存放已拦截的客户端ip``
+- 用法: 见ngx.shared.DICT。
+
+##### waf.ipCache
+
+- 类型: ``table``
+- 默认值: ``键值存储库，用于存放访问的客户端ip``
+- 用法: 见ngx.shared.DICT。
 
 ##### waf.requestLine
 
@@ -265,6 +289,12 @@ return false
 - 功能: 判断字符串 sstr 是否在字符串 dstr
 - 返回值: ``true 或 false``
 
+##### waf.regex(sstr,pat,ext)
+
+- 参数: ``sstr 为原字符串，pat 为正则表达式，ext 为正则属性``
+- 功能: 在字符串 sstr 中匹配正则表达式 pat，用法同ngx.re.match
+- 返回值: ``所有匹配项、错误``
+
 ##### waf.rgxMatch(sstr,pat,ext)
 
 - 参数: ``sstr 为原字符串，pat 为正则表达式，ext 为正则属性``
@@ -354,6 +384,12 @@ return false
 
 - 参数: ``waf 为t固定waf对象，无需修改``
 - 功能: 检测机器人攻击，如数据爬虫、扫描攻击、CC拒绝服务攻击等，并生成滑动旋转图片验证码，与return搭配使用
+
+##### waf.redirect(uri, status?)
+
+- 参数: ``uri为重定向的链接，status为返回http状态（可选），默认为302``
+- 功能: 重定向客户端请求到新的链接，与return搭配使用
+
 
 
 
