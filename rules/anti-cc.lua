@@ -13,7 +13,7 @@ if not waf.startWith(waf.toLower(waf.uri), "/api/") then
     return false
 end
 
-local sh = ngx.shared.ipCache
+local sh = waf.ipCache
 local ccIp = 'cc-' .. waf.ip
 local c, f = sh:get(ccIp)
 if not c then

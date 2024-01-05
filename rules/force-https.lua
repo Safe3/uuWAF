@@ -9,7 +9,7 @@
 --]]
 
 
-if ngx.var.scheme == "http" then
-    return ngx.redirect("https://" .. ngx.var.host)
+if waf.scheme == "http" then
+    return waf.redirect("https://" .. waf.host)
 end
 return false
