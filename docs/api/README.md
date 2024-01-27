@@ -325,15 +325,15 @@ return false
 - 功能: 用于解码 base64 数据为明文数据
 - 返回值: ``明文字符串或 nil``
 
-##### waf.checkSQLI(str)
+##### waf.checkSQLI(str, level?)
 
-- 参数: ``str 为要检测的字符串``
+- 参数: ``str 为要检测的字符串；level可省略，为严格等级，数值越大越严格``
 - 功能: 基于语义引擎检测 sql 注入攻击
 - 返回值: ``true 或 false``
 
-##### waf.checkRCE(str)
+##### waf.checkRCE(str, level?)
 
-- 参数: ``str 为要检测的字符串``
+- 参数: ``str 为要检测的字符串；level可省略，为严格等级，数值越大越严格``
 - 功能: 基于语义引擎检测命令注入攻击
 - 返回值: ``true 或 false``
 
@@ -348,6 +348,18 @@ return false
 - 参数: ``sstr 为原字符串，dstr 为查找字符串``
 - 功能: 计算字符串 dstr 在 sstr 中出现的次数
 - 返回值: ``整数``
+
+##### waf.trim(str)
+
+- 参数: ``str 为原字符串``
+- 功能: 去掉字符串 str 两边的空格
+- 返回值: ``去掉两边空格后的字符串``
+
+##### waf.inArray(str,arr)
+
+- 参数: ``str 为原字符串，arr为字符串数组``
+- 功能: 判断字符串 str 是否存在于arr字符串数组中
+- 返回值: ``true 或 false``
 
 ##### waf.pmMatch(sstr,dict)
 
