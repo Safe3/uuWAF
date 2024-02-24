@@ -77,6 +77,8 @@ curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash .
 
 这里感谢puhui222、Kingdom为南墙所做的贡献！
 
+  <img src="https://waf.uusec.com/_media/sponsor.jpg" alt="捐赠"  height="300px" />
+
 
 
 
