@@ -9,8 +9,6 @@
 
 🏠安装及使用请访问官网： https://waf.uusec.com/
 
-:heavy_exclamation_mark:注意：南墙 暂不开源，直接下载编译好的二进制文件安装即可，github仓库内主要为社区贡献的规则，每次 uuWAF 发布将自动更新。
-
 
 
 ## :dart: 技术优势
