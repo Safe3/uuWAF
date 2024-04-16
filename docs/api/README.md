@@ -417,7 +417,7 @@ return false
 
 ### 插件编写
 
-一个标准的插件包含以下几个部分，每个部分若无功能实现可省略。
+一个标准的插件包含以下几个部分，每个部分若无功能实现可省略，每个大阶段分为pre和post前后两个小阶段，分别代表南墙逻辑处理执行前和南墙逻辑处理执行后。南墙v4.1.0之前的版本没有小阶段，请使用req_filter、resp_header_filter、resp_body_filter、log。
 
 ```lua
 local _M = {
@@ -425,23 +425,53 @@ local _M = {
     name = "kafka-logger"   --  插件名称
 }
 
--- 请求阶段过滤函数
-function _M.req_filter(waf)
+-- ssl阶段前过滤
+function _M.ssl_pre_filter(waf)
 
 end
 
--- 返回header阶段过滤函数
-function _M.resp_header_filter(waf)
+-- ssl阶段后过滤
+function _M.ssl_post_filter(waf)
 
 end
 
--- 返回body阶段过滤函数
-function _M.resp_body_filter(waf)
+-- 请求阶段前过滤
+function _M.req_pre_filter(waf)
 
 end
 
--- 日志记录阶段执行函数
-function _M.log(waf)
+-- 请求阶段后过滤
+function _M.req_post_filter(waf)
+
+end
+
+-- 返回header阶段前过滤
+function _M.resp_header_pre_filter(waf)
+
+end
+
+-- 返回header阶段后过滤
+function _M.resp_header_post_filter(waf)
+
+end
+
+-- 返回body阶段前过滤
+function _M.resp_body_pre_filter(waf)
+
+end
+
+-- 返回body阶段后过滤
+function _M.resp_body_post_filter(waf)
+
+end
+
+-- 日志记录阶段前过滤
+function _M.log_pre_filter(waf)
+
+end
+
+-- 日志记录阶段后过滤
+function _M.log_post_filter(waf)
 
 end
 
@@ -449,6 +479,10 @@ return _M
 ```
 
 
+
+- #### SSL阶段过滤函数
+
+- 该阶段用于获取客户端请求的域名和设置SSL证书，waf变量的值为nil。
 
 - #### 请求阶段过滤函数
 
@@ -492,11 +526,11 @@ return _M
 有时为了在各个执行函数间共享同一个数据，可以通过给waf.ctx赋值来实现，如：
 
 ```lua
-function _M.resp_body_filter(waf)
+function _M.resp_body_pre_filter(waf)
 	waf.ctx = "share"
 end
 
-function _M.log(waf)
+function _M.log_pre_filter(waf)
 	log.errLog(waf.ctx)
 end
 ```

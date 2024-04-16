@@ -1,4 +1,15 @@
-## [4.0.1](https://github.com/Safe3/uuWAF/compare/v4.0.1...v3.3.3) (2024-03-27)
+## [4.1.0](https://github.com/Safe3/uuWAF/compare/v4.1.0...v4.0.1) (2024-04-16)
+
+
+### 功能更新
+
+* 插件功能新增SSL处理阶段，并将原各阶段函数细分为pre、post前后两个小阶段
+* 新增日志刷新按钮
+* 优化固件升级判断逻辑
+
+
+
+## [4.0.1](https://github.com/Safe3/uuWAF/compare/v4.0.1...v3.3.3) (2024-04-10)
 
 
 ### 功能更新

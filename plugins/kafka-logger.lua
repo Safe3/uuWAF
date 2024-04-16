@@ -11,20 +11,6 @@ local _M = {
     name = "kafka-logger"
 }
 
---[[
-function _M.req_filter(waf)
-
-end
-
-function _M.resp_header_filter(waf)
-
-end
-
-function _M.resp_body_filter(waf)
-
-end
---]]
-
 local function kafkaLog(_, brokerList, info)
     local kp = producer:new(brokerList, { producer_type = "async" })
     local key = "key"
@@ -35,7 +21,7 @@ local function kafkaLog(_, brokerList, info)
     end
 end
 
-function _M.log(waf)
+function _M.log_post_filter(waf)
     local brokerList = {
         {
             host = "127.0.0.1",
