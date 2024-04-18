@@ -3,7 +3,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/Safe3/uuWAF.svg?label=关注&nbsp;南墙&style=for-the-badge)](https://github.com/Safe3/uuWAF)
 [![Chat](https://img.shields.io/badge/Discuss-加入讨论组-7289da.svg?style=for-the-badge)](https://github.com/Safe3/uuWAF/discussions)
 
-> **南墙**WEB应用防火墙（简称：`uuWAF`）一款社区驱动的免费、高性能、高扩展顶级Web应用安全防护产品。
+> **南墙**WEB应用防火墙（简称：`uuWAF`）一款工业级免费、高性能、高扩展，支持AI和语义引擎的Web应用和API安全防护产品。
 
 ![](http://waf.uusec.com/_media/waf.png)
 
@@ -53,10 +53,6 @@ curl https://waf.uusec.com/waf-install -o waf-install && sudo bash ./waf-install
 ```bash
 curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
 ```
-
-> 1Panel安装方式如下：
-
-1Panel 是新一代的 Linux 服务器运维管理面板，下载 https://1panel.cn/ 后在应用商店中找到南墙安装。
 
 > 快速入门：
 

@@ -34,10 +34,6 @@ Docker版安装方式如下：
 curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
 ```
 
-1Panel安装方式如下：
-
-1Panel 是新一代的 Linux 服务器运维管理面板，下载 https://1panel.cn/ 后在应用商店中找到南墙安装。
-
 ?> 快速入门：
 
 1. 登录后台：访问https://ip:4443 ，ip为安装南墙的服务器ip地址，用户名admin，密码wafadmin。
