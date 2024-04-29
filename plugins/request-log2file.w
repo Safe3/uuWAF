@@ -94,9 +94,11 @@ function _M.log_pre_filter(waf)
             waf_rule_id = waf.rule_id
         end
         local info = {
+            ["__time__"] = ngx.var.msec,
             ["block_action"] = block_action,
             ["waf_rule_id"] = waf_rule_id,
             ["time"] = ngx.var.time_iso8601,
+            ["real_client_ip"] = waf.ip,
             ["server_addr"] = ngx.var.server_addr,
             ["remote_addr"] = ngx.var.http_x_forwarded_for,
             ["scheme"] = ngx.var.scheme,
