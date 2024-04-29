@@ -94,7 +94,7 @@ function _M.log_pre_filter(waf)
             waf_rule_id = waf.rule_id
         end
         local info = {
-            ["__time__"] = ngx.var.msec,
+            ["__time__"] = math.floor(ngx.var.msec),
             ["block_action"] = block_action,
             ["waf_rule_id"] = waf_rule_id,
             ["time"] = ngx.var.time_iso8601,
