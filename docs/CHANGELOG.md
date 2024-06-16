@@ -1,3 +1,15 @@
+## [4.5.0](https://github.com/Safe3/uuWAF/compare/v4.5.0...v4.4.1) (2024-06-16)
+
+
+### 功能更新
+
+* 优化精简规则，BlazeHTTP防护效果测试对比登顶No.1
+* 升级语义检测引擎
+* 优化UI界面展示
+
+
+
+
 ## [4.4.1](https://github.com/Safe3/uuWAF/compare/v4.4.1...v4.3.0) (2024-06-04)
 
 
