@@ -6,6 +6,7 @@
 * 优化精简规则，BlazeHTTP防护效果测试对比登顶No.1
 * 升级语义检测引擎
 * 优化UI界面展示
+* 支持对返回类型为Transfer-Encoding: chunked的body内容过滤
 
 
 

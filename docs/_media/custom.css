@@ -2,7 +2,7 @@ article img.sd {
 	display: block;
 	box-shadow: 0 3px 15px 3px rgba(40, 40, 40, 0.5);
 	margin-top: 20px;
-	border-radius: 3%;
+	border-radius: 5px;
 }
 
 article h2 img.emoji {
