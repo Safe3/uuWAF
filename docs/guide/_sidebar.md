@@ -3,7 +3,7 @@
      - [<span class="iconfont icon-page"></span> 技术优势](guide/#dart-技术优势)
      - [<span class="iconfont icon-star"></span> 功能对比](guide/#fire-功能对比)
      - [<span class="iconfont icon-mix"></span> 界面预览](guide/#art-界面预览)
-  - [<span class="iconfont icon-wxapp"></span> 快速安装](guide/install.md)
+  - [<span class="iconfont icon-wxapp"></span> 快速入门](guide/install.md)
      - [<span class="iconfont icon-component"></span> 配置要求](guide/install#hotsprings-配置要求)
      - [<span class="iconfont icon-install"></span> 一键安装](guide/install#rocket-一键安装)
   - [<span class="iconfont icon-router"></span> 开始使用](guide/begin.md)
