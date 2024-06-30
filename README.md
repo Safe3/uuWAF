@@ -69,7 +69,7 @@ curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash .
 
 如何贡献？参照: https://waf.uusec.com/#/guide/contribute
 
-这里感谢puhui222、Kingdom、**[k4n5ha0](https://github.com/k4n5ha0)**为南墙所做的贡献！
+这里感谢puhui222、Kingdom、[k4n5ha0](https://github.com/k4n5ha0)为南墙所做的贡献！
 
   <img src="https://waf.uusec.com/_media/sponsor.jpg" alt="捐赠"  height="300px" />
 
