@@ -327,13 +327,13 @@ return false
 
 ##### waf.checkSQLI(str, level?)
 
-- 参数: ``str 为要检测的字符串；level可省略，为严格等级，数值越大越严格``
+- 参数: ``str 为要检测的字符串；level可省略，为严格等级，数值越大越严格，范围0至3``
 - 功能: 基于语义引擎检测 sql 注入攻击
 - 返回值: ``true 或 false``
 
 ##### waf.checkRCE(str, level?)
 
-- 参数: ``str 为要检测的字符串；level可省略，为严格等级，数值越大越严格``
+- 参数: ``str 为要检测的字符串；level可省略，为严格等级，数值越大越严格，范围0至3``
 - 功能: 基于语义引擎检测命令注入攻击
 - 返回值: ``true 或 false``
 
@@ -341,6 +341,12 @@ return false
 
 - 参数: ``str 为要检测的字符串``
 - 功能: 基于语义引擎检测路径遍历攻击
+- 返回值: ``true 或 false``
+
+##### waf.checkXSS(str)
+
+- 参数: ``str 为要检测的字符串``
+- 功能: 基于语义引擎检测xss攻击
 - 返回值: ``true 或 false``
 
 ##### waf.strCounter(sstr,dstr)
