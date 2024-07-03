@@ -29,6 +29,12 @@ curl https://waf.uusec.com/waf-install -o waf-install && sudo bash ./waf-install
 
 ?> 安装成功后会显示 “ 恭喜您，安装成功”
 
+!> 主机版卸载方式如下：
+
+```bash
+sudo systemctl stop uuwaf && sudo rm -rf /uuwaf
+```
+
 Docker版安装方式如下： 
 ```bash
 curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
