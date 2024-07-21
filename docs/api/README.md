@@ -400,7 +400,7 @@ return false
 
 ##### waf.checkRobot(waf)
 
-- 参数: ``waf 为t固定waf对象，无需修改``
+- 参数: ``waf 为固定waf对象，无需修改``
 - 功能: 检测机器人攻击，如数据爬虫、扫描攻击、CC拒绝服务攻击等，并生成滑动旋转图片验证码，与return搭配使用
 
 ##### waf.redirect(uri, status?)
