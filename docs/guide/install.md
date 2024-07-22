@@ -36,6 +36,9 @@ sudo systemctl stop uuwaf && sudo /uuwaf/waf-service -s uninstall && sudo rm -rf
 ```
 
 Docker版安装方式如下： 
+
+安装前参考 [https://docker.1panel.dev/](https://docker.1panel.dev/) 配置镜像加速
+
 ```bash
 curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
 ```
