@@ -13,11 +13,6 @@ if [ "$EUID" -ne "0" ]; then
 	abort "请以 root 权限运行"
 fi
 
-cat /proc/cpuinfo | grep ssse3 > /dev/null 2>&1
-if [ $? -ne "0" ]; then
-	abort "需要运行在支持 x86-64-v2 的 CPU 上，请开启对应CPU指令集的支持"
-fi
-
 if [ ! $(command -v docker) ]; then
 	curl -sSLk https://get.docker.com/ | bash
 	if [ $? -ne "0" ]; then
