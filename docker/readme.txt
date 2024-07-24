@@ -1,15 +1,15 @@
-»·¾³ÒªÇó£º
-docker°æ±¾1.20ÒÔÉÏ
+çŽ¯å¢ƒè¦æ±‚ï¼š
+dockerç‰ˆæœ¬1.20ä»¥ä¸Š
 
-½âÑ¹ÄÏÇ½°²×°°ü£º
+è§£åŽ‹å—å¢™å®‰è£…åŒ…ï¼š
 tar zxvf waf.tgz && cd waf
 
-ÄÏÇ½Docker¹ÜÀí£ºÖ´ÐÐÈçÏÂÃæÃüÁî£¬¸ù¾ÝÌáÊ¾Æô¶¯ÄÏÇ½docker·þÎñ
+å—å¢™Dockerç®¡ç†ï¼šæ‰§è¡Œå¦‚ä¸‹é¢å‘½ä»¤ï¼Œæ ¹æ®æç¤ºå¯åŠ¨å—å¢™dockeræœåŠ¡
 sh uuwaf.sh
 
-¿ìËÙÈëÃÅ£º
-1¡¢µÇÂ¼ºóÌ¨£¬·ÃÎÊhttps://wafip:4443£¬wafipÎª°²×°ÄÏÇ½µÄ·þÎñÆ÷ip£¬ÓÃ»§Ãûadmin£¬ÃÜÂëwafadmin
-2¡¢Ìí¼ÓÕ¾µã£¬½øÈëÕ¾µã¹ÜÀí²Ëµ¥£¬µã»÷Ìí¼ÓÕ¾µã°´Å¥£¬°´ÌáÊ¾Ìí¼ÓÕ¾µãÓòÃûÓëÍøÕ¾·þÎñÆ÷ip
-3¡¢Ìí¼ÓÖ¤Êé£¬½øÈëÖ¤Êé¹ÜÀí²Ëµ¥£¬µã»÷Ìí¼ÓÖ¤Êé°´Å¥£¬ÉÏ´«µÚ¶þ²½ÖÐÓòÃûµÄhttpsÖ¤ÊéºÍË½Ô¿ÎÄ¼þ
-4¡¢½«ÓòÃûDNSµÄipÖ¸Ïò¸ÄÎªÄÏÇ½·þÎñÆ÷ipµØÖ·
-5¡¢·ÃÎÊÕ¾µãÓòÃû²é¿´ÍøÕ¾ÊÇ·ñÄÜ¹»·ÃÎÊ
+å¿«é€Ÿå…¥é—¨ï¼š
+1ã€ç™»å½•åŽå°ï¼Œè®¿é—®https://wafip:4443ï¼Œwafipä¸ºå®‰è£…å—å¢™çš„æœåŠ¡å™¨ipï¼Œç”¨æˆ·åadminï¼Œå¯†ç Passw0rd!
+2ã€æ·»åŠ ç«™ç‚¹ï¼Œè¿›å…¥ç«™ç‚¹ç®¡ç†èœå•ï¼Œç‚¹å‡»æ·»åŠ ç«™ç‚¹æŒ‰é’®ï¼ŒæŒ‰æç¤ºæ·»åŠ ç«™ç‚¹åŸŸåä¸Žç½‘ç«™æœåŠ¡å™¨ip
+3ã€æ·»åŠ è¯ä¹¦ï¼Œè¿›å…¥è¯ä¹¦ç®¡ç†èœå•ï¼Œç‚¹å‡»æ·»åŠ è¯ä¹¦æŒ‰é’®ï¼Œä¸Šä¼ ç¬¬äºŒæ­¥ä¸­åŸŸåçš„httpsè¯ä¹¦å’Œç§é’¥æ–‡ä»¶
+4ã€å°†åŸŸåDNSçš„ipæŒ‡å‘æ”¹ä¸ºå—å¢™æœåŠ¡å™¨ipåœ°å€
+5ã€è®¿é—®ç«™ç‚¹åŸŸåæŸ¥çœ‹ç½‘ç«™æ˜¯å¦èƒ½å¤Ÿè®¿é—®
