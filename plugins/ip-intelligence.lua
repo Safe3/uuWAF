@@ -3,6 +3,11 @@
 --- Created by Safe3.
 --- DateTime: 2024/7/25 11:11
 ---
+--[[
+/uuwaf/conf/uuwaf.conf
+resolver 1.1.1.1 valid=30s ipv6=off;
+lua_ssl_trusted_certificate /etc/ssl/certs/ca-bundle.crt;
+--]]
 local ngx = ngx
 local ngx_exit = ngx.exit
 local ngx_log = ngx.log
