@@ -42,8 +42,8 @@ uninstall_uuwaf(){
 	stop_uuwaf
 	docker rm -f uuwaf wafdb > /dev/null 2>&1
 	docker network rm wafnet > /dev/null 2>&1
-	docker images|grep nanqiang|awk '{print $3}'|xargs docker rmi -f
-	docker volume ls|grep wafshared|awk '{print $2}'|xargs docker volume rm -f
+	docker images|grep nanqiang|awk '{print $3}'|xargs docker rmi -f > /dev/null 2>&1
+	docker volume ls|grep waf|awk '{print $2}'|xargs docker volume rm -f > /dev/null 2>&1
 }
 
 start_uuwaf(){
@@ -58,7 +58,9 @@ start_uuwaf(){
 }
 
 update_uuwaf(){
-	uninstall_uuwaf
+	stop_uuwaf
+	docker images|grep nanqiang|awk '{print $3}'|xargs docker rmi -f > /dev/null 2>&1
+	docker volume ls|grep wafshared|awk '{print $2}'|xargs docker volume rm -f > /dev/null 2>&1
 	start_uuwaf
 }
 

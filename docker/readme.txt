@@ -2,10 +2,10 @@
 docker版本1.20以上
 
 解压南墙安装包：
-tar zxvf waf.tgz && cd waf
+tar -zxf waf.tgz && cd waf
 
 南墙Docker管理：执行如下面命令，根据提示启动南墙docker服务
-sh uuwaf.sh
+bash uuwaf.sh
 
 快速入门：
 1、登录后台，访问https://wafip:4443，wafip为安装南墙的服务器ip，用户名admin，密码Passw0rd!
