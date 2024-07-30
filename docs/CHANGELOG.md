@@ -1,3 +1,12 @@
+## [5.1.1](https://github.com/Safe3/uuWAF/compare/v5.1.1...v5.1.0) (2024-07-30)
+
+
+### 问题修复
+
+* 修复密码错误5次，锁定时间到期后不能解锁的问题
+
+
+
 ## [5.1.0](https://github.com/Safe3/uuWAF/compare/v5.1.0...v5.0.0) (2024-07-26)
 
 
