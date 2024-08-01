@@ -36,7 +36,8 @@ services:
    links:
    - wafdb
    depends_on:
-      - wafdb
+      wafdb:
+        condition: service_healthy
 
   wafdb:
    image: percona/percona-server:5.7
@@ -53,6 +54,12 @@ services:
      - INIT_ROCKSDB
      - MYSQL_MAX_CONNECTIONS=512
      - MYSQL_ROOT_PASSWORD=Safe3.WAF
+   healthcheck:
+     test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+     start_period: 0s
+     interval: 5s
+     timeout: 3s
+     retries: 3
 
 volumes:
   wafshared:
