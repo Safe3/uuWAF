@@ -47,6 +47,7 @@ services:
    volumes:
      - wafshared:/docker-entrypoint-initdb.d
      - wafdata:/var/lib/mysql
+     - ./low-memory-my.cnf:/etc/mysql/my.cnf
    environment:
      - TZ=Asia/Shanghai
      - INIT_ROCKSDB
