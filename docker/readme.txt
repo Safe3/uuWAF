@@ -4,6 +4,9 @@ docker版本1.20以上
 解压南墙安装包：
 tar -zxf waf.tgz && cd waf
 
+若服务器内存有限，可以取消docker-compose.yml中如下注释中的#号，降低mysql内存占用：
+#- ./low-memory-my.cnf:/etc/mysql/my.cnf
+
 南墙Docker管理：执行如下面命令，根据提示启动南墙docker服务
 bash uuwaf.sh
 
