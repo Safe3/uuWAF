@@ -56,10 +56,10 @@ services:
      - MYSQL_ROOT_PASSWORD=Safe3.WAF
    healthcheck:
      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
-     start_period: 0s
+     start_period: 3s
      interval: 5s
      timeout: 3s
-     retries: 3
+     retries: 7
 
 volumes:
   wafshared:
