@@ -3,9 +3,9 @@
 
 ### 功能更新
 
-* 新增http返回内容替换功能waf.replaceFilter，可以用于数据脱敏或敏感词替换等场景，参考文档：https://waf.uusec.com/#/api/README?id=wafreplaceFilter
+* 新增http返回内容替换功能[waf.replaceFilter](https://waf.uusec.com/#/api/README?id=wafreplacefilter)，可以用于数据脱敏或敏感词替换等场景
 * 新增waf.rgxGmatch、waf.rgxSub、waf.rgxGsub、waf.errLog正则匹配替换和错误日志记录函数
-* 进一步提升南墙过滤处理性能
+* 优化部分代码，进一步提升南墙过滤处理性能
 
 
 
