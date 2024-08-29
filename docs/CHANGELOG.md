@@ -1,3 +1,14 @@
+## [5.3.0](https://github.com/Safe3/uuWAF/compare/v5.3.0...v5.2.0) (2024-08-29)
+
+
+### 功能更新
+
+* 新增http返回内容替换功能waf.replaceFilter，可以用于数据脱敏或敏感词替换等场景，参考文档：https://waf.uusec.com/#/api/README?id=wafreplaceFilter
+* 新增waf.rgxGmatch、waf.rgxSub、waf.rgxGsub、waf.errLog正则匹配替换和错误日志记录函数
+* 进一步提升南墙过滤处理性能
+
+
+
 ## [5.2.0](https://github.com/Safe3/uuWAF/compare/v5.2.0...v5.1.1) (2024-08-08)
 
 

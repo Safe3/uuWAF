@@ -260,6 +260,49 @@ return false
 - 默认值: ``返回body页面内容``
 - 用法: 只读。
 
+##### waf.replaceFilter
+
+- 类型: ``bool``
+- 默认值: ``false``
+- 用法: 当返回内容类型为text/html、text/plain、json、xml时，通知南墙替换返回页面内容，则设置waf.replaceFilter = true，可用于数据脱敏、敏感词替换等场景。
+
+##### 规则示例
+
+```lua
+--[[
+规则名称: datamask
+过滤阶段: 返回内容阶段
+危险等级: 中危
+规则描述: 对返回页面中的身份证和手机号进行*替换脱敏
+--]]
+
+
+if waf.respContentLength == 0 or waf.respContentLength >= 2097152 then
+    return
+end
+
+-- 只保留身份证号前2位和后2位
+local newstr, _, err = waf.rgxGsub(waf.respBody, [[\b((1[1-5]|2[1-3]|3[1-7]|4[1-6]|5[0-4]|6[1-5]|[7-9]1)\d{4}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx])\b]], function(m)
+    return m[0]:sub(1, 2) .. "**************" .. m[0]:sub(-2)
+end, "jos")
+if not newstr then
+    waf.errLog("error: ", err)
+    return
+end
+waf.respBody = newstr
+-- 只保留手机号前3位和后4位
+newstr, _, err = waf.rgxGsub(waf.respBody, [[\b1(?:(((3[0-9])|(4[5-9])|(5[0-35-9])|(6[2,5-7])|(7[0135-8])|(8[0-9])|(9[0-35-9]))[ -]?\d{4}[ -]?\d{4})|((74)[ -]?[0-5]\d{3}[ -]?\d{4}))\b]], function(m)
+    return m[0]:sub(1, 3) .. "****" .. m[0]:sub(-4)
+end, "jos")
+if not newstr then
+    waf.errLog("error: ", err)
+    return
+end
+waf.respBody = newstr
+-- 通知南墙进行数据替换
+waf.replaceFilter = true
+```
+
 
 
 ### 规则 API
@@ -300,6 +343,24 @@ return false
 - 参数: ``sstr 为原字符串，pat 为正则表达式，ext 为正则属性``
 - 功能: 在字符串 sstr 中匹配正则表达式 pat
 - 返回值: ``true 或 false``
+
+##### waf.rgxGmatch(sstr,pat,ext)
+
+- 参数: ``sstr 为原字符串，pat 为正则表达式，ext 为正则属性``
+- 功能: 在字符串 sstr 中匹配正则表达式 pat，用法同ngx.re.gmatch
+- 返回值: ``迭代器iterator,错误err``
+
+##### waf.rgxSub(subject, regex, replace, options?)
+
+- 参数: ``subject 为原字符串，regex 为正则表达式，replace 为要替换的字符串，options为正则选项``
+- 功能: 替换字符串 subject 中正则表达式 regex 匹配到的内容为 replace，用法同ngx.re.sub
+- 返回值: ``newstr, n, err分别为新字符串、替换个数、错误信息``
+
+##### waf.rgxGsub(subject, regex, replace, options?)
+
+- 参数: ``subject 为原字符串，regex 为正则表达式，replace 为要替换的字符串，options为正则选项``
+- 功能: 替换字符串 subject 中所有正则表达式 regex 匹配到的内容为 replace，用法同ngx.re.gsub
+- 返回值: ``newstr, n, err分别为新字符串、替换个数、错误信息``
 
 ##### waf.kvFilter(v,match,valOnly)
 
@@ -413,6 +474,12 @@ return false
 - 参数: ``ip地址``
 - 功能: 将ip地址转化为国家、省份、城市中文地理位置信息
 - 返回值: ``country、 province、 city，如：中国、湖北省、武汉市``
+
+##### waf.errLog(...)
+
+- 参数: ``1个或多个字符串``
+- 功能: 记录错误日志到/uuwaf/logs/error.log中
+- 返回值: ``无``
 
 
 
