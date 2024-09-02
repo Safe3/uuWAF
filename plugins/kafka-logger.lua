@@ -37,7 +37,7 @@ function _M.log_post_filter(waf)
 
     if waf.msg then
         local country, province, city = log.ip2loc(waf.ip)
-        local info = { rule_id = waf.rule_id, ip = waf.ip, host = waf.host, url = waf.reqUri, data = waf.msg, country = country, province = province, city = city }
+        local info = { rule_id = waf.rule_id, ip = waf.ip, host = waf.host, url = waf.reqUri, data = waf.msg, country = country, province = province, city = city, create_at = ngx.localtime() }
         log.broker(kafkaLog, brokerList, info)
     end
 end
