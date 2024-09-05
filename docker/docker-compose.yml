@@ -55,7 +55,7 @@ services:
      - MYSQL_MAX_CONNECTIONS=512
      - MYSQL_ROOT_PASSWORD=Safe3.WAF
    healthcheck:
-     test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+     test: ["CMD", "mysqladmin", "-uroot", "-pSafe3.WAF", "ping", "-h", "127.0.0.1", "--silent"]
      start_period: 3s
      interval: 5s
      timeout: 3s
