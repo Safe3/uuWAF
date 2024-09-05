@@ -9,6 +9,10 @@
 --]]
 
 
+if waf.contains(waf.ip,":") then
+    return false
+end
+
 local country, province, city = waf.ip2loc(waf.ip)
 if country and country ~= "中国" then
     return true, "限制非中国地区访问", true
