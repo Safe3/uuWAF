@@ -11,8 +11,8 @@
 
 local ip = waf.ip
  
-if waf.contains(ip,"10.20.11.193") then
+if waf.startWith(ip,"10.20.11.") then
        return waf.block(true)     -- 重置TCP连接，不记录日志
- end
+end
 
 return false

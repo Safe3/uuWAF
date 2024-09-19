@@ -10,6 +10,6 @@
 
 
 if waf.scheme == "http" then
-    return waf.redirect("https://" .. waf.host)
+    return waf.redirect("https://" .. waf.host .. waf.reqUri)
 end
 return false
