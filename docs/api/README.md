@@ -588,7 +588,7 @@ return _M
 
 1. 将插件文件如kafka-logger.lua 放于/uuwaf/waf/plugins/目录，并修改文件扩展名为kafka-logger.w。
 
-2. 修改/uuwaf/conf/uuwaf.conf文件，在init_by_lua_block段中waf = require("waf")下新增一行waf:use("扩展文件名")，如启用kafka-logger.lua插件的示例如下：
+2. 修改/uuwaf/conf/uuwaf.conf文件，在init_by_lua_block段中waf = require("waf")下新增一行waf:use("插件名称")，如启用kafka-logger.w插件的示例如下：
 
    ```lua
    waf = require("waf")
@@ -632,6 +632,18 @@ local log = require("waf.log")
 - 参数: ``可变参数，类型为字符串``
 - 功能: 将信息写入错误日志/uuwaf/logs/error.log
 - 返回值: ``无``
+
+##### log.utf8(str)
+
+- 参数: ``可变参数，类型为字符串``
+- 功能: 将str字符编码转换为utf-8编码，防止数据写入数据库或json编码时出错
+- 返回值: ``无``
+
+##### log.getReq()
+
+- 参数: ``无``
+- 功能: 获取客户端http请求信息
+- 返回值: ``字符串``
 
 ##### log.encodeJson(obj)
 
