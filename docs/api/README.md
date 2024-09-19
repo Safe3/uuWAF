@@ -1,16 +1,25 @@
 ## :strawberry: 全局配置
 ### init_by_lua_block
+
+##### conf
+
 - 类型: ``table``
 
-- 默认值: ``{ host = "127.0.0.1", port = 3306, user = "root", password = "safe3.waf" }``
+- 默认值: ``初始化南墙配置``
 
 - 用法:
 
   ```lua
-  local conf = { host = "127.0.0.1", port = 3306, user = "root", password = "safe3.waf" }
+  waf = require("waf")
+  local conf = {
+      id = "1", -- 当使用集群时，用于区分不同的南墙主机
+      db = { host = "127.0.0.1", port = 3306, user = "root", password = "Safe3.WAF" }, -- 数据库连接配置
+      ml = { server = "http://127.0.0.1:4445", access_token = "secret" } -- 机器学习服务连接配置
+  }
+  waf.http_init(conf)
   ```
-
-  local conf变量位于/uuwaf/conf/uuwaf.conf中，用于配置waf要读取配置的mysql数据库连接的ip、端口号、用户名和密码。
+  
+  local conf变量位于/uuwaf/conf/uuwaf.conf中，用于初始化南墙配置。
   
   
 
