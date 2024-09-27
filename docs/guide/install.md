@@ -10,7 +10,7 @@
   - 处理器：64位 1千兆赫(GHz)或更快。
   - 内存：不小于2G
   - 磁盘空间：不小于16G
-  - 系统：RedHat 7及以上相关兼容x86_64系统，如Rocky Linux、AlmaLinux等，其它请使用Docker版。
+  - 系统：CentOS系8及以上兼容x86_64系统，如Rocky Linux、AlmaLinux等，其它请使用Docker版。
   ```
 
 
