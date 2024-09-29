@@ -5,7 +5,7 @@
 
 危险等级: 低危
 
-规则描述: 限制非中国地区访问网站
+规则描述: 限制非大陆地区访问网站
 --]]
 
 
@@ -14,7 +14,7 @@ if waf.contains(waf.ip,":") then
 end
 
 local country, province, city = waf.ip2loc(waf.ip)
-if country ~= "中国" and country ~= "内网IP" then
-    return true, "限制非中国地区访问", true
+if country ~= "中国" and city ~= "内网IP" then
+    return true, "限制非大陆地区访问", true
 end
 return false
