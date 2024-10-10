@@ -10,7 +10,7 @@
   - 处理器：64位 1千兆赫(GHz)或更快。
   - 内存：不小于2G
   - 磁盘空间：不小于16G
-  - 系统：RHEL 7及以上兼容x86_64系统，如Rocky Linux 9.0、AlmaLinux 9.0等，其它请使用Docker版。
+  - 系统：RHEL 7及以上兼容x86_64系统，如CentOS、Rocky Linux、AlmaLinux等，其它请使用Docker版。
   ```
 
 
@@ -37,7 +37,10 @@ sudo systemctl stop uuwaf && sudo /uuwaf/waf-service -s uninstall && sudo rm -rf
 
 Docker版安装方式如下： 
 
-安装前参考 [https://docker.1panel.dev/](https://docker.1panel.dev/) 配置镜像加速
+- 软件依赖：Docker 20.10.14 版本以上，低版本会导致sql数据无法导入以致南墙后台无法登录
+- 软件依赖：Docker Compose 2.0.0 版本以上
+
+若遇到Docker无法安装，请使用阿里云或腾讯云的docker源安装，安装后参考 [https://docker.1panel.dev/](https://docker.1panel.dev/) 配置镜像加速。
 
 ```bash
 curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
