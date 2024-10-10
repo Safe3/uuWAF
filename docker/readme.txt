@@ -1,5 +1,5 @@
 环境要求：
-docker版本1.20以上
+Docker 20.10.14 版本以上，Docker Compose 2.0.0 版本以上
 
 解压南墙安装包：
 tar -zxf waf.tgz && cd waf

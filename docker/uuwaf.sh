@@ -16,7 +16,7 @@ fi
 if [ ! $(command -v docker) ]; then
 	curl -sSLk https://get.docker.com/ | bash
 	if [ $? -ne "0" ]; then
-		abort "自动安装Docker运行环境失败，请按照https://docs.docker.com/engine/install/指引手工安装Docker"
+		abort "安装官方Docker运行环境失败，请参考https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance手工安装后再执行本脚本"
 	fi
 	systemctl start docker && systemctl enable docker
 fi
@@ -24,10 +24,7 @@ fi
 DC_CMD="docker compose"
 $DC_CMD version > /dev/null 2>&1
 if [ $? -ne "0" ]; then
-	DC_CMD="docker-compose"
-	if [ ! $(command -v docker-compose) ]; then
-		abort "未发现docker compose命令，请安装Docker Compose插件"
-	fi
+	abort "你的Docker版本过低，缺少docker compose命令，请卸载后安装最新版本"
 fi
 
 SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
