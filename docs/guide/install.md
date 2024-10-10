@@ -37,8 +37,7 @@ sudo systemctl stop uuwaf && sudo /uuwaf/waf-service -s uninstall && sudo rm -rf
 
 Docker版安装方式如下： 
 
-- 软件依赖：Docker 20.10.14 版本以上，低版本会导致sql数据无法导入以致南墙后台无法登录
-- 软件依赖：Docker Compose 2.0.0 版本以上
+- 软件依赖：Docker 20.10.14 版本以上，Docker Compose 2.0.0 版本以上，低版本会导致sql数据无法导入以致南墙后台无法登录。
 
 若遇到国外Docker无法安装，请参考[阿里云](https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance)手动安装国内Docker，安装成功后参考 [https://docker.1panel.dev/](https://docker.1panel.dev/) 配置镜像加速。
 
