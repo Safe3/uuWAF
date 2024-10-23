@@ -9,10 +9,21 @@
 
 
 ### 🍐 后面的网站如何获取客户端真实ip？ <!-- {docsify-ignore} -->
-?> 南墙转发给网站的HTTP请求头中会加入X-Waf-Ip字段，他的值即为客户端ip，也可以通过X-Forwarded-For来获取。
+?> 南墙转发给网站的HTTP请求头中会加入X-Waf-Ip字段，它的值即为客户端ip，也可以通过X-Forwarded-For来获取。
 
 
 
 ### 🍑 集群模式下如何区分不同的南墙来源？ <!-- {docsify-ignore} -->
 
-?> 南墙转发给网站的HTTP请求头中会加入X-Waf-Id字段，他的值即为用户在/uuwaf/conf/uuwaf.conf中配置的id值，用户可以通过该值来区分网站请求来自那台南墙服务。
+?> 南墙转发给网站的HTTP请求头中会加入X-Waf-Id字段，它的值即为用户在/uuwaf/conf/uuwaf.conf中配置的id值，用户可以通过该值来区分网站请求来自那台南墙服务。
+
+
+
+### 🍋 如何解决南墙Docker版获取的客户端ip为容器网关ip的问题？ <!-- {docsify-ignore} -->
+
+?> 这是部分主机docker网络和firewalld冲突引起的，导致南墙获取的客户端访问ip为172开头的容器网关ip，可以把docker网桥加入到防火墙的internal区域来解决。手工执行如下命令解决，其中wafnet为南墙docker容器的网桥名称。
+
+```bash
+firewall-cmd --permanent --zone=internal --change-interface=wafnet
+```
+
