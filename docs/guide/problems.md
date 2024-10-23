@@ -27,3 +27,10 @@
 firewall-cmd --permanent --zone=internal --change-interface=wafnet
 ```
 
+
+
+
+
+### 🍊 如何查看南墙CDN是否缓存了我们的网页？ <!-- {docsify-ignore} -->
+
+?> 南墙提供了一个X-Waf-Cache返回头用以查看缓存情况，如X-Waf-Cache: HIT表示已缓存，X-Waf-Cache: MISS表示未缓存。
