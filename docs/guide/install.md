@@ -33,6 +33,7 @@ curl https://waf.uusec.com/waf-install -o waf-install && sudo bash ./waf-install
 
 ```bash
 sudo systemctl stop uuwaf && sudo /uuwaf/waf-service -s uninstall && sudo rm -rf /uuwaf
+sudo rpm -qa | grep -ie ^percona | xargs yum -y erase
 ```
 
 Docker版安装方式如下： 
