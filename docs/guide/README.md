@@ -1,9 +1,6 @@
 # 产品介绍
 
-[![GitHub stars](https://img.shields.io/github/stars/Safe3/uuWAF.svg?label=关注&nbsp;南墙&style=for-the-badge)](https://github.com/Safe3/uuWAF)
-[![Chat](https://img.shields.io/badge/Discuss-加入讨论组-7289da.svg?style=for-the-badge)](https://github.com/Safe3/uuWAF/discussions)
-
-!> **南墙**WEB应用防火墙（简称：`uuWAF`）是有安科技推出的一款全方位网站防护产品，实现了流量层、系统层、运行时层3层防御。通过有安科技专有的WEB入侵异常检测等技术，结合有安科技团队多年应用安全的攻防理论和应急响应实践经验积累的基础上自主研发而成。协助各级政府、企/事业单位全面保护WEB应用安全，实现WEB服务器的全方位防护解决方案。
+!> **南墙**WEB应用防火墙（简称：`uuWAF`）是有安科技推出的一款全方位网站防护产品，率先实现了流量层、主机层、运行时层3层纵深防御功能。通过有安科技专有的WEB入侵异常检测等技术，结合有安科技团队多年应用安全的攻防理论和应急响应实践经验积累的基础上自主研发而成。协助各级政府、企/事业单位全面保护WEB应用安全，实现WEB服务器的全方位防护解决方案。
 
 
 ## :dart: 技术优势 <!-- {docsify-ignore} -->

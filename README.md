@@ -3,7 +3,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/Safe3/uuWAF.svg?label=关注&nbsp;南墙&style=for-the-badge)](https://github.com/Safe3/uuWAF)
 [![Chat](https://img.shields.io/badge/Discuss-加入讨论组-7289da.svg?style=for-the-badge)](https://github.com/Safe3/uuWAF/discussions)
 
-> **南墙**WEB应用防火墙（简称：`uuWAF`）一款工业级免费、高性能、高扩展，支持AI和语义引擎的Web应用和API安全防护产品。它是有安科技推出的一款全方位网站防护产品，实现了流量层、系统层、运行时层3层防御。
+> **南墙**WEB应用防火墙（简称：`uuWAF`）一款工业级免费、高性能、高扩展，支持AI和语义引擎的Web应用和API安全防护产品。它是有安科技推出的一款全方位网站防护产品，率先实现了流量层、主机层、运行时层3层纵深防御功能。
 
 ![](http://waf.uusec.com/_media/waf.png)
 
