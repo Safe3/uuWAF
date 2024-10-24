@@ -3,7 +3,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/Safe3/uuWAF.svg?label=关注&nbsp;南墙&style=for-the-badge)](https://github.com/Safe3/uuWAF)
 [![Chat](https://img.shields.io/badge/Discuss-加入讨论组-7289da.svg?style=for-the-badge)](https://github.com/Safe3/uuWAF/discussions)
 
-> **南墙**WEB应用防火墙（简称：`uuWAF`）一款工业级免费、高性能、高扩展，支持AI和语义引擎的Web应用和API安全防护产品。它是有安科技推出的一款全方位网站防护产品，率先实现了流量层、主机层、运行时层3层纵深防御功能。
+> **南墙**WEB应用防火墙（简称：`uuWAF`）一款工业级免费、高性能、高扩展，支持AI和语义引擎的Web应用和API安全防护产品。它是有安科技推出的一款全方位网站防护产品，率先实现了流量层、系统层、运行时层3层纵深防御功能。
 
 ![](http://waf.uusec.com/_media/waf.png)
 
@@ -22,7 +22,7 @@
 
 :virgo: 强大的主动防御
 
-南墙自研的主机`主动防御`和`RASP`功能可以在主机层和应用运行时层实现更加强大双层防御，可以有效防止0day漏洞攻击，主机层主动防御可以在系统内核层拦截底层攻击，如限制进程的网络通信、进程创建、文件读写、系统提权、系统溢出攻击等。运行时应用自防御RASP则插入java JVM、php Zend运行时引擎中有效跟踪运行时上下文并拦截各种web 0day漏洞攻击。
+南墙自研的主机`主动防御`和`RASP`功能可以系统层和应用运行时层实现更加强大双层防御，可以有效防止0day漏洞攻击，主机层主动防御可以在系统内核层拦截底层攻击，如限制进程的网络通信、进程创建、文件读写、系统提权、系统溢出攻击等。运行时应用自防御RASP则插入java JVM、php Zend运行时引擎中有效跟踪运行时上下文并拦截各种web 0day漏洞攻击。
 
 :libra: 先进的语义引擎
 
