@@ -100,5 +100,5 @@ curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash .
 
 - 官方微信群：微信扫描以下二维码加入
 
-  <img src="https://waf.uusec.com/_media/weixin.jpg?" alt="微信群"  height="200px" />
+  <img src="https://waf.uusec.com/_media/weixin.jpg" alt="微信群"  height="200px" />
 

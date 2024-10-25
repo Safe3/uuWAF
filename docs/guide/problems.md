@@ -32,3 +32,9 @@ firewall-cmd --permanent --zone=internal --change-interface=wafnet
 ### 🍊 如何查看南墙CDN是否缓存了我们的网页？ <!-- {docsify-ignore} -->
 
 ?> 南墙提供了一个X-Waf-Cache返回头用以查看缓存情况，如X-Waf-Cache: HIT表示已缓存，X-Waf-Cache: MISS表示未缓存。
+
+
+
+### 🍍 如何修改南墙管理后台的端口和SSL证书？ <!-- {docsify-ignore} -->
+
+?> 南墙管理后台的配置位于/uuwaf/web/conf/conf.yaml中，addr字段值即为ip地址和端口。替换SSL证书可以替换/uuwaf/web/conf/目录中的server.crt和server.key文件，之后执行systemctl restart uuwaf重启服务使配置生效。
