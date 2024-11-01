@@ -14,9 +14,9 @@ if [ "$EUID" -ne "0" ]; then
 fi
 
 if [ ! $(command -v docker) ]; then
-	curl -sSLk https://get.docker.com/ | bash
+	curl -sSL https://get.docker.com/ | sh
 	if [ $? -ne "0" ]; then
-		abort "安装官方Docker运行环境失败，请参考https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance手工安装后再执行本脚本"
+		abort "自动安装Docker Engine失败，请参考https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance手工安装后再执行本脚本"
 	fi
 	systemctl start docker && systemctl enable docker
 fi
