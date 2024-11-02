@@ -45,6 +45,8 @@ Docker版安装方式如下：
 curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
 ```
 
+后续可直接执行 `bash ./waf/uuwaf.sh` 来管理南墙容器，包括启动、停止、更新、卸载等。
+
 ?> 快速入门：
 
 1. 登录后台：访问https://ip:4443 ，ip为安装南墙的服务器ip地址，用户名admin，密码Passw0rd!。

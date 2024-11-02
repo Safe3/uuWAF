@@ -12,7 +12,7 @@
 
 services:
   uuwaf:
-   image: uusec/nanqiang:latest
+   image: swr.cn-south-1.myhuaweicloud.com/uusec/nanqiang:latest
    ulimits:
      nproc: 65535
      nofile:
@@ -40,7 +40,7 @@ services:
         condition: service_healthy
 
   wafdb:
-   image: percona/percona-server:5.7
+   image: swr.cn-south-1.myhuaweicloud.com/uusec/percona-server:5.7
    container_name: wafdb
    restart: always
    networks:
