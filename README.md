@@ -49,6 +49,8 @@
 
 > 主机版安装方式如下：
 
+系统要求：RHEL 7及以上兼容x86_64系统，如CentOS、Rocky Linux、AlmaLinux、Alibaba Cloud Linux、TencentOS等。
+
 ```bash
 sudo yum install -y ca-certificates
 curl https://waf.uusec.com/waf-install -o waf-install && sudo bash ./waf-install && rm -f ./waf-install
