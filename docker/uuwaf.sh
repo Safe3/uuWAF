@@ -1,5 +1,9 @@
 #!/bin/bash
 
+warning() {
+	echo -e "\033[33m[南墙] $*\033[0m"
+}
+
 abort() {
 	echo -e "\033[31m[南墙] $*\033[0m"
 	exit 1
@@ -13,8 +17,12 @@ if [ "$EUID" -ne "0" ]; then
 	abort "请以 root 权限运行"
 fi
 
+SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd  "$SCRIPT_PATH"
+
 if [ ! $(command -v docker) ]; then
-	curl -sSL https://get.docker.com/ | sh
+	warning "未检测到Docker Engine，接下来帮您自动安装，过程较慢请耐心等待..."
+	sh install-docker.sh --mirror Aliyun
 	if [ $? -ne "0" ]; then
 		abort "自动安装Docker Engine失败，请参考 https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance 手工安装后再执行本脚本"
 	fi
@@ -26,10 +34,6 @@ $DC_CMD version > /dev/null 2>&1
 if [ $? -ne "0" ]; then
 	abort "你的Docker版本过低，缺少docker compose命令，请卸载后安装最新版本"
 fi
-
-SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd  "$SCRIPT_PATH"
-
 
 stop_uuwaf(){
 	$DC_CMD down
