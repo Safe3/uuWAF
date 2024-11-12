@@ -38,3 +38,9 @@ firewall-cmd --permanent --zone=internal --change-interface=wafnet
 ### 🍍 如何修改南墙管理后台的端口和SSL证书？ <!-- {docsify-ignore} -->
 
 ?> 南墙管理后台的配置位于/uuwaf/web/conf/conf.yaml中，addr字段值即为ip地址和端口。替换SSL证书可以替换/uuwaf/web/conf/目录中的server.crt和server.key文件，之后执行systemctl restart uuwaf重启服务使配置生效。
+
+
+
+### 🍈 如何修改南墙反向代理默认监听端口？ <!-- {docsify-ignore} -->
+
+?> 南墙默认只监听http 80、https 443端口，用户可自行在/uuwaf/conf/uuwaf.conf中自定义任意监听端口，配置方式请参考nginx 的 [listen](https://nginx.org/en/docs/http/ngx_http_core_module.html#listen) 设置，之后执行systemctl restart uuwaf重启服务使配置生效。Docker版用户可以修改docker-compose.yml中的port端口映射。

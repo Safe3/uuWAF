@@ -48,12 +48,13 @@ uninstall_uuwaf(){
 }
 
 start_uuwaf(){
-	if [ $(command -v netstat) ]; then
-		port_status=`netstat -nlt|grep -E ':(80|443|4443)\s'|wc -l`
-		if [ $port_status -gt 0 ]; then
-			echo -e "\t 端口80、443、4443中的一个或多个被占用，请关闭对应服务或修改其端口"
-			exit 1
-		fi
+	if [ ! $(command -v netstat) ]; then
+		$( command -v yum || command -v apt-get ) -y install net-tools
+	fi
+	port_status=`netstat -nlt|grep -E ':(80|443|4443)\s'|wc -l`
+	if [ $port_status -gt 0 ]; then
+		echo -e "\t 端口80、443、4443中的一个或多个被占用，请关闭对应服务或修改其端口"
+		exit 1
 	fi
 	$DC_CMD up -d
 }

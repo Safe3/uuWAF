@@ -62,7 +62,7 @@ curl https://waf.uusec.com/waf-install -o waf-install && sudo bash ./waf-install
 
 - 软件依赖：Docker 20.10.14 版本以上，Docker Compose 2.0.0 版本以上，低版本会导致sql数据无法导入以致南墙后台无法登录。
 
-若遇到官方Docker Engine无法安装，请参考[阿里云](https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance)手动安装国内版，安装成功后参考 [https://docker.1panel.dev/](https://docker.1panel.dev/) 配置镜像加速。
+若遇到无法自动安装Docker Engine，请参考[阿里云](https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance)手动安装，安装成功后参考 [https://docker.1panel.dev/](https://docker.1panel.dev/) 配置镜像加速。
 
 ```bash
 curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
