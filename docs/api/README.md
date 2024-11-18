@@ -1,28 +1,3 @@
-## :strawberry: 全局配置
-### init_by_lua_block
-
-##### conf
-
-- 类型: ``table``
-
-- 默认值: ``初始化南墙配置``
-
-- 用法:
-
-  ```lua
-  waf = require("waf")
-  local conf = {
-      id = "1", -- 当使用集群时，用于区分不同的南墙主机
-      db = { host = "127.0.0.1", port = 3306, user = "root", password = "Safe3.WAF" }, -- 数据库连接配置
-      ml = { server = "http://127.0.0.1:4445", access_token = "secret" } -- 机器学习服务连接配置
-  }
-  waf.http_init(conf)
-  ```
-  
-  local conf变量位于/uuwaf/conf/uuwaf.conf中，用于初始化南墙配置。
-  
-  
-
 
 ## :grapes: 规则
 
@@ -485,9 +460,9 @@ end
 - 参数: ``uri为重定向的链接，status为返回http状态（可选），默认为302``
 - 功能: 重定向客户端请求到新的链接，与return搭配使用
 
-##### waf.ip2loc(ip)
+##### waf.ip2loc(ip, lang?)
 
-- 参数: ``ip地址``
+- 参数: ``ip为要查询的ip地址，lang为显示语言，如en、zh-CN等，默认值"zh-CN"``
 - 功能: 将ip地址转化为国家、省份、城市中文地理位置信息
 - 返回值: ``country、 province、 city，如：中国、湖北省、武汉市``
 
