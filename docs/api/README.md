@@ -1,7 +1,7 @@
 
 ## :grapes: 规则
 
-?>这里对规则所用到的一些变量和相关函数进行说明，更多规则编写方法请大家参照WAF管理后台中的规则管理当中的众多实际例子。规则模板见：https://github.com/Safe3/uuWAF/blob/main/rules/anti-cc.lua ，一条防cc攻击的安全规则。欢迎各位贡献安全规则，详情见：https://waf.uusec.com/#/guide/contribute 。
+?>这里对规则所用到的一些变量和相关函数进行说明，更多规则编写方法请大家参照WAF管理后台中的规则管理当中的众多实际例子。规则模板见：https://github.com/Safe3/uuWAF/blob/main/src/rules/anti-cc.lua ，一条防cc攻击的安全规则。欢迎各位贡献安全规则，详情见：https://waf.uusec.com/#/guide/contribute 。
 
 ### 规则示例
 
@@ -477,7 +477,7 @@ end
 
 ## :melon: 插件
 
-?>南墙支持强大的插件扩展功能，方便用户自行实现一些特有功能。插件模板见：https://github.com/Safe3/uuWAF/blob/main/plugins/kafka-logger.lua ，一个kafka日志记录插件。欢迎各位贡献安全插件，详情见：https://waf.uusec.com/#/guide/contribute 。
+?>南墙支持强大的插件扩展功能，方便用户自行实现一些特有功能。插件模板见：https://github.com/Safe3/uuWAF/blob/main/src/plugins/kafka-logger.lua ，一个kafka日志记录插件。欢迎各位贡献安全插件，详情见：https://waf.uusec.com/#/guide/contribute 。
 
 ### 插件编写
 

@@ -5,8 +5,8 @@
 
 ## :gift_heart: 参与方法 <!-- {docsify-ignore} -->
 ?> 贡献者以 PR 的方式向 github 南墙社区仓库内提交。
-- 规则提交位置: https://github.com/Safe3/uuWAF/tree/master/rules
-- 插件提交位置: https://github.com/Safe3/uuWAF/tree/master/plugins
+- 规则提交位置: https://github.com/Safe3/uuWAF/tree/master/src/rules
+- 插件提交位置: https://github.com/Safe3/uuWAF/tree/master/src/plugins
 - PR 中根据 Pull Request 的模板填写规则或插件信息
 - 内部审核 PR，确定是否合并入仓库
 - 每次发布新版时，CI 拉取 Github 仓库，并将社区的规则和插件打包进社区版共享给大家

@@ -18,7 +18,7 @@
 
 !> 注意：请尽量选择一台纯净Linux x86_64环境的服务器安装，因为安装过程会卸载旧的MySQL数据库并重新安装，如果没有备份，可造成旧的MySQL数据丢失，并且南墙采用云WAF反向代理模式，默认需要使用80、443端口。
 
-主机版安装方式如下：
+**主机版安装方式如下：**
 
 系统要求：RHEL 7及以上兼容x86_64系统，如CentOS、Rocky Linux、AlmaLinux、Alibaba Cloud Linux、TencentOS等。
 
@@ -29,14 +29,14 @@ curl https://waf.uusec.com/waf-install -o waf-install && sudo bash ./waf-install
 
 ?> 安装成功后会显示 “ 恭喜您，安装成功”
 
-!> 主机版卸载方式如下：
+主机版卸载方式如下：
 
 ```bash
 sudo systemctl stop uuwaf && sudo /uuwaf/waf-service -s uninstall && sudo rm -rf /uuwaf
 sudo rpm -qa | grep -ie ^percona | xargs yum -y erase
 ```
 
-Docker版安装方式如下： 
+**容器版安装方式如下：** 
 
 - 软件依赖：Docker 20.10.14 版本以上，Docker Compose 2.0.0 版本以上，低版本会导致sql数据无法导入以致南墙后台无法登录。
 
@@ -48,7 +48,7 @@ curl -fsSL https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo 
 
 后续可直接执行 `bash ./waf/uuwaf.sh` 来管理南墙容器，包括启动、停止、更新、卸载等。
 
-?> 快速入门：
+**安装后快速使用入门：**
 
 1. 登录后台：访问https://ip:4443 ，ip为安装南墙的服务器ip地址，用户名admin，密码Passw0rd!。
 2. 添加站点：进入站点管理菜单，点击添加站点按钮，按提示添加站点域名与网站服务器ip。

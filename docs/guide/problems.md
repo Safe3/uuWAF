@@ -37,7 +37,7 @@ firewall-cmd --permanent --zone=internal --change-interface=wafnet
 
 ### 🍍 如何修改南墙管理后台的端口和SSL证书？ <!-- {docsify-ignore} -->
 
-?> 南墙管理后台的配置位于/uuwaf/web/conf/conf.yaml中，addr字段值即为ip地址和端口。替换SSL证书可以替换/uuwaf/web/conf/目录中的server.crt和server.key文件，之后执行systemctl restart uuwaf重启服务使配置生效。
+?> 南墙管理后台的配置位于/uuwaf/web/conf/config.json中，addr字段值即为ip地址和端口。替换SSL证书可以替换/uuwaf/web/conf/目录中的server.crt和server.key文件，之后执行systemctl restart uuwaf重启服务使配置生效。
 
 
 
