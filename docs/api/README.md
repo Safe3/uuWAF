@@ -450,10 +450,15 @@ end
 - 参数: ``reset 为true时直接重置tcp不返回任何内容，否则返回403页面``
 - 功能: 拦截客户端请求，直接重置客户端连接或返回403页面，与return搭配使用
 
-##### waf.checkRobot(waf)
+##### waf.checkRobot(waf, expireTime?, max?)
 
-- 参数: ``waf 为固定waf对象，无需修改``
+- 参数: ``waf 为固定waf对象；expireTime 为通过验证后不再进行验证的时长，单位秒，默认值600；max 为通过验证后可访问最大请求次数，超过该值后重新显示验证页面，默认值18000``
 - 功能: 检测机器人攻击，如数据爬虫、扫描攻击、CC拒绝服务攻击等，并生成滑动旋转图片验证码，与return搭配使用
+
+##### waf.checkTurnstile(waf, siteKey, secret, expireTime?, max?)
+
+- 参数: ``waf 为固定waf对象；siteKey 和 secret 为Cloudflare Turnstile的组件参数；expireTime为通过验证后不再进行验证的时长，单位秒，默认值600；max为通过验证后可访问最大请求次数，超过该值后重新显示验证页面，默认值18000``
+- 功能: 使用Cloudflare Turnstile来进行自动人机验证，检测机器人攻击，如数据爬虫、扫描攻击、CC拒绝服务攻击等，与return搭配使用
 
 ##### waf.redirect(uri, status?)
 
