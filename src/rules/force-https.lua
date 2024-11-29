@@ -1,11 +1,8 @@
 --[[
-规则名称: http重定向https
-
-过滤阶段: 请求阶段
-
-危险等级: 低危
-
-规则描述: 将不安全的http请求重定向到https
+Rule name: Force HTTPS
+Filtering stage: Request phase
+Threat level: Low
+Rule description: Redirects insecure HTTP requests to HTTPS
 --]]
 
 

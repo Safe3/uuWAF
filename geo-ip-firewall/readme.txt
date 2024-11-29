@@ -1,9 +1,8 @@
-地理位置ip防火墙 - Geo ip firewall
+Geo Ip Firewall
 
-简介：
-利用系统底层按地理位置对国家或地区的ip地址进行高性能黑白名单访问控制，支持x86和arm版Linux服务器。
+Introduction:
+Utilizing the underlying system to perform high-performance blacklist and whitelist access control on IP addresses of countries or regions based on geographic location, supporting x86 and ARM versions of Linux servers.
 
-使用：
 Usage: gif <option> [country code]
 Options:
   -b <country code>	Blacklist mode,deny IPs from the region you specified.Ex:gif -b us,jp
@@ -12,11 +11,10 @@ Options:
   -u 			Update myself and ip database
   -h, --help		Show this help message and exit
 
-
-快速入门：
-1、将gif和cidr.txt上传到指定服务器并赋予gif可执行权限：chmod +x gif
-2、使用黑名单模式拦截指定地域ip访问服务器，如拦截美国、日本ip可以使用命令：./gif -b us,jp
-3、使用白名单模式只允许指定地域ip可以访问服务器，如只允许中国ip访问可以使用命令：./gif -w cn,hk,mo,tw
-4、可以通过修改cidr.txt来自定义区域ip段，格式：区域代号 IP段
-5、清除所有规则，执行命令：./gif -c
-6、软件和ip库更新，执行命令：./gif -u
+Quick Start:
+1. Upload gif and cidr.txt to the specified server and grant gif executable permissions: chmod +x gif
+2. To block IP access to servers in a specified region using blacklist mode, such as intercepting IP addresses from the United States or Japan, you can use the command: ./gif -b us,jp
+3. Using whitelist mode only allows specified regional IP addresses to access the server. If only Chinese IP addresses are allowed to access, the command can be used: ./gif -w cn,hk,mo,tw
+4. You can customize the region IP segment by modifying cidr.txt in the format of region code IP segment
+5. Clear all rules and execute the command: ./gif -c
+6. Software and IP library updates, execute command: ./gif -u

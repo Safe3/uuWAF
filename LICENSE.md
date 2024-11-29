@@ -1,3 +1,33 @@
+## License
+
+This License (hereinafter referred to as "License") applies to the software you have obtained (hereinafter referred to as "Software"). Please read the following terms carefully before using the Software. Using the Software indicates your agreement and acceptance of the terms of this License.
+
+1. **Copyright Notice**  
+   All codes, images, and files of this product are copyrighted by Wuhan UUSEC Technology Co.,Ltd
+
+2. **Usage Permission**  
+   Subject to compliance with the terms of this License, you are granted the right to install and run the Software on a single device for personal non-commercial purposes only.
+
+3. **Prohibitions**  
+   You shall not engage in the following activities in relation to the Software:
+    a) Cracking, reverse engineering, decompiling, disassembling, or other similar actions;
+    b) Repackaging, modifying, adapting, copying, translating, sublicensing, or creating derivative works;
+    c) Using for commercial purposes or any profit-making activities;
+    d) Unauthorized dissemination, distribution, sale, or rental of the Software;
+    e) Combining the Software with content or actions that infringe upon the intellectual property rights of others or violate laws and regulations.
+
+4. **Reservation of Rights**  
+   The copyright of the Software belongs to the original author. All other rights not expressly granted in this License are reserved by the original author. You may not exercise any other rights not expressly granted in this License without the explicit authorization of the original author.If used beyond the scope of the authorization, the original author reserves the right to pursue legal liability.
+
+5. **Disclaimers**  
+   The Software is provided "as is" without any warranties of any kind, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement. The original author shall not be liable for any loss, damage, litigation, or any other consequences resulting from the use of the Software.
+
+6. **Termination**  
+   This License shall be effective upon your acceptance and shall continue in effect until terminated. The original author reserves the right to terminate this License at any time if you fail to comply with any of the terms and conditions of this License. Upon termination, you must cease all use of the Software and destroy all copies in your possession or control.
+
+7. **Applicable Law and Dispute Resolution**  
+   This License shall be governed by and construed in accordance with the laws of the country or jurisdiction where the original author is located. Any disputes arising from or in connection with this License shall be resolved through negotiation. In case no settlement can be reached through negotiation, either party may submit the dispute to the competent court of the country or jurisdiction where the original author is located.
+
 ## 软件许可证
 
 本许可证（以下简称“许可证”）适用于您所获取的软件（以下简称“软件”），请您在使用本软件前仔细阅读以下条款。使用本软件表示您同意并接受本许可证的条款。
@@ -27,33 +57,3 @@
 
 7. **适用法律与争议解决**
 本许可证受原作者所在国家或司法管辖区法律的约束并依据其解释。任何因本许可证引起的或与其相关的争议应通过协商解决。如协商无果，任何一方均可将争议提交原作者所在国家或司法管辖区的有管辖权的法院解决。
-
-## License
-
-This License (hereinafter referred to as "License") applies to the software you have obtained (hereinafter referred to as "Software"). Please read the following terms carefully before using the Software. Using the Software indicates your agreement and acceptance of the terms of this License.
-
-1. **Copyright Notice**  
-All codes, images, and files of this product are copyrighted by Wuhan UUSEC Technology Co.,Ltd
-
-2. **Usage Permission**  
-Subject to compliance with the terms of this License, you are granted the right to install and run the Software on a single device for personal non-commercial purposes only.
-
-3. **Prohibitions**  
-You shall not engage in the following activities in relation to the Software:
-    a) Cracking, reverse engineering, decompiling, disassembling, or other similar actions;
-    b) Repackaging, modifying, adapting, copying, translating, sublicensing, or creating derivative works;
-    c) Using for commercial purposes or any profit-making activities;
-    d) Unauthorized dissemination, distribution, sale, or rental of the Software;
-    e) Combining the Software with content or actions that infringe upon the intellectual property rights of others or violate laws and regulations.
-
-4. **Reservation of Rights**  
-The copyright of the Software belongs to the original author. All other rights not expressly granted in this License are reserved by the original author. You may not exercise any other rights not expressly granted in this License without the explicit authorization of the original author.If used beyond the scope of the authorization, the original author reserves the right to pursue legal liability.
-
-5. **Disclaimers**  
-The Software is provided "as is" without any warranties of any kind, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement. The original author shall not be liable for any loss, damage, litigation, or any other consequences resulting from the use of the Software.
-
-6. **Termination**  
-This License shall be effective upon your acceptance and shall continue in effect until terminated. The original author reserves the right to terminate this License at any time if you fail to comply with any of the terms and conditions of this License. Upon termination, you must cease all use of the Software and destroy all copies in your possession or control.
-
-7. **Applicable Law and Dispute Resolution**  
-This License shall be governed by and construed in accordance with the laws of the country or jurisdiction where the original author is located. Any disputes arising from or in connection with this License shall be resolved through negotiation. In case no settlement can be reached through negotiation, either party may submit the dispute to the competent court of the country or jurisdiction where the original author is located.

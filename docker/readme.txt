@@ -1,18 +1,21 @@
-环境要求：
-Docker 20.10.14 版本以上，Docker Compose 2.0.0 版本以上
+Environmental requirements:
+Docker 20.10.14 or above, Docker Compose 2.0.0 or above
 
-解压南墙安装包：
+Decompression UUSEC WAF Installation Package:
 tar -zxf waf.tgz && cd waf
 
-若服务器内存有限，可以取消docker-compose.yml中如下注释中的#号，降低mysql内存占用：
+If the server memory is limited, you can remove the # sign in the following comments in docker-compose.yml to reduce MySQL memory usage:
 #- ./low-memory-my.cnf:/etc/mysql/my.cnf
 
-南墙Docker管理：执行如下面命令，根据提示启动南墙docker服务
+UUSEC WAF docker management: Execute the following command and start the UUSEC WAF Docker service according to the prompts
 bash uuwaf.sh
 
-快速入门：
-1、登录后台，访问https://wafip:4443，wafip为安装南墙的服务器ip，用户名admin，密码Passw0rd!
-2、添加站点，进入站点管理菜单，点击添加站点按钮，按提示添加站点域名与网站服务器ip
-3、添加SSL证书：进入证书管理菜单，点击添加证书按钮，上传第二步中域名的https证书和私钥文件。若不添加SSL证书，则南墙会自动尝试申请Let's Encrypt免费SSL证书，并在证书到期前自动续期
-4、将域名DNS的ip指向改为南墙服务器ip地址
-5、访问站点域名查看网站是否能够访问
+Quick Start:
+
+1. Login to the management: Access https://ip:4443 ,the IP address is the server IP address for installing the UUSEC WAF, the default username is "admin", and the default password is "Passw0rd!".
+
+2. Add a site: Go to the "Site" menu, click the "Add Site" button, and follow the prompts to add the site domain name and website server IP.
+3. Add SSL certificate: Go to the certificate management menu, click the "Add Certificate" button, and upload the HTTPS certificate and private key file of the domain name. If you do not add an SSL certificate, the UUSEC WAF will automatically attempt to apply for a Let's Encrypt free SSL certificate and renew it automatically before the certificate expires.
+4. Change the DNS address of the domain: Go to the domain name service provider's management backend and change the IP address recorded in the DNS A of the domain name to the IP address of the UUSEC WAF server.
+5. Test connectivity: Visit the site domain to see if the website can be opened, and check if the returned HTTP header server field is uuWAF.
+

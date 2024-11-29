@@ -28,7 +28,7 @@ local matcher, today
 
 local function init_matcher()
     local http_client = http.new()
-    local res, err = http_client:request_uri("https://waf.uusec.com/ip-intelligence-feed.json")
+    local res, err = http_client:request_uri("https://uuwaf.uusec.com/ip-intelligence-feed.json")
     if not res then
         ngx_log(ngx_err, "get ip intelligence failed: ", err)
         return

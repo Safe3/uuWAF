@@ -12,7 +12,7 @@
 
 services:
   uuwaf:
-   image: swr.ap-southeast-1.myhuaweicloud.com/uusec/nanqiang:latest
+   image: swr.ap-southeast-1.myhuaweicloud.com/uusec/uuwaf:latest
    ulimits:
      nproc: 65535
      nofile:
@@ -28,9 +28,9 @@ services:
      - "4443:4443"
    volumes:
      - wafshared:/uuwaf
+     - /etc/localtime:/etc/localtime:ro
    command: ["/run.sh"]
    environment:
-     - TZ=Asia/Shanghai
      - UUWAF_MYSQL_PASSWORD=Safe3.WAF
 
    links:
@@ -48,9 +48,9 @@ services:
    volumes:
      - wafshared:/docker-entrypoint-initdb.d
      - wafdata:/var/lib/mysql
+     - /etc/localtime:/etc/localtime:ro
      #- ./low-memory-my.cnf:/etc/mysql/my.cnf
    environment:
-     - TZ=Asia/Shanghai
      - INIT_ROCKSDB
      - MYSQL_MAX_CONNECTIONS=512
      - MYSQL_ROOT_PASSWORD=Safe3.WAF

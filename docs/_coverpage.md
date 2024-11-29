@@ -1,11 +1,11 @@
-# 南墙Web应用防火墙
+# UUSEC WAF
 
-***不撞南墙不回头***
+***Don't hit the south wall, don't turn back***
 
-一款工业级免费、高性能、高扩展，支持AI和语义引擎的Web应用和API安全防护产品
+A industry-leading free, high-performance, AI and semantic technology web application and API security protection product
 
-[<i class="iconfont icon-github"></i> 进入社区](https://github.com/Safe3/uuWAF)
-[马上开始 <i class="iconfont icon-down"></i>](#main)
+[<i class="iconfont icon-github"></i> Join community](https://github.com/Safe3/uuWAF)
+[Start now <i class="iconfont icon-down"></i>](#main)
 
 <!-- background image -->
 ![](_media/2.png)

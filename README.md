@@ -1,110 +1,103 @@
-# 南墙简介
+<p align="center">
+  <a target="_blank" href="https://uuwaf.uusec.com/">🏠 Website</a> &nbsp; | &nbsp;
+  <a target="_blank" href="/README_CN.md">中文版</a>
+</p>
 
-[![GitHub stars](https://img.shields.io/github/stars/Safe3/uuWAF.svg?label=关注&nbsp;南墙&style=for-the-badge)](https://github.com/Safe3/uuWAF)
-[![Chat](https://img.shields.io/badge/Discuss-加入讨论组-7289da.svg?style=for-the-badge)](https://github.com/Safe3/uuWAF/discussions)
+# Introduction
 
-> **南墙**WEB应用防火墙（简称：`uuWAF`）一款工业级免费、高性能、高扩展，支持AI和语义引擎的Web应用和API安全防护产品。它是有安科技推出的一款全方位网站防护产品，率先实现了流量层、系统层、运行时层3层纵深防御功能。
+[![GitHub stars](https://img.shields.io/github/stars/Safe3/uuWAF.svg?label=Follow&nbsp;uuWAF&style=for-the-badge)](https://github.com/Safe3/uuWAF)
+[![Chat](https://img.shields.io/badge/Discuss-Join-7289da.svg?style=for-the-badge)](https://github.com/Safe3/uuWAF/discussions)
 
-![](http://waf.uusec.com/_media/waf.png)
+> **UUSEC WAF** Web Application Firewall is an industrial grade free, high-performance, and highly scalable web application and API security protection product that supports AI and semantic engines. It is a comprehensive website protection product launched by UUSEC Technology, which first realizes the three-layer defense function of traffic layer, system layer, and runtime layer.
 
-🏠安装及使用请访问官网： https://waf.uusec.com/
-
-
-
-## :dart: 技术优势
-:ophiuchus: 智能的0day防御
-
-南墙创新性的运用机器学习技术，使用`异常检测算法`对http正常与攻击流量进行区分识别，并对正常流量进行白名单威胁建模。通过`机器学习算法`自动学习正常流量中的参数特征，并转化成对应的参数白名单规则库，可以在面对各种突发0day漏洞时，无需添加规则即可拦截攻击，免除网站管理者一出现漏洞就需挑灯夜战升级的痛苦。
-
-:taurus: 极致的CDN加速
-
-南墙自研超越nginx商业版`proxy_cache_purge`才具备的任意缓存清理功能，nginx商业版只支持*模式匹配的方式清理缓存，南墙进一步支持正则表达式匹配url路径的缓存清理方式，相比nginx商业版具备更高的灵活性和实用性。用户可以在享受极致CDN加速的同时，更方便的解决缓存过期问题。
-
-:virgo: 强大的主动防御
-
-南墙自研的主机`主动防御`和`RASP`功能可以系统层和应用运行时层实现更加强大双层防御，可以有效防止0day漏洞攻击，主机层主动防御可以在系统内核层拦截底层攻击，如限制进程的网络通信、进程创建、文件读写、系统提权、系统溢出攻击等。运行时应用自防御RASP则插入java JVM、php Zend等运行时引擎中有效跟踪运行时上下文并拦截各种web 0day漏洞攻击。
-
-:libra: 先进的语义引擎
-
-南墙采用业界领先的`SQL、XSS、RCE、LFI` 4种基于语义分析的检测引擎，结合多种深度解码引擎可对`base64、json、form-data`等HTTP内容真实还原，从而有效抵御各种绕过WAF的攻击方式，并且相比传统正则匹配具备准确率高、误报率低、效率高等特点，管理员无需维护庞杂的规则库，即可拦截多种攻击类型。
-
-:gemini: 高级的规则引擎
-
-南墙积极运用`nginx`和`luajit`的高性能、高灵活性特点，除了提供对普通用户友好性较好的传统规则创建模式，还提供了高扩展性、高灵活性的lua脚本规则编写功能，使得有一定编程功底的高级安全管理员可以创造出一系列传统WAF所不能实现的高级漏洞防护规则，用户可以编写一系列插件来扩展WAF现有功能。从而使得在拦截一些复杂漏洞时，可以更加得心应手。
+![](http://uuwaf.uusec.com/_media/waf.png)
 
 
 
+## :dart: Technical advantages
+:ophiuchus: Intelligent 0-day defense
 
-## :rocket: 一键安装
+UUSEC WAF innovatively applies machine learning technology, using anomaly detection algorithms to distinguish and identify HTTP normal and attack traffic, and models whitelist threats to normal traffic. By using machine learning algorithms to automatically learn the parameter characteristics of normal traffic and convert them into corresponding parameter whitelist rule libraries, it is possible to intercept attacks without adding rules when facing various sudden 0-day vulnerabilities, eliminating the pain of website managers having to work late to upgrade as soon as vulnerabilities appear.
 
-南墙为你提供了强大灵活的扩展和安全规则的编写API，在管理后台发布后所有规则无需重启立即生效，远超市面上大部分免费WAF产品如`ModSecurity`，规则展示如下：
+:taurus: Ultimate CDN acceleration
 
-![](http://waf.uusec.com/_media/rule.png)
+UUSEC self-developed cache cleaning feature surpasses the arbitrary cache cleaning function only available in the commercial version of nginx, proxy_cache_purge. The commercial version of nginx only supports * pattern matching to clean the cache, while UUSEC WAF further supports regular expression matching URL path cache cleaning, which has higher flexibility and practicality compared to the commercial version of nginx. Users can enjoy ultimate CDN acceleration while more conveniently solving cache expiration issues.
 
-🏠请访问官网： https://waf.uusec.com/ 下载 南墙WAF使用说明书 了解规则API详情
+:virgo: Powerful proactive defense
 
-南墙安装及其简便，通常在几分钟内即可安装完毕，具体耗时视网络下载情况而定。
+The self-developed host 'active defense' and 'RASP' functions of UUSEC WAF can achieve more powerful dual layer defense at the system layer and application runtime layer, effectively preventing zero day vulnerability attacks. Host layer active defense can intercept low-level attacks at the system kernel layer, such as restricting process network communication, process creation, file read and write, system privilege escalation, system overflow attacks, etc. Runtime application self-defense RASP is inserted into runtime engines such as Java JVM and PHP Zend to effectively track runtime context and intercept various web 0-day vulnerability attacks.
 
-注意：请尽量选择一台纯净Linux x86_64环境的服务器安装，因为安装过程会卸载旧的MySQL数据库并重新安装，如果没有备份，可造成旧的MySQL数据丢失，并且南墙采用云WAF反向代理模式，默认需要使用80、443端口。
+:libra: Advanced semantic engine
 
-> 主机版安装方式如下：
+UUSEC WAF adopts four industry-leading semantic analysis based detection engines, namely SQL, XSS, RCE, and LFI. Combined with multiple deep decoding engines, it can truly restore HTTP content such as base64, JSON, and form data, effectively resisting various attack methods that bypass WAF. Compared with traditional regular matching, it has the characteristics of high accuracy, low false alarm rate, and high efficiency. Administrators do not need to maintain a complex rule library to intercept multiple types of attacks.
 
-系统要求：RHEL 7及以上兼容x86_64系统，如CentOS、Rocky Linux、AlmaLinux、Alibaba Cloud Linux、TencentOS等。
+:gemini: Advanced rule engine
+
+UUSEC WAF actively utilizes the high-performance and highly flexible features of nginx and luajit. In addition to providing a traditional rule creation mode that is user-friendly for ordinary users, it also offers a highly scalable and flexible Lua script rule writing function, allowing advanced security administrators with certain programming skills to create a series of advanced vulnerability protection rules that traditional WAF cannot achieve. Users can write a series of plugins to extend the existing functions of WAF. This makes it easier to intercept complex vulnerabilities.
+
+
+
+
+## :rocket: Installation
+
+UUSEC WAF provides you with a powerful and flexible API for extending and writing security rules. After being published in the management backend, all rules take effect immediately without restarting, far exceeding most free WAF products on the market such as ModSecurity. The rules are shown below:
+
+![](http://uuwaf.uusec.com/_media/rule.png)
+
+🏠Please visit the official website to see more details:  https://uuwaf.uusec.com/ 
+
+The installation of the UUSEC WAF is very simple, usually completed within a few minutes, and the specific time depends on the network download situation.
+
+Attention: Please try to choose a pure Linux x86_64 environment server for installation, as the installation process will uninstall the old MySQL database and reinstall it. If there is no backup, it may cause the loss of old MySQL data. In addition, the UUSEC WAF adopts cloud WAF reverse proxy mode, which requires the use of ports 80 and 443 by default.
+
+> The host version installation:
+
+- System requirements: RHEL 7 and above are compatible with x86_64 systems, such as CentOS, Rocky Linux, AlmaLinux, etc.
+
 
 ```bash
 sudo yum install -y ca-certificates
-curl https://waf.uusec.com/waf-install -o waf-install && sudo bash ./waf-install && rm -f ./waf-install
+curl https://uuwaf.uusec.com/waf-install -o waf-install && sudo bash ./waf-install && rm -f ./waf-install
 ```
 
-安装成功后会显示 “ 恭喜您，安装成功！”
+After successful installation, it will display "Congratulations, successful installation".
 
-> Docker版安装方式如下： 
+> The docker version installation： 
 
-- 软件依赖：Docker 20.10.14 版本以上，Docker Compose 2.0.0 版本以上，低版本会导致sql数据无法导入以致南墙后台无法登录。
+- Software dependencies: Docker version 20.10.14 or above, Docker Compose version 2.0.0 or above, lower versions may cause SQL data to be unable to be imported, resulting in login issues in the UUSEC WAF management.
 
-若遇到无法自动安装Docker Engine，请参考[阿里云](https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance)手动安装。
+If you encounter the inability to automatically install Docker Engine, please install it manually.
 
 ```bash
-curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
+curl https://uuwaf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
 ```
 
-后续可直接执行 `bash ./waf/uuwaf.sh` 来管理南墙容器，包括启动、停止、更新、卸载等。
+Subsequently, `bash ./waf/uuwaf.sh` is used to manage the South Wall container, including starting, stopping, updating, uninstalling, etc.
 
-> 快速入门：
+> Quick Start:
 
-1. 登录后台：访问https://ip:4443 ，ip为安装南墙的服务器ip地址，用户名admin，密码Passw0rd!。
+1. Login to the management: Access https://ip:4443 ,the IP address is the server IP address for installing the UUSEC WAF, the default username is "admin", and the default password is "Passw0rd!".
+2. Add a site: Go to the "Site" menu, click the "Add Site" button, and follow the prompts to add the site domain name and website server IP.
+3. Add SSL certificate: Go to the certificate management menu, click the "Add Certificate" button, and upload the HTTPS certificate and private key file of the domain name. If you do not add an SSL certificate, the UUSEC WAF will automatically attempt to apply for a Let's Encrypt free SSL certificate and renew it automatically before the certificate expires.
+4. Change the DNS address of the domain: Go to the domain name service provider's management backend and change the IP address recorded in the DNS A of the domain name to the IP address of the UUSEC WAF server.
+5. Test connectivity: Visit the site domain to see if the website can be opened, and check if the returned HTTP header server field is uuWAF.
 
-2. 添加站点：进入站点管理菜单，点击添加站点按钮，按提示添加站点域名与网站服务器ip。
-3. 添加TLS证书：进入证书管理菜单，点击添加证书按钮，上传第二步中域名的https证书和私钥文件。若不添加SSL证书，则南墙会自动尝试申请Let's Encrypt免费SSL证书，并在证书到期前自动续期。
-4. 修改域名DNS指向：到域名服务商管理后台把域名DNS A记录的ip地址改为南墙服务器ip地址。
-5. 测试连通性：访问站点域名查看网站是否能够打开，查看返回的http header头server字段是否为uuWAF。
-
-更多使用过程中碰到问题的解决办法请参考[常见问题](https://waf.uusec.com/#/guide/problems)。
-
+For more solutions to problems encountered during use, please refer to [FAQ](https://uuwaf.uusec.com/#/guide/problems).
 
 
-## :gift_heart: 贡献名单
 
-如何贡献？参照: https://waf.uusec.com/#/guide/contribute
+## :gift_heart: Contribution List
 
-这里感谢puhui222、Kingdom、[k4n5ha0](https://github.com/k4n5ha0)为南墙所做的贡献！
+How to contribute? reference: https://uuwaf.uusec.com/#/guide/contribute
 
-  <img src="https://waf.uusec.com/_media/sponsor.jpg" alt="捐赠"  height="300px" />
+Thank you to puhui222, Kingdom, and k4n5ha0 for the contribution made to the UUSEC WAF!
 
 
 
 
-## :kissing_heart: 加入讨论
+## :kissing_heart: Join the discussion
 
-欢迎各位就 南墙 的各种bug或功能需求及使用问题，在如下渠道参与讨论
+Welcome to participate in discussions on various bugs, functional requirements, and usage issues related to the UUSEC WAF through the following channels:
 
-- 问题提交：https://github.com/Safe3/uuWAF/issues
-
-- 讨论社区：https://github.com/Safe3/uuWAF/discussions
-
-- 官方 QQ 群：11500614
-
-- 官方微信群：微信扫描以下二维码加入
-
-  <img src="https://waf.uusec.com/_media/weixin.jpg" alt="微信群"  height="200px" />
-
+- Problem submission: https://github.com/Safe3/uuWAF/issues
+- Discussion Community: https://github.com/Safe3/uuWAF/discussions

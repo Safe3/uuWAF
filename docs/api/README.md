@@ -1,16 +1,16 @@
 
-## :grapes: 规则
+## :grapes: Rule
 
-?>这里对规则所用到的一些变量和相关函数进行说明，更多规则编写方法请大家参照WAF管理后台中的规则管理当中的众多实际例子。规则模板见：https://github.com/Safe3/uuWAF/blob/main/src/rules/anti-cc.lua ，一条防cc攻击的安全规则。欢迎各位贡献安全规则，详情见：https://waf.uusec.com/#/guide/contribute 。
+?> Here are some explanations of the variables and related functions used in the rules. For more rule writing methods, please refer to the numerous practical examples in rule management in the WAF management. The rule template can be found at: https://github.com/Safe3/uuWAF/blob/main/src/rules/anti-cc.lua A security rule against CC attacks. Welcome everyone to contribute  rules. For details, please refer to: https://uuwaf.uusec.com/#/guide/contribute .
 
-### 规则示例
+### Example of Rules
 
 ```lua
 --[[
-规则名称: anti cc
-过滤阶段: 请求阶段
-危险等级: 中危
-规则描述: 当一分钟访问/api/路径频率超过360次，则在5分钟内拦截该ip访问
+Rule name: Anti CC
+Filtering stage: Request phase
+Threat level: Medium
+Rule description: When the frequency of accessing /api/ path exceeds 360 times per minute, intercept the IP access within 5 minutes
 --]]
 
 
@@ -22,15 +22,15 @@ local sh = waf.ipCache
 local ccIp = 'cc-' .. waf.ip
 local c, f = sh:get(ccIp)
 if not c then
-    sh:set(ccIp, 1, 60, 1)           -- 设置1分钟也就是60秒访问计数时间
+    sh:set(ccIp, 1, 60, 1)            -- Set a 60 seconds access count time
 else
     if f == 2 then
-        return waf.block(true)       -- 重置TCP连接，不记录日志
+        return waf.block(true)       -- Reset TCP connection without logging
     end
     sh:incr(ccIp, 1)
-    if c + 1 >= 360 then             -- 频率超过360次
-        sh:set(ccIp, c + 1, 300, 2)  -- 设置5分钟也就是300秒拦截时间
-        return true, ccIp, true      -- 返回参数，第一个true为是否检测到；第二个参数ccIp为日志记录内容；第三个参数true表示拦截，false表示只记录不拦截
+    if c + 1 >= 360 then             -- Frequency exceeding 360 times
+        sh:set(ccIp, c + 1, 300, 2)  -- Set a 300 second interception time
+        return true, ccIp, true      -- Return parameter, the first 'true' is whether it has been detected; The second parameter 'ccIp' is the content of the log record; The third parameter 'true' indicates interception, while 'false' indicates only recording without interception
     end
 end
 
@@ -40,224 +40,224 @@ return false
 
 
 
-### 规则变量
+### Rule variables
 
-#### 请求阶段变量
+#### Request phase variables
 ##### waf.ip
-- 类型: ``string``
-- 默认值: ``客户端访问ip``
-- 用法: 只读，用于获取客户端访问ip，可以在WAF后台站点管理中配置客户端ip来源，获取方式为Socket或X-Forwarded-For中的倒序第n个ip。
+- Type: ``string``
+- Value: ``Client IP``
+- Usage: Read only, used to obtain client IP. The client IP source can be configured in WAF site management, and the retrieval method is the nth IP in reverse order in Socket, Header or X-Forwarded-For.
 
 ##### waf.scheme
 
-- 类型: ``string``
-- 默认值: ``客户端访问http协议，值为字符串http或https``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``Request HTTP protocol, with values of string HTTP or HTTPS``
+- Usage: Read only
 
 ##### waf.httpVersion
 
-- 类型: ``number``
-- 默认值: ``http协议版本，值为1.0、1.1、2.0、3.0``
-- 用法: 只读。
+- Type: ``number``
+- Value: ``HTTP protocol version, with values of 1.0, 1.1, 2.0, 3.0``
+- Usage: Read only
 
 ##### waf.host
 
-- 类型: ``string``
-- 默认值: ``客户端访问host头``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``HTTP host ``
+- Usage: Read only
 
 ##### waf.ipBlock
 
-- 类型: ``table``
-- 默认值: ``键值存储库，用于存放已拦截的客户端ip``
-- 用法: 见ngx.shared.DICT。
+- Type: ``table``
+- Value: ``Key value store, used to store intercepted client IP addresses``
+- Usage:  See [ngx.shared.DICT](https://github.com/openresty/lua-nginx-module?tab=readme-ov-file#ngxshareddict)
 
 ##### waf.ipCache
 
-- 类型: ``table``
-- 默认值: ``键值存储库，用于存放访问的客户端ip``
-- 用法: 见ngx.shared.DICT。
+- Type: ``table``
+- Value: ``Key value store, used to store client IP addresses``
+- Usage: See [ngx.shared.DICT](https://github.com/openresty/lua-nginx-module?tab=readme-ov-file#ngxshareddict)
 
 ##### waf.requestLine
 
-- 类型: ``string``
-- 默认值: ``原始的request line数据``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``Full original request line ``
+- Usage: Read only
 
 ##### waf.uri
 
-- 类型: ``string``
-- 默认值: ``解码处理过的URI，不带参数``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``Current URI in request, normalized``
+- Usage: Read only
 
 ##### waf.method
 
-- 类型: ``string``
-- 默认值: ``请求方法``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``HTTP request method, usually “GET” or “POST”``
+- Usage: Read only
 
 ##### waf.reqUri
 
-- 类型: ``string``
-- 默认值: ``原始URI，带参数``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``Full original request URI (with arguments)``
+- Usage: Read only
 
 ##### waf.userAgent
 
-- 类型: ``string``
-- 默认值: ``客户端请求的User-Agent头数据``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``HTTP request User-Agent``
+- Usage: Read only
 
 ##### waf.referer
 
-- 类型: ``string``
-- 默认值: ``客户端请求的Referer头数据``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``HTTP request Referer``
+- Usage: Read only
 
 ##### waf.reqContentType
 
-- 类型: ``string``
-- 默认值: ``客户端请求的Content-Type头数据``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``HTTP request Content-Type``
+- Usage: Read only
 
 ##### waf.XFF
 
-- 类型: ``string``
-- 默认值: ``客户端请求的X-Forwarded-For头数据``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``HTTP request X-Forwarded-For``
+- Usage: Read only
 
 ##### waf.origin
 
-- 类型: ``string``
-- 默认值: ``客户端请求的Origin头数据``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``HTTP request Origin``
+- Usage: Read only
 
 ##### waf.reqHeaders
 
-- 类型: ``table``
-- 默认值: ``请求的所有header对象``
-- 用法: 只读。
+- Type: ``table``
+- Value: ``A Lua table holding all the current request headers``
+- Usage: Read only
 
 ##### waf.hErr
 
-- 类型: ``string``
-- 默认值: ``请求header解析出错信息``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``Request headers parsing error message``
+- Usage: Read only
 
 ##### waf.isQueryString
 
-- 类型: ``bool``
-- 默认值: ``true或false``
-- 用法: 只读，是否存在请求参数。
+- Type: ``bool``
+- Value: ``true or false``
+- Usage: Read only, is there a request parameter
 
 ##### waf.reqContentLength
 
-- 类型: ``number``
-- 默认值: ``0``
-- 用法: 只读，请求body内容长度，整数值。
+- Type: ``number``
+- Value: ``0``
+- Usage: Read only, request body content length
 
 ##### waf.queryString
 
-- 类型: ``table``
-- 默认值: ``请求url参数，key、value``
-- 用法: 只读。
+- Type: ``table``
+- Value: ``Request URL parameters, key and value``
+- Usage: Read only
 
 ##### waf.qErr
 
-- 类型: ``string``
-- 默认值: ``请求参数解析出错信息``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``Request query string parsing error message``
+- Usage: Read only
 
 ##### waf.form
 
-- 类型: ``table``
-- 默认值: ``请求body对象``
-- 用法: 只读。
+- Type: ``table``
+- Value: ``Request body object``
+- Usage: Read only
 
 ##### waf.form["RAW"]
 
-- 类型: ``string``
-- 默认值: ``请求body的原始数据``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``Request raw body data``
+- Usage: Read only
 
 ##### waf.form["FORM"]
 
-- 类型: ``table``
-- 默认值: ``请求body参数，key、value``
-- 用法: 只读，表单如: {uid="12",vid={[1]="select",[2]="a from b"}}。
+- Type: ``table``
+- Value: ``Request post form parameters, key and value``
+- Usage: Read only, value example: {uid="12",vid={[1]="select",[2]="a from b"}}
 
 ##### waf.form["FILES"]
 
-- 类型: ``table``
-- 默认值: ``解析出的请求body中上传文件信息``
-- 用法: 只读，文件信息如: {name={[1]="filename",[2]="file content"}}。
+- Type: ``table``
+- Value: ``Upload files information in the parsed request body``
+- Usage: Read only, value example:  {name={[1]="filename",[2]="file content"}}
 
 ##### waf.fErr
 
-- 类型: ``string``
-- 默认值: ``解析请求body出错信息``
-- 用法: 只读，一般是恶意畸形请求包。
+- Type: ``string``
+- Value: ``Error message parsing request body``
+- Usage: Read only, usually a malicious malformed request packet
 
 ##### waf.cookies
 
-- 类型: ``table``
-- 默认值: ``请求cookie参数，key、value``
-- 用法: 只读。
+- Type: ``table``
+- Value: ``Request cookie parameters, key and value``
+- Usage: Read only
 
 ##### waf.cErr
 
-- 类型: ``string``
-- 默认值: ``解析请求cookie出错信息``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``Error message parsing request cookie``
+- Usage: Read only
 
-#### 返回http头阶段新增变量
+#### Response header phase newly added variables
 
 ##### waf.status
 
-- 类型: ``number``
-- 默认值: ``返回http状态，整数值``
-- 用法: 只读。
+- Type: ``number``
+- Value: ``Presponse HTTP status, integer value``
+- Usage: Read only
 
 ##### waf.respHeaders
 
-- 类型: ``table``
-- 默认值: ``返回的所有header对象，key、value``
-- 用法: 只读。
+- Type: ``table``
+- Value: ``All headers responsed, including key and value``
+- Usage: Read only
 
 ##### waf.respContentLength
 
-- 类型: ``number``
-- 默认值: ``返回body内容长度，整数值``
-- 用法: 只读。
+- Type: ``number``
+- Value: ``Response body content length``
+- Usage: Read only
 
 ##### waf.respContentType
 
-- 类型: ``string``
-- 默认值: ``服务端返回的Content-Type头数据``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``Response body content type``
+- Usage: Read only
 
-####  返回页面阶段新增变量
+####  Response body phase newly added variables
 
 ##### waf.respBody
 
-- 类型: ``string``
-- 默认值: ``返回body页面内容``
-- 用法: 只读。
+- Type: ``string``
+- Value: ``Response body``
+- Usage: Read only
 
 ##### waf.replaceFilter
 
-- 类型: ``bool``
-- 默认值: ``false``
-- 用法: 当返回内容类型为text/html、text/plain、json、xml时，通知南墙替换返回页面内容，则设置waf.replaceFilter = true，可用于数据脱敏、敏感词替换等场景。
+- Type: ``bool``
+- Value: ``false``
+- Usage: When the response content type is text/html, text/plain, json, or xml, notify the UUSEC WAF to replace the returned page content. Set waf.replaceFilter to true, which can be used in scenarios such as data anonymization and sensitive word replacement.
 
-##### 规则示例
+##### Rule example:
 
 ```lua
 --[[
-规则名称: 数据脱敏
-过滤阶段: 返回页面阶段
-危险等级: 中危
-规则描述: 对返回页面中的身份证和手机号进行*替换脱敏
+Rule Name: Data Mask
+Filtering stage: Response body phase
+Threat level: Medium
+Rule description: Replace and desensitize the ID card and phone number with * on the response page
 --]]
 
 
@@ -265,7 +265,7 @@ if waf.respContentLength == 0 or waf.respContentLength >= 2097152 then
     return
 end
 
--- 只保留身份证号前2位和后2位
+-- Only the first two digits and the last two digits of the ID number number are reserved
 local newstr, n, err = waf.rgxGsub(waf.respBody, [[\b((1[1-5]|2[1-3]|3[1-7]|4[1-6]|5[0-4]|6[1-5]|[7-9]1)\d{4}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx])\b]], function(m)
     return m[0]:sub(1, 2) .. "**************" .. m[0]:sub(-2)
 end, "jos")
@@ -275,11 +275,11 @@ if not newstr then
 end
 if n > 0 then
     waf.respBody = newstr
-    -- 通知南墙进行数据替换
+    -- Notify the UUSEC WAF to replace the data
     waf.replaceFilter = true
 end
 
--- 只保留手机号前3位和后4位
+-- Only retain the first 3 and last 4 digits of the phone number
 newstr, n, err = waf.rgxGsub(waf.respBody, [[\b1(?:(((3[0-9])|(4[5-9])|(5[0-35-9])|(6[2,5-7])|(7[0135-8])|(8[0-9])|(9[0-35-9]))[ -]?\d{4}[ -]?\d{4})|((74)[ -]?[0-5]\d{3}[ -]?\d{4}))\b]], function(m)
     return m[0]:sub(1, 3) .. "****" .. m[0]:sub(-4)
 end, "jos")
@@ -289,257 +289,256 @@ if not newstr then
 end
 if n > 0 then
     waf.respBody = newstr
-    -- 通知南墙进行数据替换
     waf.replaceFilter = true
 end
 ```
 
 
 
-### 规则 API
+### Rule functions
 
-#### 规则通用 API
+#### Rule  API
 
 ##### waf.startWith(sstr,dstr)
-- 参数: ``sstr 为原字符串，dstr 为查找字符串``
-- 功能: 判断字符串 sstr 是否以 dstr 开头
-- 返回值: ``true 或 false``
+- Parameters: ``sstr is the original string, dstr is the search string``
+- Function: Determine whether the string sstr starts with dstr?
+- Return values: ``true or false``
 
 ##### waf.endWith(sstr,dstr)
 
-- 参数: ``sstr 为原字符串，dstr 为查找字符串``
-- 功能: 判断字符串 sstr 是否以 dstr 结尾
-- 返回值: ``true 或 false``
+- Parameters: ``sstr is the original string, dstr is the search string``
+- Function: Determine whether the string sstr ends with dstr?
+- Return values: ``true or false``
 
 ##### waf.toLower(sstr)
 
-- 参数: ``sstr 为原字符串``
-- 功能: 将字符串 sstr 转化为小写
-- 返回值: ``sstr 小写``
+- Parameters: ``sstr is the original string``
+- Function: Convert string sstr to lowercase
+- Return values: ``lowercase sstr``
 
 ##### waf.contains(sstr,dstr)
 
-- 参数: ``sstr 为原字符串，dstr 为查找字符串``
-- 功能: 判断字符串 sstr 是否在字符串 dstr
-- 返回值: ``true 或 false``
+- Parameters: ``sstr is the original string, dstr is the search string``
+- Function: Determine whether the string sstr is in the string dstr?
+- Return values: ``true or false``
 
 ##### waf.regex(sstr,pat,ext)
 
-- 参数: ``sstr 为原字符串，pat 为正则表达式，ext 为正则属性``
-- 功能: 在字符串 sstr 中匹配正则表达式 pat，用法同ngx.re.match
-- 返回值: ``所有匹配项、错误``
+- Parameters: ``sstr is the original string, pat is the regular expression, and ext is the regular attribute``
+- Function: Match regular expression pat in string sstr, with the same usage as [ngx.re.match](https://github.com/openresty/lua-nginx-module?tab=readme-ov-file#ngxrematch)
+- Return values: ``All matches, error``
 
 ##### waf.rgxMatch(sstr,pat,ext)
 
-- 参数: ``sstr 为原字符串，pat 为正则表达式，ext 为正则属性``
-- 功能: 在字符串 sstr 中匹配正则表达式 pat
-- 返回值: ``true 或 false``
+- Parameters: ``sstr is the original string, pat is the regular expression, and ext is the regular attribute``
+- Function: Match regular expression pat in string sstr
+- Return values: ``true or false``
 
 ##### waf.rgxGmatch(sstr,pat,ext)
 
-- 参数: ``sstr 为原字符串，pat 为正则表达式，ext 为正则属性``
-- 功能: 在字符串 sstr 中匹配正则表达式 pat，用法同ngx.re.gmatch
-- 返回值: ``迭代器iterator,错误err``
+- Parameters: ``sstr is the original string, pat is the regular expression, and ext is the regular attribute``
+- Function: Match regular expression pat in string sstr, with the same usage as [ngx.re.gmatch](https://github.com/openresty/lua-nginx-module?tab=readme-ov-file#ngxregmatch)
+- Return values: ``Iterator, error``
 
 ##### waf.rgxSub(subject, regex, replace, options?)
 
-- 参数: ``subject 为原字符串，regex 为正则表达式，replace 为要替换的字符串，options为正则选项``
-- 功能: 替换字符串 subject 中正则表达式 regex 匹配到的内容为 replace，用法同ngx.re.sub
-- 返回值: ``newstr, n, err分别为新字符串、替换个数、错误信息``
+- Parameters: ``subject is the original string, regex is the regular expression, replace is the string to be replaced, options is the regular option``
+- Function: Replace the content matched by the regular expression 'regex' in the string subject with 'replace', with the same usage as [ngx.re.sub](https://github.com/openresty/lua-nginx-module?tab=readme-ov-file#ngxresub)
+- Return values: ``newstr, n, and err represent the new string, number of replacements, and error message, respectively``
 
 ##### waf.rgxGsub(subject, regex, replace, options?)
 
-- 参数: ``subject 为原字符串，regex 为正则表达式，replace 为要替换的字符串，options为正则选项``
-- 功能: 替换字符串 subject 中所有正则表达式 regex 匹配到的内容为 replace，用法同ngx.re.gsub
-- 返回值: ``newstr, n, err分别为新字符串、替换个数、错误信息``
+- Parameters: ``subject is the original string, regex is the regular expression, replace is the string to be replaced, options is the regular option``
+- Function: Replace all contents matched by the regular expression 'regex' in the string 'subject' with 'replace', with the same usage as [ngx.re.gsub](https://github.com/openresty/lua-nginx-module?tab=readme-ov-file#ngxregsub)
+- Return values: ``newstr, n, and err represent the new string, number of replacements, and error message, respectively``
 
 ##### waf.kvFilter(v,match,valOnly)
 
-- 参数: ``v 为要匹配对象，match 为匹配函数,valOnly 为 true 则只匹配 value``
-- 功能: 用于匹配 cookie、queryString 等 key，value 键值对数据，在对象 v 中用 match 函 数匹配内容
-- 返回值: ``true,匹配内容或 false,nil``
+- Parameters: ``v is the object to be matched, match is the matching function, and valOnly is true to match only value``
+- Function: Used to match cookie, query string, and other key value pairs of data, using the match function to match content in object v
+- Return values: ``true, matches content or false, nil``
 
 ##### waf.knFilter(v,match,p)
 
-- 参数: ``v 为要匹配对象，match 为匹配函数，p 为 1 时匹配上传文件名，为 0 时文件内容``
-- 功能: 用于过滤上传文件信息，在对象 v 中用 match 函数匹配内容
-- 返回值: ``true,匹配内容或 false,nil``
+- Parameters: ``v is the object to be matched, match is the matching function, when p is 1, match the uploaded file name, and when p is 0, match the file content``
+- Function: Used to filter uploaded file information and match content in object v using the match function
+- Return values: ``true, matches content or false, nil``
 
 ##### waf.jsonFilter(v, match,parsed,valOnly)
 
-- 参数: ``v 为要匹配对象，match 为匹配函数，parsed 为 false 时解析类型为字符串 v 值，为 true 时解析类型为 table 的 v 值, valOnly 为 true 则只匹配 value``
-- 功能: 用于遍历过滤请求中的 json 数据，在对象 v 中用 match 函数匹配内容
-- 返回值: ``true,匹配内容或 false,nil``
+- Parameters: ``v is the object to be matched, match is the matching function, when parsed as false, the parsing type is string v value, when parsed as true, the parsing type is table v value, and when valOnly is true, only value is matched``
+- Function: Used to traverse and filter JSON data in requests, and use the match function to match content in object v
+- Return values: ``true, matches content or false, nil``
 
 ##### waf.base64Decode(str)
 
-- 参数: ``str 为要解码的 base64 字符串``
-- 功能: 用于解码 base64 数据为明文数据
-- 返回值: ``明文字符串或 nil``
+- Parameters: ``str is the base64 string to be decoded``
+- Function: Used to decode base64 data into plaintext data
+- Return values: ``plaintext or nil``
 
 ##### waf.checkSQLI(str, level?)
 
-- 参数: ``str 为要检测的字符串；level可省略，为严格等级，数值越大越严格，范围0至3``
-- 功能: 基于语义引擎检测 sql 注入攻击
-- 返回值: ``true 或 false``
+- Parameters: ``str is the string to be detected; level can be omitted, it is a strict level, the larger the value, the stricter it is, ranging from 0 to 3``
+- Function: Detecting SQL injection attacks based on semantic engine
+- Return values: ``true or false``
 
 ##### waf.checkRCE(str, level?)
 
-- 参数: ``str 为要检测的字符串；level可省略，为严格等级，数值越大越严格，范围0至3``
-- 功能: 基于语义引擎检测命令注入攻击
-- 返回值: ``true 或 false``
+- Parameters: ``str is the string to be detected; level can be omitted, it is a strict level, the larger the value, the stricter it is, ranging from 0 to 3``
+- Function: Detecting command injection attacks based on semantic engine
+- Return values: ``true or false``
 
 ##### waf.checkPT(str)
 
-- 参数: ``str 为要检测的字符串``
-- 功能: 基于语义引擎检测路径遍历攻击
-- 返回值: ``true 或 false``
+- Parameters: ``str is the string to be detected``
+- Function: Detecting path traversal attacks based on semantic engine
+- Return values: ``true or false``
 
 ##### waf.checkXSS(str)
 
-- 参数: ``str 为要检测的字符串``
-- 功能: 基于语义引擎检测xss攻击
-- 返回值: ``true 或 false``
+- Parameters: ``str is the string to be detected``
+- Function: Detecting XSS attacks based on semantic engine
+- Return values: ``true or false``
 
 ##### waf.strCounter(sstr,dstr)
 
-- 参数: ``sstr 为原字符串，dstr 为查找字符串``
-- 功能: 计算字符串 dstr 在 sstr 中出现的次数
-- 返回值: ``整数``
+- Parameters: ``sstr is the original string, dstr is the search string``
+- Function: Calculate the number of times the string dstr appears in sstr
+- Return values: ``integer``
 
 ##### waf.trim(str)
 
-- 参数: ``str 为原字符串``
-- 功能: 去掉字符串 str 两边的空格
-- 返回值: ``去掉两边空格后的字符串``
+- Parameters: ``sstr is the original string``
+- Function: Remove spaces on both sides of the string str
+- Return values: ``The string after removing the spaces on both sides``
 
 ##### waf.inArray(str,arr)
 
-- 参数: ``str 为原字符串，arr为字符串数组``
-- 功能: 判断字符串 str 是否存在于arr字符串数组中
-- 返回值: ``true 或 false``
+- Parameters: ``str is the original string, arr is the string array``
+- Function: Determine whether the string str exists in the arr string array
+- Return values: ``true or false``
 
 ##### waf.pmMatch(sstr,dict)
 
-- 参数: ``sstr 为原字符串，dict 为查找字典，以 lua 表的形式，如：{“aaa”, “bbb”, “ccc”}``
+- Parameters: ``sstr is the original string, dict is the lookup dictionary, in the form of a Lua table, such as {"aaa", "bbb", "ccc"}``
 
-- 功能: 高效多模匹配多个字符串，发现其中一个字符串立即返回
+- Function: Efficient multi-mode matching of multiple strings, returns immediately upon discovering one of the strings
 
-- 返回值: ``true，字典中的字符串或 false，nil``
+- Return values: ``true, string in dictionary or false, nil``
 
 ##### waf.urlDecode(sstr)
 
-- 参数: ``sstr 为原字符串``
-- 功能: 将 sstr 进行 url 解码还原成字符串
-- 返回值: ``解码后的字符串``
+- Parameters: ``sstr is the original string``
+- Function: Decode the URL of sstr
+- Return values: ``Decoded string``
 
 ##### waf.htmlEntityDecode(sstr)
 
-- 参数: ``sstr 为原字符串``
-- 功能: 将字符串 sstr 进行 html 实体解码
-- 返回值: ``解码后的字符串``
+- Parameters: ``sstr is the original string``
+- Function: Decoding HTML entities from string sstr
+- Return values: ``Decoded string``
 
 ##### waf.hexDecode(sstr)
 
-- 参数: ``sstr 为原字符串``
-- 功能: 将字符串 sstr 进行 hex 解码
-- 返回值: ``解码后的字符串``
+- Parameters: ``sstr is the original string``
+- Function: Decode the string sstr using hex decoding
+- Return values: ``Decoded string``
 
 ##### waf.block(reset)
 
-- 参数: ``reset 为true时直接重置tcp不返回任何内容，否则返回403页面``
-- 功能: 拦截客户端请求，直接重置客户端连接或返回403页面，与return搭配使用
+- Parameters: ``When reset to true, directly reset TCP without returning any content, otherwise return page 403``
+- Function: Intercept client requests, directly reset client connection or return 403 page, used in conjunction with return
 
 ##### waf.checkRobot(waf, expireTime?, max?)
 
-- 参数: ``waf 为固定waf对象；expireTime 为通过验证后不再进行验证的时长，单位秒，默认值600；max 为通过验证后可访问最大请求次数，超过该值后重新显示验证页面，默认值18000``
-- 功能: 检测机器人攻击，如数据爬虫、扫描攻击、CC拒绝服务攻击等，并生成滑动旋转图片验证码，与return搭配使用
+- Parameters: ``waf is a fixed lua object; After successful authentication, if the current IP time reaches expireTime (in seconds, default value of 600, does not expire when value is 0) or the number of requests reaches max (default value of 18000, unlimited when value is 0), the verification page will be displayed again``
+- Function: Detect robot attacks such as data crawlers, scanning attacks, CC denial of service attacks, etc., and generate sliding and rotating image verification, which can be used in conjunction with returns
 
 ##### waf.checkTurnstile(waf, siteKey, secret, expireTime?, max?)
 
-- 参数: ``waf 为固定waf对象；siteKey 和 secret 为Cloudflare Turnstile的组件参数；expireTime为通过验证后不再进行验证的时长，单位秒，默认值600；max为通过验证后可访问最大请求次数，超过该值后重新显示验证页面，默认值18000``
-- 功能: 使用Cloudflare Turnstile来进行自动人机验证，检测机器人攻击，如数据爬虫、扫描攻击、CC拒绝服务攻击等，与return搭配使用
+- Parameters: ``waf is a fixed lua object; siteKey and secret are configuration parameters for Cloudflare Turnstile; After successful authentication, if the current IP time reaches expireTime (in seconds, default value of 600, does not expire when value is 0) or the number of requests reaches max (default value of 18000, unlimited when value is 0), the verification page will be displayed again``
+- Function: Use Cloudflare Turnstile for automatic human-machine verification, detect robot attacks such as data crawlers, scanning attacks, CC denial of service attacks, etc., and use it in conjunction with return
 
 ##### waf.redirect(uri, status?)
 
-- 参数: ``uri为重定向的链接，status为返回http状态（可选），默认为302``
-- 功能: 重定向客户端请求到新的链接，与return搭配使用
+- Parameters: ``URI is the redirected link, status is the return HTTP status (optional), default is 302``
+- Function: redirects client requests to a new link, used in conjunction with a return
 
 ##### waf.ip2loc(ip, lang?)
 
-- 参数: ``ip为要查询的ip地址，lang为显示语言，如en、zh-CN等，默认值"zh-CN"``
-- 功能: 将ip地址转化为国家、省份、城市中文地理位置信息
-- 返回值: ``country、 province、 city，如：中国、湖北省、武汉市``
+- Parameters: ``ip is the IP address to be queried, lang is the display language, such as en, zh-CN, etc. The default value is "en"``
+- Function: Convert IP addresses into geographic location information for country, province, and city
+- Return values: ``country、 province、 city``
 
 ##### waf.errLog(...)
 
-- 参数: ``1个或多个字符串``
-- 功能: 记录错误日志到/uuwaf/logs/error.log中
-- 返回值: ``无``
+- Parameters: ``One or more strings``
+- Function: Record error logs to /uuwaf/logs/error. log
+- Return values: ``None``
 
 
 
 
-## :melon: 插件
+## :melon: Plugin
 
-?>南墙支持强大的插件扩展功能，方便用户自行实现一些特有功能。插件模板见：https://github.com/Safe3/uuWAF/blob/main/src/plugins/kafka-logger.lua ，一个kafka日志记录插件。欢迎各位贡献安全插件，详情见：https://waf.uusec.com/#/guide/contribute 。
+?>The UUSEC WAF supports powerful plugin extension functions, making it convenient for users to implement some unique features on their own. The plugin template can be found at: https://github.com/Safe3/uuWAF/blob/main/src/plugins/kafka-logger.lua , a Kafka logging plugin. Welcome everyone to contribute security plugins. For details, please refer to: https://uuwaf.uusec.com/#/guide/contribute .
 
-### 插件编写
+### Plugin development
 
-一个标准的插件包含以下几个部分，每个部分若无功能实现可省略，每个大阶段分为pre和post前后两个小阶段，分别代表南墙逻辑处理执行前和南墙逻辑处理执行后。南墙v4.1.0之前的版本没有小阶段，请使用req_filter、resp_header_filter、resp_body_filter、log。
+A standard plugin consists of the following parts, each of which can be omitted if there is no functional implementation. Each major stage is divided into two sub stages, pre and post, representing the pre execution and post execution of the UUSEC WAF logic processing, respectively.
 
 ```lua
 local _M = {
-    version = 0.1,          --  插件版本
-    name = "kafka-logger"   --  插件名称
+    version = 0.1,          --  Plugin version
+    name = "kafka-logger"   --  Plugin name
 }
 
--- ssl阶段前过滤
+-- SSL pre phase filtering
 function _M.ssl_pre_filter(waf)
 
 end
 
--- ssl阶段后过滤
+-- SSL phase post filtering
 function _M.ssl_post_filter(waf)
 
 end
 
--- 请求阶段前过滤
+-- Pre request filtering phase
 function _M.req_pre_filter(waf)
 
 end
 
--- 请求阶段后过滤
+-- Post request filtering phase
 function _M.req_post_filter(waf)
 
 end
 
--- 返回header阶段前过滤
+-- Filter before response header phase
 function _M.resp_header_pre_filter(waf)
 
 end
 
--- 返回header阶段后过滤
+-- Filter after response header phase
 function _M.resp_header_post_filter(waf)
 
 end
 
--- 返回body阶段前过滤
+-- Filter before response body phase
 function _M.resp_body_pre_filter(waf)
 
 end
 
--- 返回body阶段后过滤
+-- Filter after response body phase
 function _M.resp_body_post_filter(waf)
 
 end
 
--- 日志记录阶段前过滤
+-- Filtering before the logging phase
 function _M.log_pre_filter(waf)
 
 end
 
--- 日志记录阶段后过滤
+-- Filtering after the logging phase
 function _M.log_post_filter(waf)
 
 end
@@ -549,50 +548,50 @@ return _M
 
 
 
-- #### SSL阶段过滤函数
+- #### SSL phase filtering function
 
-- 该阶段用于获取客户端请求的域名和设置SSL证书，waf变量的值为nil。
+- This stage is used to obtain the domain name requested by the client and set the SSL certificate. The value of the "waf"  variable is nil.
 
-- #### 请求阶段过滤函数
+- #### Request phase filtering function
 
-- 该阶段用于过滤客户端发送的请求数据，waf变量同规则变量一致，可自行实现该函数功能。
+- This stage is used to filter the request data sent by the client. The "waf" variable is consistent with the rule variable and can be implemented independently.
 
-- #### 返回header阶段过滤函数
+- #### Response header phase filtering function
 
-- 该阶段用于过滤服务器返回的header头数据，waf变量同规则变量一致，可自行实现该函数功能。
+- This stage is used to filter the header data returned by the server. The "waf" variable is consistent with the rule variable and can be implemented independently.
 
-- #### 返回body阶段过滤函数
+- #### Response body phase filtering function
 
-- 该阶段用于过滤服务器返回的body内容数据，waf变量同规则变量一致，可自行实现该函数功能。
+- This stage is used to filter the body content data returned by the server. The "waf" variable is consistent with the rule variable and can be implemented independently.
 
-- #### 日志记录阶段执行函数
+- #### Logging phase filtering function
 
-- 该阶段用于日志记录阶段做一些日志处理与推送，waf变量同规则变量一致，可自行实现该函数功能。
+- This stage is used for log processing and push during the logging phase. The "waf" variable is consistent with the rule variable and can be implemented independently.
 
 
 
-### 插件使用
+### Plugin usage
 
-1. 将插件文件如kafka-logger.lua 放于/uuwaf/waf/plugins/目录，并修改文件扩展名为kafka-logger.w。
+1. Place the plugin file, such as kafka-logger.lua, in the /uuwaf/waf/plugins/ directory and modify the file extension to kafka-logger.w
 
-2. 修改/uuwaf/conf/uuwaf.conf文件，在init_by_lua_block段中waf = require("waf")下新增一行waf:use("插件名称")，如启用kafka-logger.w插件的示例如下：
+2. Modify the /uuwaf/conf/uuwaf.conf file and add a new line of `waf:use("plugin name")` under `waf = require("waf")` in the init_by_lua_block section. For example, an example of enabling the kafka-logger.w plugin is as follows:
 
    ```lua
    waf = require("waf")
    waf:use("kafka-logger")
    ```
    
-3. 执行/uuwaf/waf-service -s restart使插件生效，如果插件代码运行有问题，可以在/uuwaf/logs/error.log中查看详细错误信息。
+3. Execute /uuwaf/waf-service -s restart to make the plugin effective. If there are any issues with the plugin code running, you can view detailed error information in /uuwaf/logs/error.log.
 
 
 
-### 常用功能函数
+### Common functions
 
-#### 各阶段数据共享
+#### Data sharing at each phase
 
 ##### waf.ctx
 
-有时为了在各个执行函数间共享同一个数据，可以通过给waf.ctx赋值来实现，如：
+Sometimes, in order to share the same data among executing functions, it is possible to assign values to waf.ctx, such as:
 
 ```lua
 function _M.resp_body_pre_filter(waf)
@@ -606,7 +605,7 @@ end
 
 
 
-#### 记录错误日志
+#### Record error logs
 
 ```lua
 local log = require("waf.log")
@@ -616,32 +615,32 @@ local log = require("waf.log")
 
 ##### log.errLog(...)
 
-- 参数: ``可变参数，类型为字符串``
-- 功能: 将信息写入错误日志/uuwaf/logs/error.log
-- 返回值: ``无``
+- Parameters: ``Variable parameter, of type string``
+- Function: Write  error log to /uuwaf/logs/error. log
+- Return values: ``None``
 
 ##### log.utf8(str)
 
-- 参数: ``字符串``
-- 功能: 将str字符编码转换为utf-8编码，防止数据写入数据库或json编码时出错
-- 返回值: ``字符串``
+- Parameters: ``string``
+- Function: Convert str character encoding to UTF-8 encoding to prevent errors when writing data to the database or JSON encoding
+- Return values: ``string``
 
 ##### log.getReq()
 
-- 参数: ``无``
-- 功能: 获取客户端http请求信息
-- 返回值: ``字符串``
+- Parameters: ``None``
+- Function: Retrieve client HTTP request information
+- Return values: ``string``
 
 ##### log.encodeJson(obj)
 
-- 参数: ``lua table对象``
-- 功能: 将lua table对象转化json字符串
-- 返回值: ``json字符串``
+- Parameters: ``lua table``
+- Function: Convert Lua table objects into JSON strings
+- Return values: ``json string``
 
 ##### log.broker(func，...)
 
-- 参数: ``func为函数，可变参数为传给函数func的参数``
-- 功能: 代理执行函数func，并传参。
-- 返回值: ``无``
+- Parameters: ``"func" is a function, and the mutable parameter is the parameter passed to the function "func"``
+- Function: Proxy executes function "func" and passes parameters.
+- Return values: ``None``
 
-:smile: 其它隐藏功能彩蛋，由用户自行去发掘。
+:smile:Other hidden function Easter eggs can be discovered by users themselves.

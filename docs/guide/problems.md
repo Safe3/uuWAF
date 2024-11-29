@@ -1,27 +1,27 @@
-# 常见问题
-> 南墙 的发展离不开社区的每一位用户的支持，欢迎在[github](https://github.com/Safe3/uuWAF)上点个小星星，这里收集常见的使用问题 。
+# FAQ
+> The development of UUSEC WAF cannot be separated from the support of every user in the community. Welcome to [Github](https://github.com/Safe3/uuWAF) to click on a little star, here to collect common usage questions.
 
 
 
-### 🍎 为什么访问网站会出现规则ID为-1的拦截页面？ <!-- {docsify-ignore} -->
-?> 如果域名没有在南墙站点管理中配置，访问南墙默认会拦截该域名的访问，以防止黑域名指向引起的法律风险。
+### 🍎 Why does a blocking page with rule ID -1 appear when accessing a website? <!-- {docsify-ignore} -->
+?> If the domain name is not configured in the UUSEC WAF site management, access to the UUSEC WAF will be blocked by default to prevent legal risks caused by black domain name pointing.
 
 
 
-### 🍐 经过南墙代理的网站如何获取客户端真实ip？ <!-- {docsify-ignore} -->
-?> 南墙转发给网站的HTTP请求头中会加入X-Waf-Ip字段，它的值即为客户端ip，也可以通过X-Forwarded-For来获取。
+### 🍐 How to obtain the real IP address of the client through the UUSEC WAF proxy website? <!-- {docsify-ignore} -->
+?> The HTTP request header forwarded by the UUSEC WAF to the website will include an X-Waf-Ip field, whose value is the client IP, which can also be obtained through X-Forwarded-For.
 
 
 
-### 🍑 集群模式下上游网站如何区分不同的南墙来源？ <!-- {docsify-ignore} -->
+### 🍑 How can upstream websites distinguish different sources of UUSEC WAF in cluster mode? <!-- {docsify-ignore} -->
 
-?> 南墙转发给网站的HTTP请求头中会加入X-Waf-Id字段，它的值即为用户在/uuwaf/web/conf/config.json中配置的id值，用户可以通过该值来区分网站请求来自那台南墙服务器。
+?> The X-Waf-Id field will be added to the HTTP request header forwarded by UUSEC WAF to the website. Its value is the ID value configured by the user in /uuwaf/web/conf/config.json, and the user can use this value to distinguish which UUSEC WAF server the website request comes from.
 
 
 
-### 🍋 如何解决南墙Docker版获取的客户端ip为172的问题？ <!-- {docsify-ignore} -->
+### 🍋 How to solve the problem of obtaining a client IP address of 172 for the Docker version of the UUSEC WAF? <!-- {docsify-ignore} -->
 
-?> 这是部分主机docker网络和firewalld冲突引起的，导致南墙获取的客户端访问ip为172开头的容器网关ip。可以把docker网桥加入到防火墙的internal区域，手工执行如下命令解决，其中wafnet为南墙docker容器的网桥名称。
+?> This is caused by a conflict between the Docker network of some hosts and Firewalld, resulting in the client access IP obtained by UUSEC WAF being the container gateway IP starting with 172. You can add the Docker bridge to the internal area of the firewall and manually execute the following command to solve the problem, where wafnet is the bridge name of the Docker container on the UUSEC WAF.
 
 ```bash
 firewall-cmd --permanent --zone=internal --change-interface=wafnet
@@ -29,18 +29,18 @@ firewall-cmd --permanent --zone=internal --change-interface=wafnet
 
 
 
-### 🍊 如何查看南墙CDN是否缓存了我们的网页？ <!-- {docsify-ignore} -->
+### 🍊 How to check if the UUSEC WAF CDN has cached our webpage? <!-- {docsify-ignore} -->
 
-?> 南墙提供了一个X-Waf-Cache返回头用以查看缓存情况，如X-Waf-Cache: HIT表示已缓存，X-Waf-Cache: MISS表示未缓存。
-
-
-
-### 🍍 如何修改南墙管理后台的端口和SSL证书？ <!-- {docsify-ignore} -->
-
-?> 南墙管理后台的配置位于/uuwaf/web/conf/config.json中，addr字段值即为ip地址和端口。替换SSL证书可以替换/uuwaf/web/conf/目录中的server.crt和server.key文件，之后执行systemctl restart uuwaf重启服务使配置生效。
+?> The UUSEC WAF provides an X-Waf-Cache return header to check the cache status, such as X-Waf-Cache: HIT indicating cached, and X-Waf-Cache: MISS indicating uncached.
 
 
 
-### 🍈 如何修改南墙反向代理默认监听端口？ <!-- {docsify-ignore} -->
+### 🍍 How to modify the port and SSL certificate of the UUSEC WAF management ? <!-- {docsify-ignore} -->
 
-?> 南墙默认只监听http 80、https 443端口，用户可自行在/uuwaf/conf/uuwaf.conf中自定义任意监听端口，配置方式请参考nginx 的 [listen](https://nginx.org/en/docs/http/ngx_http_core_module.html#listen) 设置，之后执行systemctl restart uuwaf重启服务使配置生效。Docker版用户可以修改docker-compose.yml中的port端口映射。
+?> The configuration of the UUSEC WAF management is located in /uuwaf/web/conf/config.json, and the value of the addr field is the IP address and port. Replacing the SSL certificate can replace the server.crt and server.key files in the /uuwaf/web/conf/ directory, and then execute `systemctl restart uuwaf` to restart the service for the configuration to take effect.
+
+
+
+### 🍈 How to modify the default listening port of the reverse proxy on the UUSEC WAF? <!-- {docsify-ignore} -->
+
+?> By default, the UUSEC WAF only listens to ports HTTP 80 and HTTPS 443. Users can customize any listening port in /uwaf/conf/uuwaf.conf. Please refer to nginx's [listen](https://nginx.org/en/docs/http/ngx_http_core_module.html#listen) configuration for more information to set up, then execute `systemctl restart uuwaf` to restart the service for the configuration to take effect. Docker users can modify the port mapping in docker-compose.yml.
