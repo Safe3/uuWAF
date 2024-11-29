@@ -1,5 +1,5 @@
 <p align="center">
-  <a target="_blank" href="https://uuwaf.uusec.com/">🏠 Website</a> &nbsp; | &nbsp;
+  <a target="_blank" href="https://www.uusec.com/">🏠 Website</a> &nbsp; | &nbsp;
   <a target="_blank" href="/README_CN.md">中文版</a>
 </p>
 
