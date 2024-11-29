@@ -643,4 +643,4 @@ local log = require("waf.log")
 - Function: Proxy executes function "func" and passes parameters.
 - Return values: ``None``
 
-:smile:Other hidden function Easter eggs can be discovered by users themselves.
+:smile: Other hidden function Easter eggs can be discovered by users themselves.
