@@ -1,30 +1,30 @@
 #!/bin/bash
 
 warning() {
-	echo -e "\033[33m[南墙] $*\033[0m"
+	echo -e "\033[33m[UUSEC WAF] $*\033[0m"
 }
 
 abort() {
-	echo -e "\033[31m[南墙] $*\033[0m"
+	echo -e "\033[31m[UUSEC WAF] $*\033[0m"
 	exit 1
 }
 
 if [ -z "$BASH" ]; then
-	abort "请用 bash 执行本脚本，参考最新的官方技术文档 https://waf.uusec.com/"
+	abort "Please execute this script using bash and refer to the latest official technical documentation https://uuwaf.uusec.com/"
 fi
 
 if [ "$EUID" -ne "0" ]; then
-	abort "请以 root 权限运行"
+	abort "Please run with root privileges"
 fi
 
 SCRIPT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd  "$SCRIPT_PATH"
 
 if [ ! $(command -v docker) ]; then
-	warning "未检测到Docker Engine，接下来帮您自动安装，过程较慢请耐心等待..."
-	sh install-docker.sh --mirror Aliyun
+	warning "Docker Engine not detected, we will automatically install it for you. The process is slow, please be patient ..."
+	sh install-docker.sh
 	if [ $? -ne "0" ]; then
-		abort "自动安装Docker Engine失败，请参考 https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance 手工安装后再执行本脚本"
+		abort "Automatic installation of Docker Engine failed. Please manually install it before executing this script"
 	fi
 	systemctl start docker && systemctl enable docker
 fi
@@ -32,7 +32,7 @@ fi
 DC_CMD="docker compose"
 $DC_CMD version > /dev/null 2>&1
 if [ $? -ne "0" ]; then
-	abort "你的Docker版本过低，缺少docker compose命令，请卸载后安装最新版本"
+	abort "Your Docker version is too low and lacks the Docker compose command. Please uninstall and install the latest version"
 fi
 
 stop_uuwaf(){
@@ -53,7 +53,7 @@ start_uuwaf(){
 	fi
 	port_status=`netstat -nlt|grep -E ':(80|443|4443)\s'|wc -l`
 	if [ $port_status -gt 0 ]; then
-		echo -e "\t 端口80、443、4443中的一个或多个被占用，请关闭对应服务或修改其端口"
+		echo -e "\t One or more of ports 80, 443, 4443 are occupied. Please shut down the corresponding service or modify its port"
 		exit 1
 	fi
 	$DC_CMD up -d
@@ -79,48 +79,48 @@ clean_uuwaf(){
 start_menu(){
     clear
     echo "========================="
-    echo "南墙Docker管理"
+    echo "UUSEC WAF Docker Management"
     echo "========================="
-    echo "1. 启动"
-    echo "2. 停止"
-    echo "3. 重启"
-    echo "4. 更新"
-    echo "5. 卸载"
-    echo "6. 清理"
-    echo "7. 退出"
+    echo "1. Start"
+    echo "2. Stop"
+    echo "3. Restart"
+    echo "4. Update"
+    echo "5. Uninstall"
+    echo "6. Clean"
+    echo "7. Exit"
     echo
-    read -p "请输入数字:" num
+    read -p "Please enter the number: " num
     case "$num" in
     	1)
 	start_uuwaf
-	echo "启动完成"
+	echo "Startup completed"
 	;;
 	2)
 	stop_uuwaf
-	echo "停止完成"
+	echo "Stop completed"
 	;;
     	3)
 	restart_uuwaf
-	echo "重启完成"
+	echo "Restart completed"
 	;;
 	4)
 	update_uuwaf
-	echo "更新完成"
+	echo "Update completed"
 	;;
 	5)
 	uninstall_uuwaf
-	echo "卸载完成"
+	echo "Uninstall completed"
 	;;
 	6)
 	clean_uuwaf
-	echo "清理完成"
+	echo "Clean completed"
 	;;
 	7)
 	exit 1
 	;;
 	*)
 	clear
-	echo "请输入正确数字"
+	echo "Please enter the right number"
 	;;
     esac
     sleep 3s
