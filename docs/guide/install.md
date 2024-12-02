@@ -46,7 +46,7 @@ If you encounter the inability to automatically install Docker Engine, please in
 curl -fsSL https://uuwaf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
 ```
 
-Subsequently, `bash ./waf/uuwaf.sh` is used to manage the South Wall container, including starting, stopping, updating, uninstalling, etc.
+Subsequently, `bash ./waf/uuwaf.sh` is used to manage the UUSEC WAF container, including starting, stopping, updating, uninstalling, etc.
 
 **Quick Start:**
 
