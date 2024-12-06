@@ -25,7 +25,7 @@ UUSEC self-developed cache cleaning feature surpasses the arbitrary cache cleani
 
 :virgo: Powerful proactive defense
 
-The self-developed host 'active defense' and 'RASP' functions of UUSEC WAF can achieve more powerful dual layer defense at the system layer and application runtime layer, effectively preventing zero day vulnerability attacks. Host layer active defense can intercept low-level attacks at the system kernel layer, such as restricting process network communication, process creation, file read and write, system privilege escalation, system overflow attacks, etc. Runtime application self-defense RASP is inserted into runtime engines such as Java JVM and PHP Zend to effectively track runtime context and intercept various web 0-day vulnerability attacks.
+The self-developed 'HIPS' and 'RASP' functions of UUSEC WAF can achieve more powerful dual layer defense at the system layer and application runtime layer, effectively preventing zero day vulnerability attacks. Host layer active defense can intercept low-level attacks at the system kernel layer, such as restricting process network communication, process creation, file read and write, system privilege escalation, system overflow attacks, etc. Runtime application self-defense RASP is inserted into runtime engines such as Java JVM and PHP Zend to effectively track runtime context and intercept various web 0-day vulnerability attacks.
 
 :libra: Advanced semantic engine
 
