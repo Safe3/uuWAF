@@ -2,12 +2,13 @@
 规则名称: 高频错误防护
 过滤阶段: 返回HTTP头阶段
 危险等级: 中危
-规则描述: 监测频繁返回40x、50x错误，当60秒内出现这些错误10次以上，则封禁1440分钟。
+规则描述: 监测频繁返回400、401、403、404、405、429、444错误，当60秒内出现这些错误10次以上，则封禁1440分钟。
 --]]
 
-local function isCommonError(status)
-    -- 检查是否为40x或50x错误
-    return status >= 400 and status < 600
+local function isSpecifiedError(status)
+    -- 检查是否为指定的状态码，限定在 [400, 401, 403, 404, 405, 429, 444]
+    local allowed_errors = {400, 401, 403, 404, 405, 429, 444}
+    return waf.inArray(status, allowed_errors)
 end
 
 -- 配置参数
@@ -21,8 +22,8 @@ local ip = waf.ip
 -- 获取返回的HTTP状态码
 local status = waf.status
 
--- 检查当前请求是否是40x或者50x错误，不是则直接返回false
-if not isCommonError(status) then
+-- 检查当前请求是否是指定的状态码错误，不是则直接返回false
+if not isSpecifiedError(status) then
     return false
 end
 

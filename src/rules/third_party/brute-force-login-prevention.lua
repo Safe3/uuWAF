@@ -24,7 +24,7 @@ if not requestCount then
 else
     -- 如果标志已经为2，则IP处于封禁状态，直接拦截
     if flag == 2 then
-        return waf.block(true)  -- 阻断请求，返回403响应
+        return waf.block(true)  -- 阻断请求
     end
 
     -- 增加非法请求次数
