@@ -1,7 +1,6 @@
 ---
---- 
---- 
---- 修订日期: 2024/12/20
+--- 作者: MCQSJ(https://github.com/MCQSJ)
+--- 更新日期: 2024/12/21
 ---
 
 local ngx = ngx
@@ -13,7 +12,7 @@ local ngx_today = ngx.today
 local ngx_kv = ngx.shared
 
 local _M = {
-    version = 1.7,
+    version = 0.1,
     name = "auth-plugin"  -- 插件名称
 }
 
@@ -28,7 +27,6 @@ local valid_password = "password123"  -- 强密码建议修改
 local session_duration = 7200  -- 2小时，以秒为单位
 local max_login_attempts = 5   -- 最大登录失败次数
 
--- 处理特殊字符函数，防止 HTML 注入
 local function escape_html(str)
     if not str then return "" end
     local replacements = {
@@ -41,12 +39,10 @@ local function escape_html(str)
     return (str:gsub("[&<>'\"]", function(c) return replacements[c] end))
 end
 
--- 登录页面HTML模板，带错误提示信息
 local function get_login_page(req_uri, error_message)
     local escaped_error_message = escape_html(error_message or "")
     local form_action = escape_html(req_uri or "/")
 
-    -- HTML部分拼接
     return [[
     <!DOCTYPE html>
     <html lang="zh-CN">
@@ -86,7 +82,6 @@ local function get_login_page(req_uri, error_message)
     ]]
 end
 
--- 校验登录请求
 local function validate_login(waf)
     local form = waf.form["FORM"]
     if form then
@@ -99,13 +94,11 @@ local function validate_login(waf)
     return false
 end
 
--- 请求阶段后过滤器
 function _M.req_post_filter(waf)
     local host = waf.host
     local req_uri = waf.reqUri
     local method = waf.method
 
-    -- 检查域名是否受保护
     local is_protected = false
     for _, domain in ipairs(valid_domains) do
         if string.lower(host) == string.lower(domain) then
@@ -118,48 +111,40 @@ function _M.req_post_filter(waf)
         return
     end
 
-    -- 检查登录失败的次数
     local login_attempts_key = "login_attempts:" .. waf.ip .. ":" .. host
     local login_attempts = ngx_kv.ipCache and ngx_kv.ipCache:get(login_attempts_key) or 0
 
     if login_attempts >= max_login_attempts then
-        -- 直接拦截超出登录尝试次数的请求
-        ngx_kv.ipBlock:incr(waf.ip, 1, 0)  -- 将IP拉入拦截列表
+        ngx_kv.ipBlock:incr(waf.ip, 1, 0)
         waf.msg = "IP因登录失败次数过多已被拦截"
         waf.rule_id = 10001
         waf.deny = true
-        return ngx_exit(403) -- 返回403 Forbidden
+        return ngx_exit(403)
     end
 
-    -- 校验会话是否已认证
-    local session_key = "auth:" .. waf.ip .. ":" .. host -- 结合 IP 和 域名生成唯一会话
+    local session_key = "auth:" .. waf.ip .. ":" .. host
     local is_authenticated = ngx_kv.ipCache and ngx_kv.ipCache:get(session_key)
 
     if not is_authenticated then
         if method == "POST" then
             if validate_login(waf) then
-                -- 登录成功：记录验证认证
                 ngx_kv.ipCache:set(session_key, true, session_duration)
-                ngx_kv.ipCache:delete(login_attempts_key) -- 重置失败次数
+                ngx_kv.ipCache:delete(login_attempts_key)
                 return
             else
-                -- 登录失败：记录失败次数
                 login_attempts = login_attempts + 1
-                ngx_kv.ipCache:set(login_attempts_key, login_attempts, 3600) -- 失败次数保存1小时
+                ngx_kv.ipCache:set(login_attempts_key, login_attempts, 3600)
                 
-                -- 可选：输出登录失败提示（直接返回页面避免请求到原站）
                 local error_message = "用户名或密码错误，请重试。"
                 ngx.header.content_type = "text/html; charset=utf-8"
-                return ngx.print(get_login_page(req_uri, error_message)) -- 使用直接返回页面
+                return ngx.print(get_login_page(req_uri, error_message))
             end
         else
-            -- 显示登录页面
             ngx.header.content_type = "text/html; charset=utf-8"
-            return ngx.print(get_login_page(req_uri, nil)) -- 使用直接返回页面
+            return ngx.print(get_login_page(req_uri, nil))
         end
     end
 
-    -- 已经认证，继续处理后续请求
 end
 
 return _M
