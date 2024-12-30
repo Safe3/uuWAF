@@ -1,3 +1,13 @@
+## [6.3.0](https://github.com/Safe3/uuWAF/compare/v6.3.0...v6.2.0) (2024-12-30)
+
+### Improvements
+
+- Upgrade command injection and SQL injection semantic detection engine to further improve detection rate and reduce false positives
+- Optimize log management, add rule ID column for easy identification of specific intercepted rule numbers
+- Upgrade multiple security rules to cover more security vulnerabilities and threats
+
+
+
 ## [6.2.0](https://github.com/Safe3/uuWAF/compare/v6.2.0...v6.1.0) (2024-11-26)
 
 ### Improvements
