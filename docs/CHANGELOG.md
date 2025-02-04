@@ -1,4 +1,4 @@
-## [6.4.0](https://github.com/Safe3/uuWAF/compare/v6.4.0...v6.3.0) (2024-02-03)
+## [6.4.0](https://github.com/Safe3/uuWAF/compare/v6.4.0...v6.3.0) (2025-02-03)
 
 ### Improvements
 
