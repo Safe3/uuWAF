@@ -1,7 +1,7 @@
 <p align="center">
   <a target="_blank" href="https://www.uusec.com/">🏠 Website</a> &nbsp; | &nbsp;
   <a target="_blank" href="/README_CN.md">中文版</a>
-  <br/>
+  <br/><br/>
     ⭐Please help us with a star to support our continuous improvement, thank you!
 </p>
 
