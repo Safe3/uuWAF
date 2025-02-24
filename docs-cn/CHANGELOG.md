@@ -1,3 +1,14 @@
+## [6.6.0](https://github.com/Safe3/uuWAF/compare/v6.6.0...v6.5.0) (2025-02-24)
+
+
+### 功能更新
+
+- 普通规则支持按照逻辑与(AND)、或(OR)、非与(NOT AND)、非或(NOT OR)来组织条件关系
+- 新增异常Cookie检测规则，拦截一些Cookie攻击绕过漏洞
+- 增强南墙Web管理后台在不同电脑屏幕大小下的网页兼容性
+
+
+
 ## [6.5.0](https://github.com/Safe3/uuWAF/compare/v6.5.0...v6.4.0) (2025-02-15)
 
 

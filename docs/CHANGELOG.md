@@ -1,3 +1,14 @@
+## [6.6.0](https://github.com/Safe3/uuWAF/compare/v6.6.0...v6.5.0) (2025-02-24)
+
+
+### Improvements
+
+- Ordinary rules support organizing conditional relationships based on logical AND, OR, NOT AND, NOT OR.
+- Introduce new abnormal cookie detection rule to block certain cookie attacks and prevent vulnerabilities from being bypassed.
+- Enhance the webpage compatibility of the web management backend under different computer screen sizes.
+
+
+
 ## [6.5.0](https://github.com/Safe3/uuWAF/compare/v6.5.0...v6.4.0) (2025-02-15)
 
 ### Improvements
