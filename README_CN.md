@@ -86,6 +86,20 @@ curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash .
 
 
 
+## :sparkles: 防护效果评估
+
+仅供参考
+
+| Metric             | ModSecurity, Level 1 | CloudFlare, Free | UUSEC WAF, Free | UUSEC WAF, Pro |
+| ------------------ | -------------------- | ---------------- | --------------- | -------------- |
+| **样本总量**      | 33669                | 33669            | 33669           | 33669          |
+| **检出率**      | 69.74%               | 10.70%           | 74.77%          | **98.97%**     |
+| **误报率** | 17.58%               | 0.07%            | **0.09%**       | **0.01%**      |
+| **准确率**       | 82.20%               | 98.40%           | **99.42%**      | **99.95%**     |
+
+
+
+
 ## :gift_heart: 贡献名单
 
 如何贡献？参照: https://waf.uusec.com/#/guide/contribute
