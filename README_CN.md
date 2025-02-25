@@ -90,7 +90,7 @@ curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash .
 
 仅供参考
 
-| Metric             | ModSecurity, Level 1 | CloudFlare, Free | UUSEC WAF, Free | UUSEC WAF, Pro |
+| 指标             | ModSecurity, 级别 1 | CloudFlare, 免费版 | UUSEC WAF, 免费版 | UUSEC WAF, 专业版 |
 | ------------------ | -------------------- | ---------------- | --------------- | -------------- |
 | **样本总量**      | 33669                | 33669            | 33669           | 33669          |
 | **检出率**      | 69.74%               | 10.70%           | 74.77%          | **98.97%**     |
