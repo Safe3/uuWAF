@@ -2,7 +2,7 @@
   - [<span class="iconfont icon-fly"></span> 产品介绍](guide/)
      - [<span class="iconfont icon-page"></span> 技术优势](guide/#dart-技术优势)
      - [<span class="iconfont icon-star"></span> 功能对比](guide/#fire-功能对比)
-     - [<span class="iconfont icon-magic"></span> 效果评估](guide/?id=%e2%9c%a8-%e9%98%b2%e6%8a%a4%e6%95%88%e6%9e%9c%e8%af%84%e4%bc%b0)
+     - [<span class="iconfont icon-magic"></span> 效果评估](guide/?id=%e2%9c%a8-%e6%95%88%e6%9e%9c%e8%af%84%e4%bc%b0)
      - [<span class="iconfont icon-mix"></span> 界面预览](guide/#art-界面预览)
   - [<span class="iconfont icon-wxapp"></span> 快速入门](guide/install.md)
      - [<span class="iconfont icon-component"></span> 配置要求](guide/install?id=%e2%99%a8%ef%b8%8f%e9%85%8d%e7%bd%ae%e8%a6%81%e6%b1%82)
