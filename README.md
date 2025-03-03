@@ -46,6 +46,9 @@ UUSEC WAF provides you with a powerful and flexible API for extending and writin
 
 🏠Please visit the official website to see more details:  https://uuwaf.uusec.com/ 
 
+> [!警告]
+> 中国用户安装国际版可能会导致无法使用，安装中文版请访问 [中文官网](https://uuwaf.uusec.com/)
+
 The installation of the UUSEC WAF is very simple, usually completed within a few minutes, and the specific time depends on the network download situation.
 
 Attention: Please try to choose a pure Linux x86_64 environment server for installation, as the installation process will uninstall the old MySQL database and reinstall it. If there is no backup, it may cause the loss of old MySQL data. In addition, the UUSEC WAF adopts cloud WAF reverse proxy mode, which requires the use of ports 80 and 443 by default.
