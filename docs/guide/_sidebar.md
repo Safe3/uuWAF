@@ -2,6 +2,7 @@
   - [<span class="iconfont icon-fly"></span> Introduction](guide/)
      - [<span class="iconfont icon-page"></span> Advantages](guide/#dart-Advantages)
      - [<span class="iconfont icon-star"></span> Pricing](guide/#fire-Pricing)
+     - [<span class="iconfont icon-magic"></span> Effect Evaluation](guide/?id=%e2%9c%a8-Effect-Evaluation)
      - [<span class="iconfont icon-mix"></span> Screenshots](guide/#art-Screenshots)
   - [<span class="iconfont icon-wxapp"></span> Quick start](guide/install.md)
      - [<span class="iconfont icon-component"></span> Requirements](guide/install?id=%e2%99%a8%ef%b8%8frequirements)

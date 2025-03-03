@@ -1,3 +1,40 @@
+## [6.6.0](https://github.com/Safe3/uuWAF/compare/v6.6.0...v6.5.0) (2025-02-24)
+
+
+### Improvements
+
+- Ordinary rules support organizing conditional relationships based on logical AND, OR, NOT AND, NOT OR.
+- Introduce new abnormal cookie detection rule to block certain cookie attacks and prevent vulnerabilities from being bypassed.
+- Enhance the webpage compatibility of the web management backend under different computer screen sizes.
+
+
+
+## [6.5.0](https://github.com/Safe3/uuWAF/compare/v6.5.0...v6.4.0) (2025-02-15)
+
+### Improvements
+
+- Support machine learning generated rules isolated by users
+- Supports first level domain name extensions up to 16 characters in length
+
+### Bugfix
+
+- Fix the issue of misplaced display of custom regular rules in the web management
+- Fix the issue where the internal network IP is displayed as empty in the attack area ranking
+
+
+
+## [6.4.0](https://github.com/Safe3/uuWAF/compare/v6.4.0...v6.3.0) (2025-02-03)
+
+### Improvements
+
+- Improve XSS security rules to reduce false positive
+
+### Bugfix
+
+- Fix the problem of database connection failure after system restart
+
+
+
 ## [6.3.0](https://github.com/Safe3/uuWAF/compare/v6.3.0...v6.2.0) (2024-12-30)
 
 ### Improvements

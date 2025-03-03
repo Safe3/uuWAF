@@ -1,7 +1,11 @@
 <p align="center">
   <a target="_blank" href="https://www.uusec.com/">🏠 Website</a> &nbsp; | &nbsp;
   <a target="_blank" href="/README_CN.md">中文版</a>
+  <br/><br/>
+    ⭐Please help us with a star to support our continuous improvement, thank you!
 </p>
+
+
 
 # Introduction
 
@@ -89,11 +93,25 @@ For more solutions to problems encountered during use, please refer to [FAQ](htt
 
 
 
+## :sparkles: Effect Evaluation
+
+For reference only
+
+| Metric             | ModSecurity, Level 1 | CloudFlare, Free | UUSEC WAF, Free | UUSEC WAF, Pro |
+| ------------------ | -------------------- | ---------------- | --------------- | -------------- |
+| **Total Samples**      | 33669                | 33669            | 33669           | 33669          |
+| **Detection**      | 69.74%               | 10.70%           | 74.77%          | **98.97%**     |
+| **False Positive** | 17.58%               | 0.07%            | **0.09%**       | **0.01%**      |
+| **Accuracy**       | 82.20%               | 98.40%           | **99.42%**      | **99.95%**     |
+
+
+
+
 ## :gift_heart: Contribution List
 
 How to contribute? reference: https://uuwaf.uusec.com/#/guide/contribute
 
-Thank you to puhui222, Kingdom, and k4n5ha0 for the contribution made to the UUSEC WAF!
+Thanks to puhui222, MCQSJ, k4n5ha0 and more for the contribution made to the UUSEC WAF!
 
 
 
