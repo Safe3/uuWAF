@@ -50,7 +50,7 @@ UUSEC WAF provides you with a powerful and flexible API for extending and writin
 
 🏠Please visit the official website to see more details:  https://uuwaf.uusec.com/ 
 
-> [!警告]
+> [!WARNING]
 > 中国用户请访问 [中文官网](https://waf.uusec.com/) 安装中文版，安装国际版可能会导致无法使用！
 
 The installation of the UUSEC WAF is very simple, usually completed within a few minutes, and the specific time depends on the network download situation.
