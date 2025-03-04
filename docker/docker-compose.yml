@@ -41,6 +41,11 @@ services:
 
   wafdb:
    image: swr.ap-southeast-1.myhuaweicloud.com/uusec/percona-server:5.7
+   ulimits:
+     nproc: 65535
+     nofile:
+       soft: 102400
+       hard: 102400
    container_name: wafdb
    restart: always
    networks:
