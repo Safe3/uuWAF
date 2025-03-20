@@ -18,6 +18,11 @@
 
 
 
+# GitHub Daily Trend
+[![UUSEC WAF](https://res.cloudinary.com/marcomontalbano/image/upload/v1742432660/video_to_markdown/images/youtube--x8oHis0gzlE-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=x8oHis0gzlE "UUSEC WAF")
+
+
+
 ## :dart: Technical advantages
 :ophiuchus: Intelligent 0-day defense
 
