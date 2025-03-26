@@ -64,6 +64,20 @@ UUSEC WAF provides you with rich and powerful web security and API protection fe
 
 
 
+## ✨ Effect Evaluation <!-- {docsify-ignore} -->
+
+For reference only
+
+| Metric             | ModSecurity, Level 1 | CloudFlare, Free | UUSEC WAF, Free | UUSEC WAF, Pro |
+| ------------------ | -------------------- | ---------------- | --------------- | -------------- |
+| **Total Samples**      | 33669                | 33669            | 33669           | 33669          |
+| **Detection**      | 69.74%               | 10.70%           | 74.77%          | **98.97%**     |
+| **False Positive** | 17.58%               | 0.07%            | **0.09%**       | **0.01%**      |
+| **Accuracy**       | 82.20%               | 98.40%           | **99.42%**      | **99.95%**     |
+
+
+
+
 
 ##  :art: Screenshots <!-- {docsify-ignore} -->
 
@@ -76,6 +90,3 @@ UUSEC WAF provides you with a simple and easy-to-use WAF backend management inte
 :package: Rules
 
 ![](https://uuwaf.uusec.com/_media/rule.png)
-
-
-

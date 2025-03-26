@@ -1,7 +1,11 @@
 <p align="center">
   <a target="_blank" href="https://www.uusec.com/">🏠 Website</a> &nbsp; | &nbsp;
   <a target="_blank" href="/README_CN.md">中文版</a>
+  <br/><br/>
+    ⭐Please help us with a star to support our continuous improvement, thank you!
 </p>
+
+
 
 # Introduction
 
@@ -11,6 +15,11 @@
 > **UUSEC WAF** Web Application Firewall is an industrial grade free, high-performance, and highly scalable web application and API security protection product that supports AI and semantic engines. It is a comprehensive website protection product launched by UUSEC Technology, which first realizes the three-layer defense function of traffic layer, system layer, and runtime layer.
 
 ![](http://uuwaf.uusec.com/_media/waf.png)
+
+
+
+# GitHub Daily Trend
+[![UUSEC WAF](https://res.cloudinary.com/marcomontalbano/image/upload/v1742432660/video_to_markdown/images/youtube--x8oHis0gzlE-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=x8oHis0gzlE "UUSEC WAF")
 
 
 
@@ -45,6 +54,9 @@ UUSEC WAF provides you with a powerful and flexible API for extending and writin
 ![](http://uuwaf.uusec.com/_media/rule.png)
 
 🏠Please visit the official website to see more details:  https://uuwaf.uusec.com/ 
+
+> [!WARNING]
+> 中国用户请访问 [中文官网](https://waf.uusec.com/) 安装中文版，以下步骤安装国际版可能会导致无法使用！
 
 The installation of the UUSEC WAF is very simple, usually completed within a few minutes, and the specific time depends on the network download situation.
 
@@ -86,11 +98,25 @@ For more solutions to problems encountered during use, please refer to [FAQ](htt
 
 
 
+## :sparkles: Effect Evaluation
+
+For reference only
+
+| Metric             | ModSecurity, Level 1 | CloudFlare, Free | UUSEC WAF, Free | UUSEC WAF, Pro |
+| ------------------ | -------------------- | ---------------- | --------------- | -------------- |
+| **Total Samples**      | 33669                | 33669            | 33669           | 33669          |
+| **Detection**      | 69.74%               | 10.70%           | 74.77%          | **98.97%**     |
+| **False Positive** | 17.58%               | 0.07%            | **0.09%**       | **0.01%**      |
+| **Accuracy**       | 82.20%               | 98.40%           | **99.42%**      | **99.95%**     |
+
+
+
+
 ## :gift_heart: Contribution List
 
 How to contribute? reference: https://uuwaf.uusec.com/#/guide/contribute
 
-Thank you to puhui222, Kingdom, and k4n5ha0 for the contribution made to the UUSEC WAF!
+Thanks to puhui222, MCQSJ, k4n5ha0 and more for the contribution made to the UUSEC WAF!
 
 
 

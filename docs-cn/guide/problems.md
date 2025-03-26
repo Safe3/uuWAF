@@ -44,3 +44,15 @@ firewall-cmd --permanent --zone=internal --change-interface=wafnet
 ### 🍈 如何修改南墙反向代理默认监听端口？ <!-- {docsify-ignore} -->
 
 ?> 南墙默认只监听http 80、https 443端口，用户可自行在/uuwaf/conf/uuwaf.conf中自定义任意监听端口，配置方式请参考nginx 的 [listen](https://nginx.org/en/docs/http/ngx_http_core_module.html#listen) 设置，之后执行systemctl restart uuwaf重启服务使配置生效。Docker版用户可以修改docker-compose.yml中的port端口映射。
+
+
+
+### 🍌 为何南墙无法自动获取免费SSL证书？ <!-- {docsify-ignore} -->
+
+?> 南墙使用HTTP 01验证方式自动获取Let‘s Encrypt免费证书并续期，所以需要确保南墙80端口能被公网ip访问才能通过Let‘s Encrypt的验证。生成的免费证书保存于/uuwaf/web/certificates目录，不在后台证书管理页面展示。另外Let‘s Encrypt每月可申请的证书次数有一定限制，过于频繁申请也会造成申请失败。
+
+
+
+### 🍆 如何补充丰富南墙滑动旋转验证码图片数量？ <!-- {docsify-ignore} -->
+
+?> 选择合适大小的png图片，放入/uuwaf/captcha/images/目录，然后执行systemctl restart uuwaf重启服务使配置生效。
