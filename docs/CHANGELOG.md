@@ -1,3 +1,18 @@
+## [6.7.0](https://github.com/Safe3/uuWAF/compare/v6.7.0...v6.6.0) (2025-03-30)
+
+
+### Improvements
+
+- Added Lua advanced rule editor, supporting real-time auto-completion and code completion functions
+- Added support for * certificates to wildcard all domain names, making it easier to access HTTPS content when certificates are missing
+- Upgrade luajit to the latest version, enhance performance and fix bugs
+- Added Tomcat RCE (CVE-2025-24813) vulnerability protection rule
+- Docker version adds the UUWAF_DB_DSN environment variable to facilitate custom database connection information
+- Further optimize the installation and use of Docker version scripts and configuration files
+- Prevent the default rule from overwriting the custom rule, and adjust the starting value of the custom rule id range to 500
+
+
+
 ## [6.6.0](https://github.com/Safe3/uuWAF/compare/v6.6.0...v6.5.0) (2025-02-24)
 
 

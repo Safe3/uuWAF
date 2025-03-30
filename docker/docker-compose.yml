@@ -27,14 +27,14 @@ services:
      - "443:443"
      - "4443:4443"
    volumes:
-     - wafshared:/uuwaf
      - /etc/localtime:/etc/localtime:ro
+     - wafshared:/uuwaf/initdb
+     - waf_config:/uuwaf/web/conf
+     - waf_accounts:/uuwaf/web/accounts
+     - waf_certificates:/uuwaf/web/certificates
    command: ["/run.sh"]
    environment:
-     - UUWAF_MYSQL_PASSWORD=Safe3.WAF
-
-   links:
-   - wafdb
+     - UUWAF_DB_DSN=root:Safe3.WAF@tcp(wafdb:3306)/uuwaf?charset=utf8mb4&parseTime=true&loc=Local
    depends_on:
       wafdb:
         condition: service_healthy
@@ -51,9 +51,9 @@ services:
    networks:
       wafnet:
    volumes:
+     - /etc/localtime:/etc/localtime:ro
      - wafshared:/docker-entrypoint-initdb.d
      - wafdata:/var/lib/mysql
-     - /etc/localtime:/etc/localtime:ro
      #- ./low-memory-my.cnf:/etc/mysql/my.cnf
    environment:
      - INIT_ROCKSDB
@@ -68,4 +68,7 @@ services:
 
 volumes:
   wafshared:
+  waf_config:
+  waf_accounts:
+  waf_certificates:
   wafdata:

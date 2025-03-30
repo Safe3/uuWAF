@@ -26,7 +26,7 @@ if [ ! $(command -v docker) ]; then
 	if [ $? -ne "0" ]; then
 		abort "Automatic installation of Docker Engine failed. Please manually install it before executing this script"
 	fi
-	systemctl start docker && systemctl enable docker
+	systemctl enable docker && systemctl daemon-reload && systemctl restart docker
 fi
 
 DC_CMD="docker compose"
@@ -56,14 +56,18 @@ start_uuwaf(){
 		echo -e "\t One or more of ports 80, 443, 4443 are occupied. Please shut down the corresponding service or modify its port"
 		exit 1
 	fi
-	$DC_CMD up -d
+	$DC_CMD up -d --remove-orphans
 }
 
-update_uuwaf(){
-	stop_uuwaf
-	docker images|grep uuwaf|awk '{print $3}'|xargs docker rmi -f > /dev/null 2>&1
-	docker volume ls|grep wafshared|awk '{print $2}'|xargs docker volume rm -f > /dev/null 2>&1
-	start_uuwaf
+upgrade_uuwaf(){
+	$DC_CMD pull
+	$DC_CMD up -d --remove-orphans
+}
+
+repair_uuwaf(){
+	systemctl restart firewalld ufw
+	systemctl daemon-reload
+	systemctl restart docker
 }
 
 restart_uuwaf(){
@@ -84,10 +88,11 @@ start_menu(){
     echo "1. Start"
     echo "2. Stop"
     echo "3. Restart"
-    echo "4. Update"
-    echo "5. Uninstall"
-    echo "6. Clean"
-    echo "7. Exit"
+    echo "4. Upgrade"
+    echo "5. Repair"
+    echo "6. Uninstall"
+    echo "7. Clean"
+    echo "8. Exit"
     echo
     read -p "Please enter the number: " num
     case "$num" in
@@ -104,18 +109,22 @@ start_menu(){
 	echo "Restart completed"
 	;;
 	4)
-	update_uuwaf
-	echo "Update completed"
+	upgrade_uuwaf
+	echo "Upgrade completed"
 	;;
 	5)
+	repair_uuwaf
+	echo "Repair completed"
+	;;
+	6)
 	uninstall_uuwaf
 	echo "Uninstall completed"
 	;;
-	6)
+	7)
 	clean_uuwaf
 	echo "Clean completed"
 	;;
-	7)
+	8)
 	exit 1
 	;;
 	*)
