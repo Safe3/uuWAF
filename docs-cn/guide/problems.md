@@ -19,13 +19,16 @@
 
 
 
-### 🍋 如何解决南墙Docker版获取的客户端ip为172的问题？ <!-- {docsify-ignore} -->
+### 🍋 解决部分南墙容器版获取的客户端ip为网桥ip的问题？ <!-- {docsify-ignore} -->
 
-?> 这是部分主机docker网络和firewalld冲突引起的，导致南墙获取的客户端访问ip为172开头的容器网关ip。可以把docker网桥加入到防火墙的internal区域，手工执行如下命令解决，其中wafnet为南墙docker容器的网桥名称。
+?> 1.将Docker网桥加入到防火墙的internal区域，以便获取到真实的IP地址， 假设Docker网桥名称为`docker0`。
 
 ```bash
-firewall-cmd --permanent --zone=internal --change-interface=wafnet
+firewall-cmd --permanent --zone=internal --change-interface=docker0
+systemctl restart firewalld && systemctl daemon-reload && systemctl restart docker
 ```
+
+?> 2.如果方法1无效，可以修改docker-compose.yml文件，将uuwaf容器的网络设置为`network_mode: host`，同时修改数据库连接环境变量`UUWAF_DB_DSN`中的wafdb为127.0.0.1，并映射wafdb容器的3306端口，重启后生效。
 
 
 
