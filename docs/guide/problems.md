@@ -19,16 +19,6 @@
 
 
 
-### 🍋 How to solve the problem of obtaining a client IP address of 172 for the Docker version of the UUSEC WAF? <!-- {docsify-ignore} -->
-
-?> This is caused by a conflict between the Docker network of some hosts and Firewalld, resulting in the client access IP obtained by UUSEC WAF being the container gateway IP starting with 172. You can add the Docker bridge to the internal area of the firewall and manually execute the following command to solve the problem, where wafnet is the bridge name of the Docker container on the UUSEC WAF.
-
-```bash
-firewall-cmd --permanent --zone=internal --change-interface=wafnet
-```
-
-
-
 ### 🍊 How to check if the UUSEC WAF CDN has cached our webpage? <!-- {docsify-ignore} -->
 
 ?> The UUSEC WAF provides an X-Waf-Cache return header to check the cache status, such as X-Waf-Cache: HIT indicating cached, and X-Waf-Cache: MISS indicating uncached.

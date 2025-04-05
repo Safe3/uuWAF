@@ -32,7 +32,11 @@ fi
 DC_CMD="docker compose"
 $DC_CMD version > /dev/null 2>&1
 if [ $? -ne "0" ]; then
-	abort "Your Docker version is too low and lacks the Docker compose command. Please uninstall and install the latest version"
+	abort "Your Docker version is too low and lacks the 'docker compose' command. Please uninstall and install the latest version"
+fi
+
+if [ ! -f ".env" ];then
+	echo "MYSQL_PASSWORD=$(LC_ALL=C tr -dc A-Za-z0-9 </dev/urandom | head -c 32)" > .env
 fi
 
 stop_uuwaf(){
@@ -51,10 +55,9 @@ start_uuwaf(){
 	if [ ! $(command -v netstat) ]; then
 		$( command -v yum || command -v apt-get ) -y install net-tools
 	fi
-	port_status=`netstat -nlt|grep -E ':(80|443|4443)\s'|wc -l`
+	port_status=`netstat -nlt|grep -E ':(80|443|4443|6612)\s'|wc -l`
 	if [ $port_status -gt 0 ]; then
-		echo -e "\t One or more of ports 80, 443, 4443 are occupied. Please shut down the corresponding service or modify its port"
-		exit 1
+		abort "One or more of ports 80, 443, 4443, 6612 are occupied. Please shutdown the corresponding service or modify its port"
 	fi
 	$DC_CMD up -d --remove-orphans
 }

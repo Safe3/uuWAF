@@ -19,19 +19,6 @@
 
 
 
-### 🍋 解决部分南墙容器版获取的客户端ip为网桥ip的问题？ <!-- {docsify-ignore} -->
-
-?> 1.将Docker网桥加入到防火墙的internal区域，以便获取到真实的IP地址， 假设Docker网桥名称为`docker0`。
-
-```bash
-firewall-cmd --permanent --zone=internal --change-interface=docker0
-systemctl restart firewalld && systemctl daemon-reload && systemctl restart docker
-```
-
-?> 2.如果方法1无效，可以修改docker-compose.yml文件，将uuwaf容器的网络设置为`network_mode: host`，同时修改数据库连接环境变量`UUWAF_DB_DSN`中的wafdb为127.0.0.1，并映射wafdb容器的3306端口，重启后生效。
-
-
-
 ### 🍊 如何查看南墙CDN是否缓存了我们的网页？ <!-- {docsify-ignore} -->
 
 ?> 南墙提供了一个X-Waf-Cache返回头用以查看缓存情况，如X-Waf-Cache: HIT表示已缓存，X-Waf-Cache: MISS表示未缓存。
