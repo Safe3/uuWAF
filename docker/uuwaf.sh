@@ -37,6 +37,13 @@ fi
 
 if [ ! -f ".env" ];then
 	echo "MYSQL_PASSWORD=$(LC_ALL=C tr -dc A-Za-z0-9 </dev/urandom | head -c 32)" > .env
+	if [ $(command -v firewall-cmd) ]; then
+		firewall-cmd --permanent --add-port={80,443,4443}/tcp > /dev/null 2>&1
+		firewall-cmd --reload > /dev/null 2>&1
+	elif [ $(command -v ufw) ]; then
+		for port in 80 443 4443; do ufw allow $port/tcp > /dev/null 2>&1; done
+		ufw reload > /dev/null 2>&1
+	fi
 fi
 
 stop_uuwaf(){
@@ -68,7 +75,11 @@ upgrade_uuwaf(){
 }
 
 repair_uuwaf(){
-	systemctl restart firewalld ufw
+	if [ $(command -v firewall-cmd) ]; then
+		systemctl restart firewalld > /dev/null 2>&1
+	elif [ $(command -v ufw) ]; then
+		systemctl restart ufw > /dev/null 2>&1
+	fi
 	systemctl daemon-reload
 	systemctl restart docker
 }
