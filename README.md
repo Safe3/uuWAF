@@ -64,7 +64,7 @@ Attention: Please try to choose a pure Linux x86_64 environment server for insta
 
 > The host version installation:
 
-- System requirements: RHEL 7 and above are compatible with x86_64 systems, such as CentOS, Rocky Linux, AlmaLinux, etc.
+- System requirements: RHEL 7 and above are compatible with x86_64 systems, such as Rocky Linux, AlmaLinux, etc.
 
 
 ```bash
