@@ -63,7 +63,7 @@ curl https://waf.uusec.com/waf-install -o waf-install && sudo bash ./waf-install
 
 > Docker版安装方式如下： 
 
-- 软件依赖：Docker 20.10.14 版本以上，Docker Compose 2.0.0 版本以上，低版本会导致sql数据无法导入以致南墙后台无法登录。
+- 软件依赖：Docker 20.10.14 版本以上，Docker Compose 2.0.0 版本以上，其它 Docker 如 Podman 会导致sql数据无法导入以致南墙后台无法登录，请勿使用。
 
 若遇到无法自动安装Docker Engine，请参考[阿里云](https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker-on-a-linux-ecs-instance)手动安装。
 

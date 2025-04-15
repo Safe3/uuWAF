@@ -76,7 +76,7 @@ After successful installation, it will display "Congratulations, successful inst
 
 > The docker version installation： 
 
-- Software dependencies: Docker version 20.10.14 or above, Docker Compose version 2.0.0 or above, lower versions may cause SQL data to be unable to be imported, resulting in login issues in the UUSEC WAF management.
+- Software dependencies: Docker CE version 20.10.14 or above, Docker Compose version 2.0.0 or above, other dockers such as Podman may cause SQL data to be unable to be imported, resulting in login issues in the UUSEC WAF management.
 
 If you encounter the inability to automatically install Docker Engine, please install it manually.
 
