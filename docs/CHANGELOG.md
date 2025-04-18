@@ -1,3 +1,20 @@
+## [6.8.0 LTS](https://github.com/Safe3/uuWAF/compare/v6.8.0...v6.7.0) (2025-04-18)
+
+
+### Improvements
+
+- New support for adding multiple domain names while creating new sites
+- Added support for automatically creating uuwaf database structures
+- Beautiful web management interface and optimized functionality
+
+### Bugfix
+
+- Resolve the host version authentication failure issue of reconnecting after disconnecting  database
+- Fix nginx CVE-225-23419 vulnerability
+
+
+
+
 ## [6.7.0](https://github.com/Safe3/uuWAF/compare/v6.7.0...v6.6.0) (2025-03-30)
 
 
