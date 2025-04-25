@@ -23,7 +23,6 @@ services:
    network_mode: host
    volumes:
      - /etc/localtime:/etc/localtime:ro
-     - waf_shared:/uuwaf/initdb
      - waf_config:/uuwaf/web/conf
      - waf_acme_accounts:/uuwaf/web/accounts
      - waf_acme_certificates:/uuwaf/web/certificates
@@ -50,7 +49,6 @@ services:
      - "6612:3306"
    volumes:
      - /etc/localtime:/etc/localtime:ro
-     - waf_shared:/docker-entrypoint-initdb.d
      - waf_data:/var/lib/mysql
      #- ./low-memory-my.cnf:/etc/mysql/my.cnf
    environment:
@@ -65,7 +63,6 @@ services:
      retries: 10
 
 volumes:
-  waf_shared:
   waf_config:
   waf_acme_accounts:
   waf_acme_certificates:
