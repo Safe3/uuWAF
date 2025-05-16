@@ -44,13 +44,19 @@
 
 ![](http://waf.uusec.com/_media/rule.png)
 
+- ### 云服务部署
+
+&nbsp;&nbsp;<a href="https://app.rainyun.com/apps/rca/store/6202?ref=uusec" target="_blank"><img height="42" src="https://rainyun-apps.cn-nb1.rains3.com/materials/deploy-on-rainyun-cn.svg" alt="雨云"></a>
+
+&nbsp;&nbsp;<a href="https://8465.cn/aff/NCKQREHC" target="_blank"><img height="32" src="https://8465.cn/themes/web/www/upload/local665305c838bfb.png" alt="蓝谷科技"></a>
+
 🏠请访问官网： https://waf.uusec.com/ 下载 南墙WAF使用说明书 了解规则API详情
 
 南墙安装及其简便，通常在几分钟内即可安装完毕，具体耗时视网络下载情况而定。
 
 注意：请尽量选择一台纯净Linux x86_64环境的服务器安装，因为安装过程会卸载旧的MySQL数据库并重新安装，如果没有备份，可造成旧的MySQL数据丢失，并且南墙采用云WAF反向代理模式，默认需要使用80、443端口。
 
-> 主机版安装方式如下：
+- ### 主机版安装方式如下
 
 系统要求：RHEL 7及以上兼容x86_64系统，如Rocky Linux、AlmaLinux、Alibaba Cloud Linux、TencentOS等。
 
@@ -61,7 +67,7 @@ curl https://waf.uusec.com/waf-install -o waf-install && sudo bash ./waf-install
 
 安装成功后会显示 “ 恭喜您，安装成功！”
 
-> Docker版安装方式如下： 
+- ### Docker版安装方式如下
 
 - 软件依赖：Docker 20.10.14 版本以上，Docker Compose 2.0.0 版本以上，其它 Docker 如 Podman 会导致sql数据无法导入以致南墙后台无法登录，请勿使用。
 
@@ -73,7 +79,7 @@ curl https://waf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash .
 
 后续可直接执行 `bash ./waf/uuwaf.sh` 来管理南墙容器，包括启动、停止、更新、卸载等。
 
-> 快速入门：
+- ### 快速入门
 
 1. 登录后台：访问https://ip:4443 ，ip为安装南墙的服务器ip地址，用户名admin，密码Passw0rd!。
 
