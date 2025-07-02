@@ -8,7 +8,7 @@
 - Redesigned main program and management interface with improved aesthetics and usability, supports UI language switching (English/Chinese)
 - Added Rule Collections functionality: Create custom rule templates for batch configuration
 - Introduced whitelist rules that terminate further rule matching upon success
-- UUSEC WAF Rules API intelligent suggestions during advanced rule editing:ml-citation
+- UUSEC WAF Rules API intelligent suggestions during advanced rule editing
 - New plugin management supporting hot-reloaded plugins to extend WAF capabilities
 
 **Protocol & Optimization**
