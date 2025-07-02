@@ -1,3 +1,32 @@
+## [7.0.0](https://github.com/Safe3/uuWAF/compare/v7.0.0...v6.8.0) (2025-07-01)
+
+
+### Feature Updates  
+
+**Interface & Management**
+
+- Redesigned main program and management interface with improved aesthetics and usability, supports UI language switching (English/Chinese)
+- Added Rule Collections functionality: Create custom rule templates for batch configuration
+- Introduced whitelist rules that terminate further rule matching upon success
+- UUSEC WAF Rules API intelligent suggestions during advanced rule editing:ml-citation
+- New plugin management supporting hot-reloaded plugins to extend WAF capabilities
+
+**Protocol & Optimization**
+- Supports streaming responses for continuous data push (e.g., LLM stream outputs)
+- Enables Host header modification during proxying for upstream service access
+- Search engine validation: `waf.searchEngineValid(dns,ip,ua)` prevents high-frequency rules from affecting SEO indexing
+- Interception log report generation (HTML/PDF exports)
+- Automatic rotation of UUSEC WAF error/access logs to prevent performance issues
+
+**Security & Infrastructure**
+
+- Expanded free SSL certificate support: HTTP-01 & DNS-01 verification across 50+ domain providers
+- Customizable advanced WAF settings: HTTP2, GZIP, HTTP Caching, SSL protocols, etc
+- Cluster configuration: Manage UUSEC WAF nodes and ML servers via web UI
+
+
+
+
 ## [6.8.0 LTS](https://github.com/Safe3/uuWAF/compare/v6.8.0...v6.7.0) (2025-04-18)
 
 

@@ -30,7 +30,7 @@ else
     sh:incr(ccIp, 1)
     if c + 1 >= 360 then             -- 频率超过360次
         sh:set(ccIp, c + 1, 300, 2)  -- 设置5分钟也就是300秒拦截时间
-        return true, ccIp, true      -- 返回参数，第一个true为是否检测到；第二个参数ccIp为日志记录内容；第三个参数true表示拦截，false表示只记录不拦截
+        return true, ccIp, true      -- 返回参数，第一个true为是否检测到；第二个参数ccIp为日志记录内容；第三个参数true表示拦截，即黑名单规则；false表示允许并且不再匹配剩余规则，即白名单规则
     end
 end
 
@@ -469,7 +469,7 @@ end
 
 - 参数: ``ip为要查询的ip地址，lang为显示语言，如en、zh-CN等，默认值"zh-CN"``
 - 功能: 将ip地址转化为国家、省份、城市中文地理位置信息
-- 返回值: ``country、 province、 city，如：中国、湖北省、武汉市``
+- 返回值: ``country、 province、 city、iso_code，如：中国、湖北省、武汉市、CN``
 
 ##### waf.errLog(...)
 
@@ -477,6 +477,11 @@ end
 - 功能: 记录错误日志到/uuwaf/logs/error.log中
 - 返回值: ``无``
 
+##### waf.searchEngineValid(dns, ip, ua)
+
+- 参数: ``dns为要查询的dns服务器ip，ip为要查询的ip地址，ua为请求的User-Agent``
+- 功能: 用于验证请求是否真的来自于搜索引擎，避免高频限制规则影响搜索引擎收录
+- 返回值: ``name字符串值，为搜索引擎名称； valid布尔值，值为true则是真实搜索引擎，反之不是``
 
 
 
@@ -568,21 +573,6 @@ return _M
 - #### 日志记录阶段执行函数
 
 - 该阶段用于日志记录阶段做一些日志处理与推送，waf变量同规则变量一致，可自行实现该函数功能。
-
-
-
-### 插件使用
-
-1. 将插件文件如kafka-logger.lua 放于/uuwaf/waf/plugins/目录，并修改文件扩展名为kafka-logger.w。
-
-2. 修改/uuwaf/conf/uuwaf.conf文件，在init_by_lua_block段中waf = require("waf")下新增一行waf:use("插件名称")，如启用kafka-logger.w插件的示例如下：
-
-   ```lua
-   waf = require("waf")
-   waf:use("kafka-logger")
-   ```
-   
-3. 执行/uuwaf/waf-service -s restart使插件生效，如果插件代码运行有问题，可以在/uuwaf/logs/error.log中查看详细错误信息。
 
 
 

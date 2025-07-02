@@ -47,17 +47,12 @@ UUSEC WAF actively utilizes the high-performance and highly flexible features of
 
 
 
-## :rocket: Installation
+## :rocket: One click Installation
 
 UUSEC WAF provides you with a powerful and flexible API for extending and writing security rules. After being published in the management backend, all rules take effect immediately without restarting, far exceeding most free WAF products on the market such as ModSecurity. The rules are shown below:
 
 ![](http://uuwaf.uusec.com/_media/rule.png)
 
-### Cloud Deploy
-
-<a href="https://app.rainyun.com/apps/rca/store/6202?ref=689306" target="_blank"><img height="42" src="https://rainyun-apps.cn-nb1.rains3.com/materials/deploy-on-rainyun-en.svg" alt="RainYun"></a>
-
-<a href="https://8465.cn/aff/NCKQREHC" target="_blank"><img height="32" src="https://8465.cn/themes/web/www/upload/local665305c838bfb.png" alt="蓝谷科技"></a>
 
 🏠Please visit the official website to see more details:  https://uuwaf.uusec.com/ 
 
@@ -66,31 +61,19 @@ UUSEC WAF provides you with a powerful and flexible API for extending and writin
 
 The installation of the UUSEC WAF is very simple, usually completed within a few minutes, and the specific time depends on the network download situation.
 
-Attention: Please try to choose a pure Linux x86_64 environment server for installation, as the installation process will uninstall the old MySQL database and reinstall it. If there is no backup, it may cause the loss of old MySQL data. In addition, the UUSEC WAF adopts cloud WAF reverse proxy mode, which requires the use of ports 80 and 443 by default.
+Attention: Please try to choose a pure Linux x86_64 environment server for installation, because the UUSEC WAF adopts cloud WAF reverse proxy mode, which requires the use of ports 80 and 443 by default.
 
-### The host version installation
+### Installation
 
-System requirements: RHEL 7 and above are compatible with x86_64 systems, such as Rocky Linux, AlmaLinux, etc.
-
-
-```bash
-sudo yum install -y ca-certificates
-curl https://uuwaf.uusec.com/waf-install -o waf-install && sudo bash ./waf-install && rm -f ./waf-install
-```
-
-After successful installation, it will display "Congratulations, successful installation".
-
-### The docker version installation
-
-Software dependencies: Docker CE version 20.10.14 or above, Docker Compose version 2.0.0 or above, other dockers such as Podman may cause SQL data to be unable to be imported, resulting in login issues in the UUSEC WAF management.
+Software dependencies: Docker CE version 20.10.14 or above, Docker Compose version 2.0.0 or above.
 
 If you encounter the inability to automatically install Docker Engine, please install it manually.
 
 ```bash
-curl https://uuwaf.uusec.com/waf.tgz -o waf.tgz && tar -zxf waf.tgz && sudo bash ./waf/uuwaf.sh
+sudo bash -c "$(curl -fsSL https://uuwaf.uusec.com/installer.sh)"
 ```
 
-Subsequently, `bash ./waf/uuwaf.sh` is used to manage the UUSEC WAF container, including starting, stopping, updating, uninstalling, etc.
+Subsequently, `bash /opt/waf/manager.sh` is used to manage the UUSEC WAF container, including starting, stopping, updating, uninstalling, etc.
 
 ### Quick Start
 

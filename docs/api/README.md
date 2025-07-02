@@ -30,7 +30,7 @@ else
     sh:incr(ccIp, 1)
     if c + 1 >= 360 then             -- Frequency exceeding 360 times
         sh:set(ccIp, c + 1, 300, 2)  -- Set a 300 second interception time
-        return true, ccIp, true      -- Return parameter, the first 'true' is whether it has been detected; The second parameter 'ccIp' is the content of the log record; The third parameter 'true' indicates interception, while 'false' indicates only recording without interception
+        return true, ccIp, true      -- Return parameter, the first 'true' is whether it has been detected; The second parameter 'ccIp' is the content of the log record; Third parameter:true means ‌blocked‌ (triggering blacklist rule),false means ‌allowed‌ (whitelist rule, skipping remaining rule checks)
     end
 end
 
@@ -468,7 +468,7 @@ end
 
 - Parameters: ``ip is the IP address to be queried, lang is the display language, such as en, zh-CN, etc. The default value is "en"``
 - Function: Convert IP addresses into geographic location information for country, province, and city
-- Return values: ``country、 province、 city``
+- Return values: ``country, province, city, iso_code``
 
 ##### waf.errLog(...)
 
@@ -476,6 +476,11 @@ end
 - Function: Record error logs to /uuwaf/logs/error. log
 - Return values: ``None``
 
+##### waf.searchEngineValid(dns, ip, ua)
+
+- Parameters: ``dns: IP address of the DNS server to query;ip: target IP address to look up;ua: User-Agent header of the request``
+- Function: To verify whether requests genuinely originate from search engines, preventing rate-limiting rules from affecting search engine indexing.
+- Return values: ``name: String value indicating the search engine name;valid: Boolean value where true denotes a genuine search engine, false otherwise``
 
 
 
@@ -567,21 +572,6 @@ return _M
 - #### Logging phase filtering function
 
 - This stage is used for log processing and push during the logging phase. The "waf" variable is consistent with the rule variable and can be implemented independently.
-
-
-
-### Plugin usage
-
-1. Place the plugin file, such as kafka-logger.lua, in the /uuwaf/waf/plugins/ directory and modify the file extension to kafka-logger.w
-
-2. Modify the /uuwaf/conf/uuwaf.conf file and add a new line of `waf:use("plugin name")` under `waf = require("waf")` in the init_by_lua_block section. For example, an example of enabling the kafka-logger.w plugin is as follows:
-
-   ```lua
-   waf = require("waf")
-   waf:use("kafka-logger")
-   ```
-   
-3. Execute /uuwaf/waf-service -s restart to make the plugin effective. If there are any issues with the plugin code running, you can view detailed error information in /uuwaf/logs/error.log.
 
 
 
