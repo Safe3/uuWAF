@@ -56,9 +56,6 @@ UUSEC WAF provides you with a powerful and flexible API for extending and writin
 
 🏠Please visit the official website to see more details:  https://uuwaf.uusec.com/ 
 
-> [!WARNING]
-> 中国用户请访问 [中文官网](https://waf.uusec.com/) 安装中文版，以下步骤安装国际版可能会导致无法使用！
-
 The installation of the UUSEC WAF is very simple, usually completed within a few minutes, and the specific time depends on the network download situation.
 
 Attention: Please try to choose a pure Linux x86_64 environment server for installation, because the UUSEC WAF adopts cloud WAF reverse proxy mode, which requires the use of ports 80 and 443 by default.
@@ -69,6 +66,10 @@ Software dependencies: Docker CE version 20.10.14 or above, Docker Compose versi
 
 If you encounter the inability to automatically install Docker Engine, please install it manually.
 
+> [!WARNING]
+> 中国用户请访问 [中文官网](https://waf.uusec.com/) 安装中文版，以下步骤安装国际版可能会导致无法使用！
+
+
 ```bash
 sudo bash -c "$(curl -fsSL https://uuwaf.uusec.com/installer.sh)"
 ```
@@ -77,7 +78,7 @@ Subsequently, `bash /opt/waf/manager.sh` is used to manage the UUSEC WAF contain
 
 ### Quick Start
 
-1. Login to the management: Access https://ip:4443 ,the IP address is the server IP address for installing the UUSEC WAF, the default username is "admin", and the default password is "#Passw0rd".
+1. Login to the management: Access https://ip:4443 ,the IP address is the server IP address for installing the UUSEC WAF, the default username is `admin`, and the default password is `#Passw0rd`.
 2. Add a site: Go to the "Sites" menu, click the "Add Site" button, and follow the prompts to add the site domain name and website server IP.
 3. Add SSL certificate: Go to the certificate management menu, click the "Add Certificate" button, and upload the HTTPS certificate and private key file of the domain name. If you don‘t have a SSL certificate, you can also apply for a Let's Encrypt free SSL certificate and renew it automatically before the certificate expires.
 4. Change the DNS address of the domain: Go to the domain name service provider's management backend and change the IP address recorded in the DNS A of the domain name to the IP address of the UUSEC WAF server.

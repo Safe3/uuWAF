@@ -64,7 +64,7 @@ sudo bash -c "$(curl -fsSL https://waf.uusec.com/installer_cn.sh)"
 
 ### 快速入门
 
-1. 登录后台：访问https://ip:4443 ，ip为安装南墙的服务器ip地址，用户名 admin ，密码 #Passw0rd 。
+1. 登录后台：访问https://ip:4443 ，ip为安装南墙的服务器ip地址，用户名 `admin` ，密码 `#Passw0rd` 。
 
 2. 添加站点：进入站点管理菜单，点击添加站点按钮，按提示添加站点域名与网站服务器ip。
 3. 添加SSL证书：进入证书管理菜单，点击添加证书按钮，上传第二步中域名的https证书和私钥文件。若无SSL证书，可通过南墙申请Let's Encrypt免费SSL证书，并在证书到期前自动续期。
