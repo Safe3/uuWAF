@@ -1,5 +1,9 @@
 #!/bin/bash
 
+info() {
+	echo -e "\033[32m[UUSEC WAF] $*\033[0m"
+}
+
 warning() {
 	echo -e "\033[33m[UUSEC WAF] $*\033[0m"
 }
@@ -10,7 +14,7 @@ abort() {
 }
 
 if [ -z "$BASH" ]; then
-	abort "Please execute this script using bash and refer to the latest official technical documentation https://uuwaf.uusec.com/"
+	abort "Please execute this script using bash and refer to the latest official technical documentation https://www.uusec.com/"
 fi
 
 if [ "$EUID" -ne "0" ]; then
@@ -37,44 +41,38 @@ fi
 
 if [ ! -f ".env" ];then
 	echo "MYSQL_PASSWORD=$(LC_ALL=C tr -dc A-Za-z0-9 </dev/urandom | head -c 32)" > .env
-	if [ $(command -v firewall-cmd) ]; then
-		firewall-cmd --permanent --add-port={80,443,4443}/tcp > /dev/null 2>&1
-		firewall-cmd --reload > /dev/null 2>&1
-	elif [ $(command -v ufw) ]; then
-		for port in 80 443 4443; do ufw allow $port/tcp > /dev/null 2>&1; done
-		ufw reload > /dev/null 2>&1
-	fi
 fi
 
-stop_uuwaf(){
+stop_waf(){
 	$DC_CMD down
 }
 
-uninstall_uuwaf(){
-	stop_uuwaf
+uninstall_waf(){
+	stop_waf
 	docker rm -f uuwaf wafdb > /dev/null 2>&1
 	docker network rm wafnet > /dev/null 2>&1
 	docker images|grep uuwaf|awk '{print $3}'|xargs docker rmi -f > /dev/null 2>&1
-	docker volume ls|grep waf|awk '{print $2}'|xargs docker volume rm -f > /dev/null 2>&1
+	docker volume ls|grep _waf_|awk '{print $2}'|xargs docker volume rm -f > /dev/null 2>&1
 }
 
-start_uuwaf(){
+start_waf(){
 	if [ ! $(command -v netstat) ]; then
-		$( command -v yum || command -v apt-get ) -y install net-tools
+		$( command -v yum || command -v apt-get || command -v zypper ) -y install net-tools
 	fi
-	port_status=`netstat -nlt|grep -E ':(80|443|4443|6612)\s'|wc -l`
+	port_status=`netstat -nlt|grep -E ':(80|443|777|4443|4447)\s'|wc -l`
 	if [ $port_status -gt 0 ]; then
-		abort "One or more of ports 80, 443, 4443, 6612 are occupied. Please shutdown the corresponding service or modify its port"
+		abort "One or more of ports 80, 443, 777, 4443, 4447 are occupied. Please shutdown the corresponding service or modify its port"
 	fi
 	$DC_CMD up -d --remove-orphans
 }
 
-upgrade_uuwaf(){
+upgrade_waf(){
+	curl https://uuwaf.uusec.com/docker-compose.yml -o docker-compose.yml
 	$DC_CMD pull
 	$DC_CMD up -d --remove-orphans
 }
 
-repair_uuwaf(){
+repair_waf(){
 	if [ $(command -v firewall-cmd) ]; then
 		systemctl restart firewalld > /dev/null 2>&1
 	elif [ $(command -v ufw) ]; then
@@ -84,20 +82,15 @@ repair_uuwaf(){
 	systemctl restart docker
 }
 
-restart_uuwaf(){
-	stop_uuwaf
-	start_uuwaf
-}
-
-clean_uuwaf(){
-	docker system prune -a -f
-	docker volume prune -a -f
+restart_waf(){
+	stop_waf
+	start_waf
 }
 
 start_menu(){
     clear
     echo "========================="
-    echo "UUSEC WAF Docker Management"
+    echo "UUSEC WAF Management"
     echo "========================="
     echo "1. Start"
     echo "2. Stop"
@@ -105,45 +98,40 @@ start_menu(){
     echo "4. Upgrade"
     echo "5. Repair"
     echo "6. Uninstall"
-    echo "7. Clean"
-    echo "8. Exit"
+    echo "7. Exit"
     echo
     read -p "Please enter the number: " num
     case "$num" in
-    	1)
-	start_uuwaf
-	echo "Startup completed"
+	1)
+	start_waf
+	info "Startup completed"
 	;;
 	2)
-	stop_uuwaf
-	echo "Stop completed"
+	stop_waf
+	info "Stop completed"
 	;;
-    	3)
-	restart_uuwaf
-	echo "Restart completed"
+	3)
+	restart_waf
+	info "Restart completed"
 	;;
 	4)
-	upgrade_uuwaf
-	echo "Upgrade completed"
+	upgrade_waf
+	info "Upgrade completed"
 	;;
 	5)
-	repair_uuwaf
-	echo "Repair completed"
+	repair_waf
+	info "Repair completed"
 	;;
 	6)
-	uninstall_uuwaf
-	echo "Uninstall completed"
+	uninstall_waf
+	info "Uninstall completed"
 	;;
 	7)
-	clean_uuwaf
-	echo "Clean completed"
-	;;
-	8)
 	exit 1
 	;;
 	*)
 	clear
-	echo "Please enter the right number"
+	info "Please enter the right number"
 	;;
     esac
     sleep 3s
