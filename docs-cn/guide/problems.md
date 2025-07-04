@@ -27,22 +27,22 @@
 
 ### 🍍 如何修改南墙管理后台的端口和SSL证书？ <!-- {docsify-ignore} -->
 
-?> 南墙管理后台的配置位于/uuwaf/web/conf/config.json中，addr字段值即为ip地址和端口。替换SSL证书可以替换/uuwaf/web/conf/目录中的server.crt和server.key文件，之后执行systemctl restart uuwaf重启服务使配置生效。
+?> 南墙管理后台的配置位于/uuwaf/web/conf/config.json中，addr字段值即为ip地址和端口。替换SSL证书可以替换/uuwaf/web/conf/目录中的server.crt和server.key文件，之后重启服务使配置生效。
 
 
 
 ### 🍈 如何修改南墙反向代理默认监听端口？ <!-- {docsify-ignore} -->
 
-?> 南墙默认只监听http 80、https 443端口，用户可自行在/uuwaf/conf/uuwaf.conf中自定义任意监听端口，配置方式请参考nginx 的 [listen](https://nginx.org/en/docs/http/ngx_http_core_module.html#listen) 设置，之后执行systemctl restart uuwaf重启服务使配置生效。Docker版用户可以修改docker-compose.yml中的port端口映射。
+?> 南墙默认只监听http 80、https 443端口，用户可自行在/uuwaf/conf/uuwaf.conf中自定义任意监听端口，配置方式请参考nginx 的 [listen](https://nginx.org/en/docs/http/ngx_http_core_module.html#listen) 设置，之后重启服务使配置生效。Docker版用户可以修改docker-compose.yml中的port端口映射。
 
 
 
-### 🍌 为何南墙无法自动获取免费SSL证书？ <!-- {docsify-ignore} -->
+### 🍌 为何无法获取免费SSL证书？ <!-- {docsify-ignore} -->
 
-?> 南墙使用HTTP 01验证方式自动获取Let‘s Encrypt免费证书并续期，所以需要确保南墙80端口能被公网ip访问才能通过Let‘s Encrypt的验证。生成的免费证书保存于/uuwaf/web/certificates目录，不在后台证书管理页面展示。另外Let‘s Encrypt每月可申请的证书次数有一定限制，过于频繁申请也会造成申请失败。
+?> 南墙使用HTTP 01验证方式自动获取Let‘s Encrypt免费证书时需要确保南墙80端口能被公网ip访问才能通过Let‘s Encrypt的验证。使用DNS-01验证时无此限制，并且可以申请泛域名证书，但DNS生效需要时间，有时要稍等一段时间后再试。另外Let‘s Encrypt每月可申请的证书次数有一定限制，过于频繁申请也会造成申请失败。
 
 
 
 ### 🍆 如何补充丰富南墙滑动旋转验证码图片数量？ <!-- {docsify-ignore} -->
 
-?> 选择合适大小的png图片，放入/uuwaf/captcha/images/目录，然后执行systemctl restart uuwaf重启服务使配置生效。
+?> 选择合适大小的png图片，放入/uuwaf/captcha/images/目录，然后重启服务使配置生效。

@@ -34,3 +34,15 @@
 ### 🍈 How to modify the default listening port of the reverse proxy on the UUSEC WAF? <!-- {docsify-ignore} -->
 
 ?> By default, the UUSEC WAF only listens to ports HTTP 80 and HTTPS 443. Users can customize any listening port in /uwaf/conf/uuwaf.conf. Please refer to nginx's [listen](https://nginx.org/en/docs/http/ngx_http_core_module.html#listen) configuration for more information to set up, then execute `systemctl restart uuwaf` to restart the service for the configuration to take effect. Docker users can modify the port mapping in docker-compose.yml.
+
+
+
+### 🍌 Why can't obtain a free SSL certificate? <!-- {docsify-ignore} -->
+
+?> When using the HTTP-01 challenge to automatically obtain a Let’s Encrypt free certificate with UUSEC WAF, you must ensure that port 80 of UUSEC WAF is publicly accessible from external sources to pass Let’s Encrypt’s validation. There is no such restriction when using the DNS-01 challenge, which also allows applying for wildcard certificates. However, DNS propagation takes time, sometimes you may need to wait briefly before. Additionally, Let’s Encrypt imposes monthly rate limits on certificate requests per registered domain, and requests are too frequent will cause issuance failures.
+
+
+
+### 🍆 How to supplement and expand the number of sliding/rotating CAPTCHA images ？ <!-- {docsify-ignore} -->
+
+?> Select PNG images of appropriate size, place them in the `/uuwaf/captcha/images/` directory, then restart the service and apply the configuration.
