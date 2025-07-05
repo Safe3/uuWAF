@@ -467,7 +467,7 @@ end
 ##### waf.ip2loc(ip, lang?)
 
 - Parameters: ``ip is the IP address to be queried, lang is the display language, such as en, zh-CN, etc. The default value is "en"``
-- Function: Convert IP addresses into geographic location information for country, province, and city
+- Function: Convert IP addresses into geographic location information for country, province, city, and iso code
 - Return values: ``country, province, city, iso_code``
 
 ##### waf.errLog(...)

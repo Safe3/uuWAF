@@ -467,8 +467,8 @@ end
 
 ##### waf.ip2loc(ip, lang?)
 
-- 参数: ``ip为要查询的ip地址，lang为显示语言，如en、zh-CN等，默认值"zh-CN"``
-- 功能: 将ip地址转化为国家、省份、城市中文地理位置信息
+- 参数: ``ip为要查询的ip地址，lang为显示语言，如en、zh-CN等，默认值"en"``
+- 功能: 将ip地址转化为国家、省份、城市、地区代码地理位置信息
 - 返回值: ``country、 province、 city、iso_code，如：中国、湖北省、武汉市、CN``
 
 ##### waf.errLog(...)
